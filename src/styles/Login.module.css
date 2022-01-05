@@ -1,0 +1,57 @@
+.cardLanding{
+    text-align: center;
+  background-color: rgba(0, 0, 0, 0.952);
+  padding: 10px;
+}
+.form{
+    border-radius: 10px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin: 5% 30%;
+  padding: 2%;
+    color: black;
+    background-color: white;
+}
+
+.btn{
+    text-decoration: none;
+      display: inline-block;
+      color: black;
+      font-size: 16px;
+      letter-spacing: 1px;
+      font-weight: 500;
+      padding: 10px 6px;
+      width: 30%;
+      margin: 3px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      background-color: white;
+  
+  }
+  
+  .btn.active,
+  .btn:hover{
+    color: black;
+    background: rgb(95, 180, 180);
+  }
+  .btnLink{
+      color: rgb(4, 155, 155);
+      transition: 0.3s ease all;
+      text-decoration: none;
+  }
+  .btnLink:hover,.btnLink:active{
+    color: rgb(0, 82, 82);
+}
+
+
+@media (max-width:950px) {
+    .form{
+        
+  margin: 0%;
+  padding: 5%;
+    }
+    .btn{
+        width: 50%;
+      
+      }
+  }

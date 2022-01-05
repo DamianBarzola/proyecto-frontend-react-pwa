@@ -1,0 +1,256 @@
+.background{
+  margin: 0;
+  padding: 0
+  
+}
+.sectionLanding{
+  background-image:url(../images/truck.jpg) ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  padding: 110px 10% 15% 50%;
+  
+}
+.cardLanding{
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  font-size: 30px;
+  padding-top: 5%;
+  margin-top: 10%;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.856);
+  letter-spacing: 2px;
+}
+.text{
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 20px;
+  text-align: justify;
+  padding-top: 10px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.btnBegin{
+  text-decoration: none;
+    display: inline-block;
+    color: black;
+    font-size: 16px;
+    width: 10rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    padding: 15px 2px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+    background-color: white;
+
+}
+
+.btnBegin.active,
+.btnBegin:hover{
+  color: black;
+  background: rgb(95, 180, 180);
+}
+
+.cardContact{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  padding: 5% 20%;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.952);
+  letter-spacing: 2px;
+}
+.cardAbout{
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  padding: 5%;
+  padding-top: 8%;
+  padding-bottom: 8%;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.863);
+  letter-spacing: 2px;
+}
+
+.tabsTrigger {  
+  text-align: start;
+  border: none;
+  color: #000;
+  background-color: transparent;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+  width: 10rem;
+  margin: 0 5px;
+  padding: 10px ;
+  transition: all 0.3s ease;        
+  border-radius: 5px;
+  letter-spacing: 1px;
+}
+.tabsTrigger:hover{
+  
+  background: rgb(105, 105, 105);
+  color: white;
+}
+
+.tabsTriggerSelected {
+  text-align: start;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border: none;
+  display: inline-block;
+  width: 10rem;
+  margin: 0 5px;
+  padding: 10px ;
+  transition: all 0.3s ease;        
+  border-radius: 5px;
+  background: rgb(10, 126, 126);
+  color: white;
+}
+.tabsPanel {  
+  
+  font-size: 17px;
+}
+.tabsPanelHidden {
+  padding: 20px;
+  display: none;
+}
+.btns{
+  display: block;
+}
+@media (max-width:950px) {
+  .sectionLanding{
+    box-sizing: border-box;
+    padding: 1% 1% 1% 1%;
+  }  
+  .cardLanding{
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    font-size: 30px;
+    padding-top: 5%;
+    margin-top: 0%;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.856);
+    letter-spacing: 2px;
+  }
+  .cardContact{    
+      margin-top: 0%;      
+      margin-bottom: 0%;
+      padding: 5% ;
+      font-weight: 500;
+  }
+  .cardAbout{    
+    margin-top: 0%;      
+    margin-bottom: 0%;
+}
+ 
+
+}
+
+@media (max-width:990px) {
+  .tabsTrigger {  
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    width: 7rem;
+    margin: 0 1px;
+    padding: 10px ;
+  }
+  
+  .tabsTriggerSelected {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    width: 7rem;
+    margin: 0 1px;
+    padding: 10px ;
+  }
+.btns{
+  display: flex;
+  justify-content: center;
+}}
+
+@media(max-width:440px) {.btns{
+  justify-content: end;
+}
+  .tabsTrigger {  
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0px;
+    width: 5.4rem;
+    margin: 0 1px;
+    padding: 5px 1px ;
+  }
+  
+  .tabsTriggerSelected {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0px;
+    width: 5.4rem;
+    margin: 0 1px;
+    padding: 5px 1px ;
+  }
+}
+
+/*FAQs*/
+.accordionli{
+  list-style: none;
+  cursor: pointer;
+}
+.questionArrow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.question{
+
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.arrowActive{
+  font-size: 20px;
+  transition: all 0.3s ease;
+  transform: rotate(-180deg);
+}
+.arrow{
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+.accordionli:hover .questionArrow .question,
+.accordionli:hover .questionArrow .arrow{
+  color: rgb(8, 102, 102);
+}
+.accordionliActive .questionArrow .question,
+.accordionliActive .questionArrow .arrow{
+  color: rgb(8, 102, 102);
+}
+.line{
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.accordionli p{
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  display: none;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+.accordionliActive p{
+  display: block;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+.accordionliActive {
+  cursor: pointer;
+
+}
