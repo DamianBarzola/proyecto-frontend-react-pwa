@@ -3,6 +3,7 @@ import styles from "../styles/Login.module.css";
 import inputTxt from "../styles/Input.module.css";
 import { Link } from "react-router-dom";
 const Login = () => {
+  document.title = "Fleteros - Inicio de Sesion";
   return (
     <div>
       <section className={styles.cardLanding}>

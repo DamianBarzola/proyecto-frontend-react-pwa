@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import inputTxt from "../styles/Input.module.css";
 
 const RegisterDriver = () => {
+  document.title = "Fleteros - Crear Cuenta";
   return (
     <div>
       <section className={styles.cardLanding}>

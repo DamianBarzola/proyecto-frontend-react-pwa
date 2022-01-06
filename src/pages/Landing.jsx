@@ -5,6 +5,8 @@ import Contact from "../components/Landing/Contact";
 import AboutUs from "../components/Landing/AboutUs";
 
 const Landing = () => {
+  document.title = "Fleteros - Home";
+
   return (
     <div className={styles.background}>
       <section className={styles.sectionLanding}>

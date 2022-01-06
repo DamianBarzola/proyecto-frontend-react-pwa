@@ -3,6 +3,7 @@ import styles from "../styles/Login.module.css";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  document.title = "Fleteros - Crear Cuenta";
   return (
     <div>
       <section className={styles.cardLanding}>

@@ -4,9 +4,10 @@
   
 }
 .sectionLanding{
-  background-image:url(../images/truck.jpg) ;
+  background-image:url(../images/ros4.png) ;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 100% 70%;
   box-sizing: border-box;
   padding: 110px 10% 15% 50%;
   
@@ -71,7 +72,7 @@
   padding-top: 8%;
   padding-bottom: 8%;
   font-weight: 500;
-  background-color: rgba(255, 255, 255, 0.863);
+  background-color: rgba(255, 255, 255, 0.739);
   letter-spacing: 2px;
 }
 

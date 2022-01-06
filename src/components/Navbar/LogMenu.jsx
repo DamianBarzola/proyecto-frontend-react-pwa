@@ -69,7 +69,10 @@ const LogMenu = () => {
             <BsChevronDown className={styles.arrow} />
           </label>
           {dropMenuOpen && (
-            <ul className={isMobile ? "" : styles.dropMenu}>
+            <ul
+              className={isMobile ? "" : styles.dropMenu}
+              style={{ paddingLeft: "0px" }}
+            >
               <Link
                 to="/"
                 className={isMobile ? styles.linkActive : styles.linkDropMenu}

@@ -16,12 +16,12 @@ import RegisterUser from "../pages/RegisterUser";
 import RegisterDriver from "../pages/RegisterDriver";
 
 const AppRouter = () => {
-  const log = true;
+  const log = false;
   return (
     <div>
       <Router>
         <header>
-          <NavBar props={log} />
+          <NavBar log={log} />
         </header>
         <main style={{ paddingTop: "80px" }}>
           <Routes>
