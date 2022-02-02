@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={style.textCopy}>
-        <p>Copyright &copy; 2021. Barzola - Etcheverry - Martin</p>
+        <p>Copyright &copy; 2022. Barzola - Etcheverry - Martin</p>
       </div>
     </>
   );

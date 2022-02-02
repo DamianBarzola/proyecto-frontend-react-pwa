@@ -1,6 +1,21 @@
 .backHome{
-    background-color: rgb(17, 175, 175);   
+  background-image:url(../images/ros4.png) ;
+  background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 0px;
-  height: 25rem;
+  background-position: 100% 70%; 
+  height: 46rem;
+  margin-left:260px ;
+}
+.card{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  margin-top: 40px ;
+  border-radius: 7px;
+  padding:20px 50px ;
+}
+@media (max-width: 950px) {
+  .backHome{    
+    margin-left:0px ;
+  }
 }

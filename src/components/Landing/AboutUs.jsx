@@ -132,9 +132,9 @@ const AboutUs = () => {
                 <p style={{ fontSize: "22px", textAlign: "center" }}>
                   <b>Preguntas Frecuentes</b>
                 </p>
-                <p>
+                <div>
                   <AccordionFAQs />
-                </p>
+                </div>
               </div>
             </section>
           </div>

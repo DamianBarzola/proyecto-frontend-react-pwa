@@ -1,0 +1,137 @@
+.cardForm{
+    text-align: center;
+    background-color:white ;
+    margin: 50px 20%;
+    padding: 20px;
+    border-radius: 5px;
+}
+.btnDefault{
+  margin: 0px 10px;
+    text-decoration: none;
+      display: inline-block;
+      font-size: 18px;
+      width: 10rem;
+      letter-spacing: 1px;
+      padding: 15px 2px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      margin-bottom: 25px;
+      color: white;
+      background: rgb(0, 0, 0);
+      border: 1px solid black;
+      
+    }
+.btnback{
+  margin: 0px 10px;
+    text-decoration: none;
+      display: inline-block;
+      font-size: 18px;
+      width: 10rem;
+      letter-spacing: 1px;
+      padding: 15px 2px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      margin-bottom: 25px;
+      color: white;
+      background: rgb(53, 53, 53);
+      border: 1px solid rgb(53, 53, 53);
+      
+    }
+    .btnback.active,
+    .btnback:hover,
+    .btnDefault.active,
+    .btnDefault:hover{
+        color: white;
+        background-color: rgb(0, 148, 148);
+        border: 1px solid rgb(0, 148, 148);
+  }
+  .card{
+    background-color:rgb(218, 218, 218) ;
+    margin: 5px;
+    border-radius: 2px;
+  }
+  
+  @media (max-width:950px) {
+    .cardForm{
+      margin: 10px;
+      padding: 0px 10px 0px 10px;
+    }
+  }
+
+
+  /*Stepper*/
+
+  .stepperwrapper {
+    padding: 10px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .stepperitem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .stepperitem::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+  }
+  
+  .stepperitem::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+  }
+  .stepcounter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-bottom: 6px;
+  }
+  
+  .stepperitem.active {
+    font-weight: bold;
+  }
+  
+  .stepperitem.completed .stepcounter {
+    background-color: rgb(0, 148, 148);
+  }
+  
+  .stepperitem.completed::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid rgb(0, 148, 148);
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 3;
+  }
+  
+  .stepperitem:first-child::before {
+    content: none;
+  }
+  .stepperitem:last-child::after {
+    content: none;
+  }
+
+  
+  /**/

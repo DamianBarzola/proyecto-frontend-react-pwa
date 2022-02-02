@@ -30,15 +30,6 @@ const PublicMenu = () => {
       </div>
       <ul className={isMobile ? styles.ulistActive : styles.ulist}>
         <li className={styles.list}>
-          <Link
-            onClick={() => setIsMobile(false)}
-            to="/home"
-            className={isMobile ? styles.linkActive : styles.link}
-          >
-            Home
-          </Link>
-        </li>
-        <li className={styles.list}>
           <HashLink
             onClick={() => setIsMobile(false)}
             to="/#about-section"

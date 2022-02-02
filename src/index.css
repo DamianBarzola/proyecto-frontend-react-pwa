@@ -9,8 +9,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgba(0, 0, 0, 0.808);
   color: black;
+
+  
   
 }
+
+/*Sacar flechitas de los input type number*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 body::-webkit-scrollbar {
   padding-top: 10px;
   width: 12px;     

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/Login.module.css";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer/Footer";
 
 const Register = () => {
   document.title = "Fleteros - Crear Cuenta";
@@ -36,6 +37,9 @@ const Register = () => {
           </span>
         </div>
       </section>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };

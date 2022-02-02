@@ -47,7 +47,7 @@ const LogMenu = () => {
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
-            Cosa
+            Mis Solicitudes
           </Link>
         </li>
         <li className={styles.list}>

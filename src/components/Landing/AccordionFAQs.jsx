@@ -4,7 +4,7 @@ import { BsChevronDown } from "react-icons/bs";
 import styles from "../../styles/Landing.module.css";
 
 const AccordionFAQs = () => {
-  const [activetab, setTab] = useState(1);
+  const [activetab, setTab] = useState(0);
   const toggleTab = (tab) => {
     if (activetab !== tab) {
       setTab(tab);

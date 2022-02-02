@@ -6,18 +6,16 @@ import { HiArrowRight } from "react-icons/hi";
 const Contact = () => {
   return (
     <div className={styles.cardContact}>
-      <b>Contacto</b>
+      <h1 className="mt-2">
+        <b>Contacto</b>
+      </h1>
       <div className={inputTxt.form__div}>
         <input type="text" className={inputTxt.form__input} placeholder=" " />
-        <label for="" className={inputTxt.form__label}>
-          Nombre Completo
-        </label>
+        <label className={inputTxt.form__label}>Nombre Completo</label>
       </div>
       <div className={inputTxt.form__div}>
         <input type="text" className={inputTxt.form__input} placeholder=" " />
-        <label for="" className={inputTxt.form__label}>
-          Correo Electrónico
-        </label>
+        <label className={inputTxt.form__label}>Correo Electrónico</label>
       </div>
       <div className={inputTxt.form__div}>
         <textarea

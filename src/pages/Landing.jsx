@@ -3,6 +3,7 @@ import styles from "../styles/Landing.module.css";
 import { Link } from "react-router-dom";
 import Contact from "../components/Landing/Contact";
 import AboutUs from "../components/Landing/AboutUs";
+import Footer from "../components/Footer/Footer";
 
 const Landing = () => {
   document.title = "Fleteros - Home";
@@ -22,7 +23,7 @@ const Landing = () => {
             sunt deserunt at rerum sapiente hic praesentium itaque.
           </div>
           <div>
-            <Link to="/login" className={styles.btnBegin}>
+            <Link to="/register" className={styles.btnBegin}>
               Comenzar
             </Link>
           </div>
@@ -34,6 +35,9 @@ const Landing = () => {
       <section className={styles.sectionLanding2} id="contact-section">
         <Contact />
       </section>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };

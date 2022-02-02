@@ -1,10 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import inputTxt from "../styles/Input.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { validateEmail } from "../utils/validations";
+import Footer from "../components/Footer/Footer";
 
 const RegisterDriver = () => {
   document.title = "Fleteros - Crear Cuenta";
+
+  const user = useSelector((state) => state.auth.user);
+  const msg = useSelector((state) => state.auth.msg);
+  const dispatch = useDispatch();
+  const [data, setData] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    gender: "",
+    password: "",
+    password2: "",
+    birthdate: "",
+  });
+
+  const {
+    name,
+    lastname,
+    email,
+    phone,
+    gender,
+    password,
+    password2,
+    birthdate,
+  } = data;
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({
+      ...data,
+      [e.target.name]: value,
+    });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (data.email.trim() !== "" && data.password.trim() !== "") {
+      // falta valida injections (se valida en el back?)
+      if (validateEmail(data.email)) {
+        // dispatch(userlogin(email, password));
+      } else {
+        // dispatch(errorMsg("Correo electrónico con formato incorrecto"));
+      }
+    } else {
+      // dispatch(errorMsg("Complete los campos"));
+    }
+  };
+
+  if (user) return <Navigate to="../home" />;
   return (
     <div>
       <section className={styles.cardLanding}>
@@ -13,13 +64,15 @@ const RegisterDriver = () => {
           <div>
             <div className={inputTxt.form__div}>
               <input
+                onChange={handleChange}
+                value={name}
+                name="name"
                 type="text"
                 className={inputTxt.form__input}
                 placeholder=" "
                 style={{ color: "black", border: "1px solid black" }}
               />
               <label
-                for=""
                 className={inputTxt.form__label}
                 style={{ color: "black" }}
               >
@@ -28,43 +81,33 @@ const RegisterDriver = () => {
             </div>
             <div className={inputTxt.form__div}>
               <input
+                onChange={handleChange}
+                value={lastname}
+                name="lastname"
                 type="text"
                 className={inputTxt.form__input}
                 placeholder=" "
                 style={{ color: "black", border: "1px solid black" }}
               />
               <label
-                for=""
                 className={inputTxt.form__label}
                 style={{ color: "black" }}
               >
                 Apellido
               </label>
             </div>
+
             <div className={inputTxt.form__div}>
               <input
-                type="text"
+                onChange={handleChange}
+                value={email}
+                name="email"
+                type="email"
                 className={inputTxt.form__input}
                 placeholder=" "
                 style={{ color: "black", border: "1px solid black" }}
               />
               <label
-                for=""
-                className={inputTxt.form__label}
-                style={{ color: "black" }}
-              >
-                Usuario
-              </label>
-            </div>
-            <div className={inputTxt.form__div}>
-              <input
-                type="text"
-                className={inputTxt.form__input}
-                placeholder=" "
-                style={{ color: "black", border: "1px solid black" }}
-              />
-              <label
-                for=""
                 className={inputTxt.form__label}
                 style={{ color: "black" }}
               >
@@ -74,13 +117,15 @@ const RegisterDriver = () => {
 
             <div className={inputTxt.form__div}>
               <input
+                onChange={handleChange}
+                value={password}
+                name="password"
                 type="password"
                 className={inputTxt.form__input}
                 placeholder=" "
                 style={{ color: "black", border: "1px solid black" }}
               />
               <label
-                for=""
                 className={inputTxt.form__label}
                 style={{ color: "black" }}
               >
@@ -89,18 +134,23 @@ const RegisterDriver = () => {
             </div>
             <div className={inputTxt.form__div}>
               <input
+                onChange={handleChange}
+                value={password2}
+                name="password2"
                 type="password"
                 className={inputTxt.form__input}
                 placeholder=" "
                 style={{ color: "black", border: "1px solid black" }}
               />
               <label
-                for=""
                 className={inputTxt.form__label}
                 style={{ color: "black" }}
               >
                 Repetir Contraseña
               </label>
+            </div>
+            <div>
+              <input type="file" />
             </div>
             <button className={styles.btn}>Registrarse</button>
             <div className="m-1">
@@ -126,6 +176,9 @@ const RegisterDriver = () => {
           </div>
         </form>
       </section>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
