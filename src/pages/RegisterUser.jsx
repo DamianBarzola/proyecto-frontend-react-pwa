@@ -10,6 +10,7 @@ import Footer from "../components/Footer/Footer";
 const RegisterUser = () => {
   document.title = "Fleteros - Crear Cuenta";
   const user = useSelector((state) => state.auth.user);
+  const driver = useSelector((state) => state.auth.driver);
   const msg = useSelector((state) => state.auth.msg);
   const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ const RegisterUser = () => {
     lastname: "",
     email: "",
     phone: "",
-    // gender: "M",
+    gender: "M",
     password: "",
     password2: "",
     birthDate: "",
@@ -33,7 +34,7 @@ const RegisterUser = () => {
     lastname,
     email,
     phone,
-    // gender,
+    gender,
     password,
     password2,
     birthDate,
@@ -72,6 +73,7 @@ const RegisterUser = () => {
   };
 
   if (user) return <Navigate to="../home" />;
+  if (driver) return <Navigate to="../homedriver" />;
 
   return (
     <div>
@@ -127,7 +129,7 @@ const RegisterUser = () => {
                 className={inputTxt.dateInput}
               />
             </div>
-            {/* <div className="text-start mt-2">
+            <div className="text-start mt-2">
               <label className={inputTxt.dateLabel}>Genero</label>
               <div>
                 <select
@@ -141,7 +143,7 @@ const RegisterUser = () => {
                   <option value="F">Femenino</option>
                 </select>
               </div>
-            </div> */}
+            </div>
             <div className={inputTxt.form__div}>
               <input
                 onChange={handleChange}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Request.module.css";
+import { transformDateFormat } from "../../utils/validations";
 const data = [
   {
     id: 1,
@@ -41,29 +42,30 @@ const data = [
     ],
   },
 ];
-const Request = () => {
+const Request = ({ shipment }) => {
+  const { id, locationFrom, locationTo, shipDate } = shipment;
   return (
     <div className={styles.cardForm}>
-      <h1>Solicitud de Transporte</h1>
+      <h1>Solicitud de Transporte Nro: {id}</h1>
       <hr />
-      <div className="row">
-        <h2>Detalles</h2>
-        <div className="col-lg-6 text-start ps-4">
-          <b>Carga: </b>
-          {data[1].packInfo} <br />
-          <b>Detalles: </b>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique,
-          reiciendis deleniti. <br />
-          <b>Otra cosa: </b>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique,
-          reiciendis deleniti. <br />
-        </div>
-        <div className="col-lg-6 text-start ps-5">
-          <h3>Viaje</h3>
-          <b>Origen: </b>
-          {data[1].origin} <br />
-          <b>Destino: </b>
-          {data[1].destination} <br />
+      <div className="row m-1">
+        <div className="col-lg-10 ps-5 ">
+          <h4>
+            <b> Detalles del Viaje</b>
+          </h4>
+          <div className="text-start ">
+            <div>
+              <b> Fecha:</b> {shipDate && transformDateFormat(shipDate)}
+            </div>
+            <div>
+              {" "}
+              <b> Origen:</b> {locationFrom}
+            </div>
+            <div>
+              {" "}
+              <b> Destino:</b> {locationTo}
+            </div>
+          </div>
         </div>
       </div>
       <hr />

@@ -9,6 +9,7 @@ import Footer from "../components/Footer/Footer";
 const LoginDriver = () => {
   document.title = "Fleteros - Inicio de Sesion Conductor";
 
+  const driver = useSelector((state) => state.auth.driver);
   const user = useSelector((state) => state.auth.user);
   const msg = useSelector((state) => state.auth.msg);
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const LoginDriver = () => {
   };
 
   if (user) return <Navigate to="../home" />;
+  if (driver) return <Navigate to="../homedriver" />;
 
   return (
     <div>

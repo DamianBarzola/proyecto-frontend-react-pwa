@@ -11,6 +11,7 @@ const Login = () => {
   document.title = "Fleteros - Inicio de Sesion Usuario";
 
   const user = useSelector((state) => state.auth.user);
+  const driver = useSelector((state) => state.auth.driver);
   const msg = useSelector((state) => state.auth.msg);
   const dispatch = useDispatch();
   const [data, setData] = useState({ email: "", password: "" });
@@ -33,7 +34,6 @@ const Login = () => {
     dispatch(errorMsg(""));
     e.preventDefault();
     if (data.email.trim() !== "" && data.password.trim() !== "") {
-      // falta valida injections (se valida en el back?)
       if (validateEmail(data.email)) {
         dispatch(userlogin(email, password));
       } else {
@@ -44,6 +44,7 @@ const Login = () => {
     }
   };
   if (user) return <Navigate to="../home" />;
+  if (driver) return <Navigate to="../homedriver" />;
   return (
     <div>
       <section className={styles.cardLanding}>

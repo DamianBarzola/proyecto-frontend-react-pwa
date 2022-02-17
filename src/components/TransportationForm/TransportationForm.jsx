@@ -8,11 +8,12 @@ import styles from "../../styles/Transportation.module.css";
 export class TransportationForm extends Component {
   state = {
     step: 1,
-    packDetails: "",
-    packComment: "",
-    other: "",
-    destination: "",
-    origin: "",
+    shipment: {
+      shipDate: "",
+      locationFrom: "",
+      locationTo: "",
+    },
+    items: [],
   };
 
   prevStep = () => {
@@ -24,12 +25,14 @@ export class TransportationForm extends Component {
     this.setState({ step: step + 1 });
   };
   handleChange = (input) => (e) => {
-    this.setState({ [input]: e.target.value });
+    this.setState({
+      shipment: { ...this.state.shipment, [input]: e.target.value },
+    });
   };
+
   render() {
-    const { step, packDetails, packComment, other, destination, origin } =
-      this.state;
-    const values = { packDetails, packComment, other, destination, origin };
+    const { step, shipment, items } = this.state;
+    const values = { shipment, items };
 
     switch (step) {
       case 1:
@@ -38,11 +41,7 @@ export class TransportationForm extends Component {
             <div>
               <Stepper step={step} />
             </div>
-            <PackageInfo
-              nextStep={this.nextStep}
-              handleChange={this.handleChange}
-              values={values}
-            />
+            <PackageInfo nextStep={this.nextStep} values={values} />
           </div>
         );
       case 2:

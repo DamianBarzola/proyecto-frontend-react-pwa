@@ -53,16 +53,16 @@ const PublicMenu = () => {
             to="/login"
             className={isMobile ? styles.linkActive : styles.btnLogin}
           >
-            Iniciar Sesion
+            Soy Usuario
           </Link>
         </li>
         <li className={styles.list}>
           <Link
             onClick={() => setIsMobile(false)}
-            to="/register"
+            to="/login/driver"
             className={isMobile ? styles.linkActive : styles.btnRegister}
           >
-            Registrarse
+            Soy Conductor
           </Link>
         </li>
       </ul>

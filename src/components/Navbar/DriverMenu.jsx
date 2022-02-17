@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { signOut } from "../../actions/auth";
 import styles from "../../styles/Navbar.module.css";
 
-const LogMenu = () => {
+const DriverMenu = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [dropMenuOpen, setDropMenuOpen] = useState(false);
 
+  const dispatch = useDispatch();
   //para que no se rompa cuando esta isMobile en true y el max de pixeles se mas de 960px
   useEffect(() => {
     window.matchMedia("(min-width: 950px)").addEventListener("change", (e) => {
@@ -15,6 +18,11 @@ const LogMenu = () => {
       setDropMenuOpen(false);
     });
   }, []);
+  const handleLogout = (e) => {
+    let token = JSON.parse(localStorage.getItem("jwt"));
+    setIsMobile(false);
+    dispatch(signOut(token));
+  };
 
   return (
     <>
@@ -41,13 +49,31 @@ const LogMenu = () => {
             Home
           </Link>
         </li>
-        <li className={styles.list}>
+        <li className={styles.listOnlyMobile}>
+          <Link
+            to="/"
+            className={isMobile ? styles.linkActive : styles.link}
+            onClick={() => setIsMobile(false)}
+          >
+            Nueva Solicitud
+          </Link>
+        </li>
+        <li className={styles.listOnlyMobile}>
           <Link
             to="/"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
             Mis Solicitudes
+          </Link>
+        </li>
+        <li className={styles.list}>
+          <Link
+            to="/"
+            className={isMobile ? styles.linkActive : styles.link}
+            onClick={() => setIsMobile(false)}
+          >
+            Sobre Nosotros
           </Link>
         </li>
         <li className={styles.list}>
@@ -71,7 +97,7 @@ const LogMenu = () => {
           {dropMenuOpen && (
             <ul
               className={isMobile ? "" : styles.dropMenu}
-              style={{ paddingLeft: "0px" }}
+              style={{ paddingLeft: 0 }}
             >
               <Link
                 to="/"
@@ -80,13 +106,14 @@ const LogMenu = () => {
               >
                 Ajustes
               </Link>
-              <Link
-                to="/"
+              <button
+                type="submit"
                 className={isMobile ? styles.linkActive : styles.linkDropMenu}
-                onClick={() => setIsMobile(false)}
+                onClick={handleLogout}
+                style={{ backgroundColor: "transparent", border: "0" }}
               >
                 Cerrar Sesion
-              </Link>
+              </button>
             </ul>
           )}
         </li>
@@ -95,4 +122,4 @@ const LogMenu = () => {
   );
 };
 
-export default LogMenu;
+export default DriverMenu;

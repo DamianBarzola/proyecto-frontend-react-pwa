@@ -1,80 +1,62 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Request.module.css";
-const data = [
-  {
-    id: 1,
-    packInfo: "Cosas",
-    origin: "Pellegrini 1500",
-    destination: "San juan 200",
-    offers: [
-      {
-        name: "jorginho",
-        price: 500,
-      },
-    ],
-  },
-  {
-    id: 2,
-    packInfo: "Cositas",
-    origin: "Oroño 200",
-    destination: "9 de julio 500",
-    offers: [
-      {
-        name: "jorginho",
-        price: 500,
-      },
-      {
-        name: "Javi",
-        price: 800,
-      },
-      {
-        name: "",
-        price: 800,
-      },
-    ],
-  },
-];
-const ViewMyRequests = () => {
+import { transformDateFormat } from "../../utils/validations";
+
+const ViewMyRequests = ({ shipments }) => {
   return (
     <div className={styles.cardForm}>
       <h1>Mis Solicitudes</h1>
       <hr />
       <div className="row">
         <div className="col-12">
-          {data.map((elemento) => {
-            return (
-              <Link
-                to={"/request/" + elemento.id}
-                params={elemento.id}
-                style={{ textDecoration: "none" }}
-              >
-                <div className={styles.cardElement}>
-                  <div className="row">
-                    <div className="col-12">
-                      <h3>{elemento.packInfo}</h3>
-                      <hr className={styles.asd} />
-                    </div>
-                  </div>
-                  <div className="row p-2 ">
-                    <div className="col-6 ">
-                      <div className="mb-2">
-                        <b> Origen:</b> {elemento.origin}
+          {Object.keys(shipments).length !== 0 ? (
+            <div>
+              {shipments.map((element) => {
+                return (
+                  <Link
+                    to={"/shipment/" + element.id}
+                    params={element.id}
+                    style={{ textDecoration: "none" }}
+                    key={element.id}
+                  >
+                    <div className={styles.cardElement}>
+                      <div className="row">
+                        <div className="col-12">
+                          <h3>{"Solicitud Nro: " + element.id}</h3>
+                          <hr className={styles.asd} />
+                        </div>
                       </div>
-                      <div>
-                        <b> Destino:</b> {elemento.destination}
+                      <div className="row p-2 ">
+                        <div className="col-6 ">
+                          <div className="mb-2">
+                            <b> Origen:</b> {element.locationFrom}
+                          </div>
+                          <div>
+                            <b> Destino:</b> {element.locationTo}
+                          </div>
+                        </div>
+                        <div className="col-6 align-self-center ">
+                          <div>
+                            <b>Fecha:</b>{" "}
+                            {transformDateFormat(element.shipDate)}
+                          </div>
+                          <div>
+                            <b>Ofertas:</b> {0}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="col-6 align-self-center ">
-                      <div>
-                        <b>Ofertas:</b> {elemento.offers.length}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <div>
+              <h5>Actualmente no tienes Solicitudes</h5>
+            </div>
+          )}
         </div>
       </div>
     </div>

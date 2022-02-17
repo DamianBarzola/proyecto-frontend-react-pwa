@@ -1,10 +1,16 @@
 import React from "react";
 import styles from "../styles/Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
+import { useSelector } from "react-redux";
 
 const Register = () => {
   document.title = "Fleteros - Crear Cuenta";
+
+  const driver = useSelector((state) => state.auth.driver);
+  const user = useSelector((state) => state.auth.user);
+  if (user) return <Navigate to="../home" />;
+  if (driver) return <Navigate to="../homedriver" />;
   return (
     <div>
       <section className={styles.cardLanding}>

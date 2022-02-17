@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../styles/Home.module.css";
-import NavigationBar from "../components/NavigationBar/NavigationBar";
-import Offer from "../components/TranportationRequest/Offer";
+import styles from "../../styles/Home.module.css";
+import NavigationBar from "../../components/NavigationBar/NavigationBar";
+import Offer from "../../components/TranportationRequest/Offer";
 
 const ViewOffer = () => {
   return (

@@ -37,7 +37,10 @@
 .list{
   margin: 0 5px;
 }
-
+.listOnlyMobile{
+  display: none;
+  margin: 0 5px;
+}
 .link{
     color: #f2f2f2;
     display: inline-block;
@@ -66,10 +69,12 @@
   cursor: pointer;
 }
 .dropMenu{
+text-align: start;
 position: absolute;
+padding: 10px;
 top:70px;
-width:12rem;
-transform: translate(-15%);
+width:11rem;
+transform: translate(-26%);
 background-color: rgb(20, 20, 20);
 border-radius: 5px;
 overflow: hidden;
@@ -77,11 +82,15 @@ transition: all 0.3s ease;
 }
 .linkDropMenu{
   display: flex;
+  background-color: transparent;
+  width: 100%;
+  border:0px;
   color: #f2f2f2;
   text-decoration: none;
   font-size: 15px;
-  margin: 4px 0px;
-  padding: 10px 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 10px 10px;
   border-radius: 5px;
   letter-spacing: 1px;
   transition: all 0.3s ease;
@@ -161,6 +170,11 @@ transition: all 0.3s ease;
     width: 100%;
     margin: 40px 0;
   }
+  .listOnlyMobile{
+    display: flex;
+    width: 100%;
+    margin: 40px 0;
+  }
   .link{
     width: 100%;
     margin-left: -100%;
@@ -209,5 +223,6 @@ transition: all 0.3s ease;
     font-size: 22px;
     margin-left: 0px;
   }
+  
 }
 
