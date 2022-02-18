@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { types, url } from "../types/types";
 
@@ -15,35 +16,23 @@ export const createShipment = (data) => {
   };
 };
 
-export const readAvailableShipment = () => {
-  let token = JSON.parse(localStorage.getItem("jwt"));
-  return async (dispatch) => {
-    await axios
-      .get(url + "/shipment/getAvailableShipments", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then(({ data }) => {
-          console.log(data)
-          dispatch(readShipments(data));
-      })
-      .catch((response) => {});
+
+export const readOffer = () => {
+    let token = JSON.parse(localStorage.getItem("jwt"));
+    return async (dispatch) => {
+      await axios
+        .get(url + "/offer/getMyOffers", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(({ data }) => {
+            console.log(data)
+            dispatch(readOffers(data));
+        })
+        .catch((response) => {});
+    };
   };
-};
 
 
-export const readShipment = () => {
-  let token = JSON.parse(localStorage.getItem("jwt"));
-  return async (dispatch) => {
-    await axios
-      .get(url + "/shipment/getMyShipments", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then(({ data }) => {
-        dispatch(readShipments(data));
-      })
-      .catch((response) => {});
-  };
-};
 export const create = (data) => {
   return {
     type: types.shipmentAdd,
@@ -51,12 +40,16 @@ export const create = (data) => {
   };
 };
 
-export const readShipments = (data) => {
+
+export const readOffers = (data) => {
   return {
-    type: types.shipmentRead,
+    type: types.offerRead,
     payload: data,
   };
 };
+
+
+
 export const deleteShipment = (id) => {
   return {
     type: types.deleteShipment,

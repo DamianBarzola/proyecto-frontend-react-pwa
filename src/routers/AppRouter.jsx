@@ -18,6 +18,10 @@ import MyShipments from "../pages/User/MyShipments";
 import ViewOffer from "../pages/User/ViewOffer";
 import Shipment from "../pages/User/Shipment";
 import HomeDriver from "../pages/Driver/HomeDriver";
+import MyOffersDriver from "../pages/Driver/MyOffersDriver";
+import MyShipmentsDriver from "../pages/Driver/MyShipmentsDriver";
+import SearchShipments from "../pages/Driver/SearchShipments";
+
 import { readShipment } from "../actions/shipment";
 
 const AppRouter = () => {
@@ -56,7 +60,11 @@ const AppRouter = () => {
           <Route exact path="/myshipments" element={<MyShipments />} />
           <Route exact path="/shipment/:idShipment" element={<Shipment />} />
           <Route exact path="/offer" element={<ViewOffer />} />
-          <Route exact path="/homedriver" element={<HomeDriver />} />
+          <Route exact path="/home/driver" element={<HomeDriver />} />
+          <Route exact path="/offer/driver" element={<MyOffersDriver />} />
+          <Route exact path="/myshipments/driver" element={<MyShipmentsDriver />} />
+          <Route exact path="/shipments/driver" element={<SearchShipments />} />
+
         </Routes>
       </main>
       {/* <footer>

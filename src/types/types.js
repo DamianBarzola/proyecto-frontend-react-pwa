@@ -9,5 +9,7 @@ export const types = {
   shipmentRead: `[Shipment] read`,
   shipmentModify: `[Shipment] modify`,
   shipmentClean: `[Shipment] clean`,
+  offerRead: `[Offer] read`,
+
 };
 export const url = "http://localhost:3000";

@@ -1,12 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
 import styles from "../../styles/Home.module.css";
+import { readOffer } from "../../actions/offer";
 
-const HomeDriver = () => {
-  document.title = "Fleteros - Home";
+const MyOffersDriver = () => {
+  document.title = "Fleteros - Mis Ofertas";
   const driver = useSelector((state) => state.auth.driver);
+  const dispatch = useDispatch();
+
+  const offers = useSelector((state) => state.shipment.data);
+  useEffect(() => {
+    dispatch(readOffer());
+  }, [dispatch]); 
   if (!driver) {
     return <Navigate to="../login/driver" />;
   }
@@ -14,19 +22,10 @@ const HomeDriver = () => {
     <>
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <NavigationBarDriver />
-        <div className="col-lg-7 ">
-          <div className={styles.card}>
-            <h1>Algo</h1>
-          </div>
-        </div>
-        <div className="col-lg-3">
-          <div className={styles.card}>
-            <h1>Algo</h1>
-          </div>
-        </div>
+        
       </div>
     </>
   );
 };
 
-export default HomeDriver;
+export default MyOffersDriver;
