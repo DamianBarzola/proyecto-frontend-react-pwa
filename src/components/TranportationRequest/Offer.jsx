@@ -1,56 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { acceptOffer } from "../../actions/shipment";
 import styles from "../../styles/Request.module.css";
+import { transformDateFormat } from "../../utils/validations";
 
-const data = {
-  id: 1,
-  name: "Jorge",
-  reputacion: "5/5",
-  vehicle: "Camioneta Mod 2009",
-  countTravels: 200,
-  price: 800,
-  comments:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ducimus veniam voluptatum distinctio modi omnis recusandae dolorum voluptates deleniti?",
-};
-const Offer = () => {
+const Offer = ({ offer }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleAcept = (e) => {
+    e.preventDefault();
+    dispatch(acceptOffer(offer.id));
+  };
   return (
     <div className={styles.cardForm}>
-      <h2>Detalles acerca del Transportista</h2>
+      <h2>Detalles de la Oferta</h2>
       <hr />
       <div className="row m-4">
-        <div className="col-lg-6 text-start ps-lg-5">
-          <div>
-            <b>Nombre: </b>
-            {data.name}
+        {Object.keys(offer).length !== 0 && (
+          <div className="col-lg-12  text-start">
+            <h5 className="text-center">
+              <b>Datos del Conductor</b>
+            </h5>
+            <div>
+              <b>Nombre: </b>
+              {offer.driver.name + " " + offer.driver.lastname}
+            </div>
+            <div>
+              <b>Correo Electrónico: </b>
+              {offer.driver.email}
+            </div>
+            <div>
+              <b>Telefono: </b>
+              {offer.driver.phone}
+            </div>
+            <h5 className="text-center mt-3">
+              <b>Deralles de la Oferta</b>
+            </h5>
+            <div>
+              <b>Fecha de la Oferta: </b>
+              {offer.registrationDate &&
+                transformDateFormat(offer.registrationDate)}
+            </div>
+            <div>
+              <b>Precio calculado por el envio: </b>$ {offer && offer.price}
+            </div>
           </div>
-          <div>
-            <b>Vehiculo: </b>
-            {data.vehicle}
-          </div>
-          <div>
-            <b>Reputacion: </b>
-            {data.reputacion}
-          </div>
-          <div>
-            <b>Cantidad de viajes realizados: </b>
-            {data.countTravels}
-          </div>
-        </div>
-        <div className="col-lg-6 text-start ps-lg-5">
-          <div>
-            <b>Precio calculado por el envio: </b>$ {data.price}
-          </div>
-          <div>
-            <b>Comentarios: </b>
-            {data.comments}
-          </div>
-        </div>
+        )}
       </div>
       <div className="row d-flex justify-content-evenly mt-5">
         <div className="col-6">
-          <button className={styles.btnback}>Volver</button>
+          <button className={styles.btnback} onClick={() => navigate(-1)}>
+            Volver
+          </button>
         </div>
         <div className="col-6">
-          <button className={styles.btnback + " " + styles.next}>
+          <button
+            className={styles.btnback + " " + styles.next}
+            onClick={handleAcept}
+          >
             Aceptar
           </button>
         </div>

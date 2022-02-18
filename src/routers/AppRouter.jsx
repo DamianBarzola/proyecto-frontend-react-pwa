@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "../components/Navbar/NavBar";
@@ -12,13 +12,12 @@ import RegisterDriver from "../pages/RegisterDriver";
 import LoginDriver from "../pages/LoginDriver";
 import { useDispatch } from "react-redux";
 import { getUser, logout } from "../actions/auth";
-import { useSelector } from "react-redux";
 import NewShipment from "../pages/User/NewShipment";
 import MyShipments from "../pages/User/MyShipments";
 import ViewOffer from "../pages/User/ViewOffer";
 import Shipment from "../pages/User/Shipment";
 import HomeDriver from "../pages/Driver/HomeDriver";
-import { readShipment } from "../actions/shipment";
+import ShipmentsInProgress from "../pages/User/ShipmentsInProgress";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -46,16 +45,25 @@ const AppRouter = () => {
       <main style={{ paddingTop: "80px" }}>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route exact path="/home" element={<Home />} />
           <Route exact path="/login" element={<LoginUser />} />
           <Route exact path="/login/driver" element={<LoginDriver />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/register/user" element={<RegisterUser />} />
           <Route exact path="/register/driver" element={<RegisterDriver />} />
+          <Route exact path="/home" element={<Home />} />
           <Route exact path="/newshipment" element={<NewShipment />} />
           <Route exact path="/myshipments" element={<MyShipments />} />
           <Route exact path="/shipment/:idShipment" element={<Shipment />} />
-          <Route exact path="/offer" element={<ViewOffer />} />
+          <Route
+            exact
+            path="/shipmentsinprogress"
+            element={<ShipmentsInProgress />}
+          />
+          <Route
+            exact
+            path="/offer/:idShipment/:idOffer"
+            element={<ViewOffer />}
+          />
           <Route exact path="/homedriver" element={<HomeDriver />} />
         </Routes>
       </main>

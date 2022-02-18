@@ -1,49 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
-const data = [
-  {
-    id: 1,
-    packInfo: "Cosas",
-    origin: "Pellegrini 1500",
-    destination: "San juan 200",
-    offers: [
-      {
-        name: "jorginho",
-        price: 500,
-      },
-    ],
-  },
-  {
-    id: 2,
-    packInfo: "Cositas",
-    origin: "Oroño 200",
-    destination: "9 de julio 500",
-    offers: [
-      {
-        idOffer: 1,
-        name: "jorginho",
-        reputation: "4/5",
-        price: 500,
-      },
-      {
-        idOffer: 2,
-        name: "Javi",
-        reputation: "5/5",
-        price: 800,
-      },
-      {
-        idOffer: 3,
-        name: "Antonio",
-        reputation: "2/5",
-        price: 800,
-      },
-    ],
-  },
-];
+
 const Request = ({ shipment }) => {
-  const { id, locationFrom, locationTo, shipDate } = shipment;
+  const navigate = useNavigate();
+  const { id, locationFrom, locationTo, shipDate, items, offers } = shipment;
   return (
     <div className={styles.cardForm}>
       <h1>Solicitud de Transporte Nro: {id}</h1>
@@ -68,36 +30,77 @@ const Request = ({ shipment }) => {
           </div>
         </div>
       </div>
+      <div className="row m-1">
+        <div className="col-lg-12  ">
+          <h4>
+            <b> Detalles de la Carga</b>
+          </h4>
+
+          <div>
+            {items ? (
+              items.map((item, index) => {
+                return (
+                  <div className={styles.cardItem2} key={index}>
+                    <div className="row d-flex justify-content-between align-items-center">
+                      <div className="col-lg-3 ">
+                        <b>Item:</b> {item.description}
+                      </div>
+                      <div className="col-lg-3">
+                        <b>Cantidad: </b>
+                        {item.quantity}
+                      </div>
+                      <div className="col-lg-3">
+                        <b>Tamaño: </b> {item.size}
+                      </div>
+                      <div className="col-lg-3">
+                        <b>Peso: </b> {item.weight} Kgs.
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div>
+                <h5>No hay items.</h5>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
       <hr />
       <h2>Ofertas</h2>
       <div>
-        {data[1].offers.map((elemento) => {
-          return (
-            <Link
-              to={"/offer/" + elemento.idOffer} //capar que hay q pasarlo como json y no en la url
-              className={styles.cardElement + " row"}
-              style={{ textDecoration: "none" }}
-            >
-              <div className="col-4 text-start ps-4">
-                <b>Nombre: </b>
-                {elemento.name}
-              </div>
-              <div className="col-4 text-start ps-4">
-                <b>Reputacion: </b>
-                {elemento.reputation}
-              </div>
-              <div className="col-4">
-                <b>Precio: $</b>
-                {elemento.price}
-              </div>
-            </Link>
-          );
-        })}
+        {offers ? (
+          offers.map((elemento) => {
+            return (
+              <Link
+                to={"/offer/" + id + "/" + elemento.id}
+                className={styles.cardElement + " row"}
+                style={{ textDecoration: "none" }}
+                key={elemento.id}
+              >
+                <div className="col-6 text-start ps-4">
+                  <b>De: </b>
+                  {elemento.driver.name + " " + elemento.driver.lastname}
+                </div>
+
+                <div className="col-6">
+                  <b>Precio: $</b>
+                  {elemento.price}
+                </div>
+              </Link>
+            );
+          })
+        ) : (
+          <div>
+            <h5>No hay items.</h5>
+          </div>
+        )}
       </div>
       <hr />
-      <Link to="/" className={styles.btnback}>
+      <button onClick={() => navigate(-1)} className={styles.btnback}>
         Volver
-      </Link>
+      </button>
     </div>
   );
 };

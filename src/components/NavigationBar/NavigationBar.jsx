@@ -4,6 +4,7 @@ import styles from "../../styles/NavigationBar.module.css";
 import { AiFillHome } from "react-icons/ai";
 import { MdLocalShipping } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa";
+import { BsFillClockFill } from "react-icons/bs";
 
 const NavigationBar = () => {
   return (
@@ -43,6 +44,18 @@ const NavigationBar = () => {
               <FaClipboardList className={styles.icons} />
               <span className={styles.linkName}>Mis Solicitudes</span>
             </div>{" "}
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/shipmentsinprogress"
+            className={`${styles.link} ${styles.active}`}
+            style={{ paddingLeft: "30px" }}
+          >
+            <div className="d-flex align-items-center ">
+              <BsFillClockFill className={styles.icons} />
+              <span className={styles.linkName}>Solicitud en curso</span>
+            </div>
           </Link>
         </li>
         <div className={styles.textCopy}>

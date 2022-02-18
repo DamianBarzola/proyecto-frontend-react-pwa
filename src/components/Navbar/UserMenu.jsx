@@ -20,8 +20,8 @@ const UserMenu = () => {
   }, []);
   const handleLogout = (e) => {
     let token = JSON.parse(localStorage.getItem("jwt"));
-    setIsMobile(false);
     dispatch(signOut(token));
+    setIsMobile(false);
   };
 
   return (

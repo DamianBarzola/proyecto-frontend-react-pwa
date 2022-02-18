@@ -183,6 +183,21 @@ export const signUpDriver = (data, license, greenCard) => {
     }
   };
 };
+export const signOutDriver = (token) => {
+  return async (dispatch) => {
+    await axios
+      .get(url + "/driver/signout", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        localStorage.removeItem("jwt");
+        dispatch(logout());
+      })
+      .catch((error) => {
+        dispatch(errorMsg("Problema de Conexion"));
+      });
+  };
+};
 
 export const loginDriver = (driver) => {
   return {

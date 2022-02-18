@@ -10,7 +10,7 @@ const Home = () => {
   const driver = useSelector((state) => state.auth.driver);
 
   if (driver) {
-    return <Navigate to="../home" />;
+    return <Navigate to="../homedriver" />;
   }
   if (!user && !driver) {
     return <Navigate to="../login" />;

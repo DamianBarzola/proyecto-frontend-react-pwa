@@ -3,7 +3,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { signOut } from "../../actions/auth";
+import { signOutDriver } from "../../actions/auth";
 import styles from "../../styles/Navbar.module.css";
 
 const DriverMenu = () => {
@@ -20,8 +20,8 @@ const DriverMenu = () => {
   }, []);
   const handleLogout = (e) => {
     let token = JSON.parse(localStorage.getItem("jwt"));
+    dispatch(signOutDriver(token));
     setIsMobile(false);
-    dispatch(signOut(token));
   };
 
   return (

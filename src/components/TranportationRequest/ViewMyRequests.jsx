@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
@@ -43,7 +42,10 @@ const ViewMyRequests = ({ shipments }) => {
                             {transformDateFormat(element.shipDate)}
                           </div>
                           <div>
-                            <b>Ofertas:</b> {0}
+                            <b>Items:</b> {element.items.length}
+                          </div>
+                          <div>
+                            <b>Ofertas:</b> {element.offers.length}
                           </div>
                         </div>
                       </div>

@@ -28,6 +28,23 @@ export const readShipment = () => {
       .catch((response) => {});
   };
 };
+
+export const acceptOffer = (id) => {
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  let data = { id: id };
+  console.log(data);
+  return async (dispatch) => {
+    await axios
+      .put(url + "/offer/accept", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        alert("Oferta Aceptada");
+      })
+      .catch((response) => {});
+  };
+};
+
 export const create = (data) => {
   return {
     type: types.shipmentAdd,

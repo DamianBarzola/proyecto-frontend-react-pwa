@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 const Shipment = () => {
   const { idShipment } = useParams();
   const user = useSelector((state) => state.auth.user);
+  const driver = useSelector((state) => state.auth.driver);
   const ArrayShipment = useSelector((state) => state.shipment.data);
   const navigate = useNavigate();
   const [shipment, setshipment] = useState({});
@@ -23,6 +24,12 @@ const Shipment = () => {
     }
   }, []);
 
+  if (driver) {
+    return <Navigate to="../homedriver" />;
+  }
+  if (!user && !driver) {
+    return <Navigate to="../login" />;
+  }
   return (
     <>
       <NavigationBar />
