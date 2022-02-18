@@ -44,7 +44,7 @@ const LoginDriver = () => {
   };
 
   if (user) return <Navigate to="../home" />;
-  if (driver) return <Navigate to="../homedriver" />;
+  if (driver) return <Navigate to="../home/driver" />;
 
   return (
     <div>

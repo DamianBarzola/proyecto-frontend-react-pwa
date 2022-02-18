@@ -15,6 +15,22 @@ export const createShipment = (data) => {
   };
 };
 
+export const readAvailableShipment = () => {
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  return async (dispatch) => {
+    await axios
+      .get(url + "/shipment/getAvailableShipments", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+          console.log(data)
+          dispatch(readShipments(data));
+      })
+      .catch((response) => {});
+  };
+};
+
+
 export const readShipment = () => {
   let token = JSON.parse(localStorage.getItem("jwt"));
   return async (dispatch) => {

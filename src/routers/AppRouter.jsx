@@ -18,6 +18,12 @@ import ViewOffer from "../pages/User/ViewOffer";
 import Shipment from "../pages/User/Shipment";
 import HomeDriver from "../pages/Driver/HomeDriver";
 import ShipmentsInProgress from "../pages/User/ShipmentsInProgress";
+import MyOffersDriver from "../pages/Driver/MyOffersDriver";
+import MyShipmentsDriver from "../pages/Driver/MyShipmentsDriver";
+import SearchShipments from "../pages/Driver/SearchShipments";
+
+import { readShipment } from "../actions/shipment";
+
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -64,7 +70,11 @@ const AppRouter = () => {
             path="/offer/:idShipment/:idOffer"
             element={<ViewOffer />}
           />
-          <Route exact path="/homedriver" element={<HomeDriver />} />
+          <Route exact path="/offer" element={<ViewOffer />} />
+          <Route exact path="/home/driver" element={<HomeDriver />} />
+          <Route exact path="/offer/driver" element={<MyOffersDriver />} />
+          <Route exact path="/myshipments/driver" element={<MyShipmentsDriver />} />
+          <Route exact path="/shipments/driver" element={<SearchShipments />} />
         </Routes>
       </main>
       {/* <footer>

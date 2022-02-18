@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { readShipment } from "../../actions/shipment";
 import { Navigate } from "react-router-dom";
+
 const MyShipments = () => {
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
@@ -17,7 +18,7 @@ const MyShipments = () => {
   }, [dispatch]);
 
   if (driver) {
-    return <Navigate to="../homedriver" />;
+    return <Navigate to="../home/driver" />;
   }
   if (!user && !driver) {
     return <Navigate to="../login" />;

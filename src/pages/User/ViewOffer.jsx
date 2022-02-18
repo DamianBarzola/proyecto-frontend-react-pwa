@@ -28,7 +28,7 @@ const ViewOffer = () => {
   }, []);
 
   if (driver) {
-    return <Navigate to="../homedriver" />;
+    return <Navigate to="../home/driver" />;
   }
   if (!user && !driver) {
     return <Navigate to="../login" />;
