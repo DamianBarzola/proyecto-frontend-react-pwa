@@ -23,13 +23,11 @@ export const readAvailableShipment = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }) => {
-          console.log(data)
-          dispatch(readShipments(data));
+        dispatch(readShipments(data));
       })
       .catch((response) => {});
   };
 };
-
 
 export const readShipment = () => {
   let token = JSON.parse(localStorage.getItem("jwt"));
@@ -48,7 +46,6 @@ export const readShipment = () => {
 export const acceptOffer = (id) => {
   let token = JSON.parse(localStorage.getItem("jwt"));
   let data = { id: id };
-  console.log(data);
   return async (dispatch) => {
     await axios
       .put(url + "/offer/accept", data, {

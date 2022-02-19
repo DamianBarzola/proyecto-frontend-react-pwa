@@ -1,0 +1,31 @@
+.cardForm{
+    text-align: center;
+    background-color:rgb(255, 255, 255) ;
+    margin: 50px 20%;
+    padding: 20px;
+    border-radius: 7px;
+    text-decoration: none;
+}
+.cardElement{
+    color: white;
+    margin: 10px 0px;
+    padding: 10px;
+    border-radius:2px;
+    background-color: rgba(0, 12, 14, 0.89);
+    transition: all ease 0.3s;
+}
+/* .cardElement:hover{
+    color: white;
+    opacity: 1.5;
+    background: rgb(0, 56, 56);
+    cursor: pointer;
+} */
+
+@media (max-width:950px) {
+    .cardForm{
+      margin: 10px;
+      padding: 10px 4px 0px 4px;
+    }
+    .cardElement{
+        margin: 4px 0px;
+    }}

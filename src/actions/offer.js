@@ -1,37 +1,39 @@
-
 import axios from "axios";
 import { types, url } from "../types/types";
 
-export const createShipment = (data) => {
+export const createOffer = (priceOffer, idShipment) => {
   let token = JSON.parse(localStorage.getItem("jwt"));
+  let data = {
+    offer: {
+      price: parseInt(priceOffer),
+    },
+    id: idShipment,
+  };
   return async (dispatch) => {
     await axios
-      .post(url + "/shipment/create", data, {
+      .post(url + "/offer/create", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((data) => {
-        alert("Shipment Agregado");
+        alert("Offer Creada");
       })
       .catch((response) => {});
   };
 };
 
-
 export const readOffer = () => {
-    let token = JSON.parse(localStorage.getItem("jwt"));
-    return async (dispatch) => {
-      await axios
-        .get(url + "/offer/getMyOffers", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then(({ data }) => {
-            console.log(data)
-            dispatch(readOffers(data));
-        })
-        .catch((response) => {});
-    };
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  return async (dispatch) => {
+    await axios
+      .get(url + "/offer/getMyOffers", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        dispatch(readOffers(data));
+      })
+      .catch((response) => {});
   };
-
+};
 
 export const create = (data) => {
   return {
@@ -40,15 +42,12 @@ export const create = (data) => {
   };
 };
 
-
 export const readOffers = (data) => {
   return {
     type: types.offerRead,
     payload: data,
   };
 };
-
-
 
 export const deleteShipment = (id) => {
   return {

@@ -5,8 +5,7 @@ import { Navigate } from "react-router-dom";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
 import styles from "../../styles/Home.module.css";
 import { readAvailableShipment } from "../../actions/shipment";
-import ViewMyRequests from "../../components/TranportationRequest/ViewMyRequests";
-
+import ViewShipments from "../../components/SearchShipment/ViewShipments";
 
 const SearchShipments = () => {
   document.title = "Fleteros - Viajes Disponibles";
@@ -16,7 +15,7 @@ const SearchShipments = () => {
   const shipments = useSelector((state) => state.shipment.data);
   useEffect(() => {
     dispatch(readAvailableShipment());
-  }, [dispatch]); 
+  }, [dispatch]);
   if (!driver) {
     return <Navigate to="../login/driver" />;
   }
@@ -25,7 +24,7 @@ const SearchShipments = () => {
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <NavigationBarDriver />
         <div className="col-12 ">
-          <ViewMyRequests shipments={shipments} />
+          <ViewShipments shipments={shipments} />
         </div>
       </div>
     </>

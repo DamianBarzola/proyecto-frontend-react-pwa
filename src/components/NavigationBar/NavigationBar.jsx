@@ -48,7 +48,7 @@ const NavigationBar = () => {
         </li>
         <li>
           <Link
-            to="/shipmentsinprogress"
+            to="/inprogress"
             className={`${styles.link} ${styles.active}`}
             style={{ paddingLeft: "30px" }}
           >

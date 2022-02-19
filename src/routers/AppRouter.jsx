@@ -2,7 +2,6 @@ import React, { Suspense, useEffect, useState } from "react";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "../components/Navbar/NavBar";
-import Fotter from "../components/Footer/Footer";
 import Home from "../pages/User/Home";
 import Landing from "../pages/Landing";
 import LoginUser from "../pages/LoginUser";
@@ -23,7 +22,7 @@ import MyShipmentsDriver from "../pages/Driver/MyShipmentsDriver";
 import SearchShipments from "../pages/Driver/SearchShipments";
 
 import { readShipment } from "../actions/shipment";
-
+import ShipmentDriver from "../pages/Driver/ShipmentDriver";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -56,25 +55,32 @@ const AppRouter = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/register/user" element={<RegisterUser />} />
           <Route exact path="/register/driver" element={<RegisterDriver />} />
+          {/* User */}
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/newshipment" element={<NewShipment />} />
           <Route exact path="/myshipments" element={<MyShipments />} />
           <Route exact path="/shipment/:idShipment" element={<Shipment />} />
-          <Route
-            exact
-            path="/shipmentsinprogress"
-            element={<ShipmentsInProgress />}
-          />
+          <Route exact path="/inprogress" element={<ShipmentsInProgress />} />
           <Route
             exact
             path="/offer/:idShipment/:idOffer"
             element={<ViewOffer />}
           />
-          <Route exact path="/offer" element={<ViewOffer />} />
+          {/* Driver */}
           <Route exact path="/home/driver" element={<HomeDriver />} />
+          <Route
+            exact
+            path="/myshipments/driver"
+            element={<MyShipmentsDriver />}
+          />
           <Route exact path="/offer/driver" element={<MyOffersDriver />} />
-          <Route exact path="/myshipments/driver" element={<MyShipmentsDriver />} />
           <Route exact path="/shipments/driver" element={<SearchShipments />} />
+          <Route
+            exact
+            path="/shipment/driver/:idShipment"
+            element={<ShipmentDriver />}
+          />
+          {/* <Route exact path="/offer" element={<ViewOffer />} /> */}
         </Routes>
       </main>
       {/* <footer>

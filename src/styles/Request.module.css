@@ -21,6 +21,16 @@
     background: rgb(0, 56, 56);
     cursor: pointer;
 }
+
+.offercard{
+  color: black;
+  margin: 10px 0px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(144, 144, 144, 0.89);
+  transition: all ease 0.3s;
+
+}
 .linea{
     margin: 2px 10px;
 }
@@ -47,6 +57,27 @@
           border: 1px solid rgb(0, 148, 148);
     }
 
+    .btn{
+      margin: 0px 10px;
+        text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          letter-spacing: 1px;
+          padding: 7px 2px;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+          color: white;
+          background: rgb(2, 172, 172);
+          border: 1px solid rgb(2, 172, 172);
+          
+        }
+        .btn.active,
+        .btn:hover{
+            color: white;
+            background-color: rgb(1, 110, 110);
+            border: 1px solid rgb(0, 148, 148);
+      }
+
     .next{
             background: rgb(0, 134, 134);
             border: 1px solid rgb(0, 134, 134);
@@ -67,6 +98,9 @@
     .cardElement{
         margin: 4px 0px;
     }
+    .offercard{
+      margin: 4px 0px;
+  }
   }
 
 
