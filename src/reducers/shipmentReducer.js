@@ -10,6 +10,11 @@ export const shipmentReducer = (state = initialState, action) => {
         ...state,
         data: [...state.data, action.payload],
       };
+    case types.newshipmentSuccess:
+      return {
+        ...state,
+        success: action.payload,
+      };
     case types.shipmentRead:
       return {
         ...state,

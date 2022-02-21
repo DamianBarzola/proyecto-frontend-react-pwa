@@ -10,6 +10,10 @@ export const types = {
   shipmentRead: `[Shipment] read`,
   shipmentModify: `[Shipment] modify`,
   shipmentClean: `[Shipment] clean`,
+  newshipmentSuccess: `[Shipment] newshipmentSuccess`,
+
   offerRead: `[Offer] read`,
+  offerAccepted: `[Offer] accepted`,
+  offerCreated: `[Offer] created`,
 };
 export const url = "http://localhost:3000";

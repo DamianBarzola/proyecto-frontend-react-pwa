@@ -7,12 +7,16 @@ import { Navigate } from "react-router-dom";
 const NewShipment = () => {
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
+  const success = useSelector((state) => state.shipment.success);
 
   if (driver) {
     return <Navigate to="../home/driver" />;
   }
   if (!user && !driver) {
     return <Navigate to="../login" />;
+  }
+  if (success) {
+    return <Navigate to="../notification/user/finishnewShipment" />;
   }
   return (
     <>

@@ -9,6 +9,7 @@ const ViewOffer = () => {
   const { idShipment, idOffer } = useParams();
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
+  const successOffer = useSelector((state) => state.offer.successOffer);
   const ArrayShipment = useSelector((state) => state.shipment.data);
   const navigate = useNavigate();
   const [offer, setoffer] = useState({});
@@ -32,6 +33,9 @@ const ViewOffer = () => {
   }
   if (!user && !driver) {
     return <Navigate to="../login" />;
+  }
+  if (successOffer) {
+    return <Navigate to="../notification/user/offerAccepted" />;
   }
   return (
     <>

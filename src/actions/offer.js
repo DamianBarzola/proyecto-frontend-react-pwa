@@ -16,6 +16,7 @@ export const createOffer = (priceOffer, idShipment) => {
       })
       .then((data) => {
         alert("Offer Creada");
+        dispatch(offerCreated(true));
       })
       .catch((response) => {});
   };
@@ -35,13 +36,30 @@ export const readOffer = () => {
   };
 };
 
+export const offerAccepted = (data) => {
+  return {
+    type: types.offerAccepted,
+    payload: data,
+  };
+};
+
+export const offerCreated = (data) => {
+  return {
+    type: types.offerCreated,
+    payload: data,
+  };
+};
 export const create = (data) => {
   return {
     type: types.shipmentAdd,
     payload: data,
   };
 };
-
+export const newshipmentSuccess = (state) => {
+  return (dispatch) => {
+    dispatch({ type: types.newshipmentSuccess, payload: state });
+  };
+};
 export const readOffers = (data) => {
   return {
     type: types.offerRead,

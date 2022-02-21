@@ -1,5 +1,6 @@
 import axios from "axios";
 import { types, url } from "../types/types";
+import { newshipmentSuccess, offerAccepted } from "./offer";
 
 export const createShipment = (data) => {
   let token = JSON.parse(localStorage.getItem("jwt"));
@@ -9,7 +10,7 @@ export const createShipment = (data) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((data) => {
-        alert("Shipment Agregado");
+        dispatch(newshipmentSuccess(true));
       })
       .catch((response) => {});
   };
@@ -38,7 +39,6 @@ export const readShipment = () => {
       })
       .then(({ data }) => {
         dispatch(readShipments(data));
-        console.log(data);
       })
       .catch((response) => {});
   };
@@ -53,7 +53,7 @@ export const acceptOffer = (id) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }) => {
-        alert("Oferta Aceptada");
+        dispatch(offerAccepted(true));
       })
       .catch((response) => {});
   };

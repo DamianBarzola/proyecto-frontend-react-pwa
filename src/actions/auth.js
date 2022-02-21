@@ -84,6 +84,8 @@ export const signOut = (token) => {
         dispatch(logout());
       })
       .catch((error) => {
+        localStorage.removeItem("jwt");
+        dispatch(logout());
         dispatch(errorMsg("Problema de Conexion"));
       });
   };
@@ -194,6 +196,8 @@ export const signOutDriver = (token) => {
         dispatch(logout());
       })
       .catch((error) => {
+        localStorage.removeItem("jwt");
+        dispatch(logout());
         dispatch(errorMsg("Problema de Conexion"));
       });
   };

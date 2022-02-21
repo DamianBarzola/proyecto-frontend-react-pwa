@@ -11,7 +11,7 @@ const PageMsg = () => {
     dispatch(logSuccess(false));
   }, [dispatch]);
 
-  if (type === "user") {
+  if (type === "registrationuser") {
     return (
       <div>
         <section className={styles.card404}>
@@ -28,7 +28,7 @@ const PageMsg = () => {
       </div>
     );
   }
-  if (type === "driver") {
+  if (type === "registrationdriver") {
     return (
       <div>
         <section className={styles.card404}>

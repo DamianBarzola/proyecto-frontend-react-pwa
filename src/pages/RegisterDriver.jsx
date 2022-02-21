@@ -95,7 +95,7 @@ const RegisterDriver = () => {
 
   if (user) return <Navigate to="../home" />;
   if (driver) return <Navigate to="../homedriver" />;
-  if (success) return <Navigate to="../notification/driver" />;
+  if (success) return <Navigate to="../notification/registrationdriver" />;
   return (
     <div>
       <section className={styles.cardLanding}>

@@ -25,6 +25,8 @@ import ShipmentDriver from "../pages/Driver/ShipmentDriver";
 import ViewMyShipmentDriver from "../pages/Driver/ViewMyShipmentDriver";
 import Page404 from "../pages/Page404";
 import PageMsg from "../pages/PageMsg";
+import PageMsgUser from "../pages/User/PageMsgUser";
+import PageMsgDriver from "../pages/Driver/PageMsgDriver";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -66,6 +68,11 @@ const AppRouter = () => {
           <Route exact path="/inprogress" element={<ShipmentsInProgress />} />
           <Route
             exact
+            path="/notification/user/:noti"
+            element={<PageMsgUser />}
+          />
+          <Route
+            exact
             path="/offer/:idShipment/:idOffer"
             element={<ViewOffer />}
           />
@@ -87,6 +94,11 @@ const AppRouter = () => {
             exact
             path="/myshipment/driver/:idShipment"
             element={<ViewMyShipmentDriver />}
+          />
+          <Route
+            exact
+            path="/notification/driver/:noti"
+            element={<PageMsgDriver />}
           />
           {/* 404 */}
           <Route path="*" element={<Page404 />} />

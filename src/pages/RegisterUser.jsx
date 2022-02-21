@@ -81,7 +81,7 @@ const RegisterUser = () => {
 
   if (user) return <Navigate to="../home" />;
   if (driver) return <Navigate to="../homedriver" />;
-  if (success) return <Navigate to="../notification/user" />;
+  if (success) return <Navigate to="../notification/registrationuser" />;
 
   return (
     <div>

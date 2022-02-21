@@ -13,6 +13,7 @@ const ShipmentDriver = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
+  const offerCreated = useSelector((state) => state.offer.offerCreated);
   const { idShipment } = useParams();
   const ArrayShipment = useSelector((state) => state.shipment.data);
 
@@ -52,6 +53,9 @@ const ShipmentDriver = () => {
   }
   if (!user && !driver) {
     return <Navigate to="../login/driver" />;
+  }
+  if (offerCreated) {
+    return <Navigate to="../notification/driver/offerCreated" />;
   }
   return (
     <>
