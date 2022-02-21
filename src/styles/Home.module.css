@@ -14,6 +14,14 @@
   border-radius: 7px;
   padding:20px 50px ;
 }
+
+.cardHome{
+  background-color: white;
+  margin-top: 40px ;
+  border-radius: 7px;
+  margin-top: 20%;
+  padding:50px 50px ;
+}
 @media (max-width: 950px) {
   .backHome{    
     margin-left:0px ;

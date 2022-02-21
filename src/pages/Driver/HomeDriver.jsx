@@ -19,13 +19,21 @@ const HomeDriver = () => {
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <NavigationBarDriver />
         <div className="col-lg-7 ">
-          <div className={styles.card}>
-            <h1>Algo</h1>
-          </div>
-        </div>
-        <div className="col-lg-3">
-          <div className={styles.card}>
-            <h1>Algo</h1>
+          <div className={styles.cardHome}>
+            <div>
+              <h1>Bienvenido a FleteRos</h1>
+            </div>
+            <div>
+              <span style={{ fontSize: "20px" }}>
+                {" "}
+                En nuestra pagina podras buscar y ver tus solicitudes de
+                transporte. Para empezar, podras ver las funciones disponibles
+                en el menu.
+                {/* En nuestra pagina podras pedir y ver tus solicitudes de
+                transporte. Para empezar, podras ver las funciones disponibles
+                en el menu. */}
+              </span>
+            </div>
           </div>
         </div>
       </div>
