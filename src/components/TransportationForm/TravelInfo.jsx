@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Transportation.module.css";
 import inputTxt from "../../styles/Input.module.css";
 import { FaRegDotCircle, FaMapMarkerAlt } from "react-icons/fa";
@@ -6,13 +6,19 @@ import { FaRegDotCircle, FaMapMarkerAlt } from "react-icons/fa";
 const TravelInfo = ({ nextStep, prevStep, handleChange, values }) => {
   const { shipment } = values;
   const { shipDate, locationFrom, locationTo } = shipment;
+  const [msgErrorTravel, setMsgErrorTravel] = useState("");
   const Previous = (e) => {
     e.preventDefault();
     prevStep();
   };
   const Continue = (e) => {
-    e.preventDefault();
-    nextStep();
+    if (shipDate === "" || locationFrom === "" || locationTo === "") {
+      setMsgErrorTravel("Complete todos los campos");
+    } else {
+      e.preventDefault();
+      setMsgErrorTravel("");
+      nextStep();
+    }
   };
   return (
     <>
@@ -71,6 +77,13 @@ const TravelInfo = ({ nextStep, prevStep, handleChange, values }) => {
         </div>
         <div className="col-lg-8"></div>
       </div>
+      {msgErrorTravel && (
+        <div>
+          <span className="text-danger">
+            <b> {msgErrorTravel}</b>
+          </span>
+        </div>
+      )}
       <div className="mt-3">
         <button onClick={Previous} className={styles.btnback}>
           Anterior

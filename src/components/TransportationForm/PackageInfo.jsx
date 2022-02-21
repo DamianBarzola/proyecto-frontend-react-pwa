@@ -11,11 +11,20 @@ const PackageInfo = ({ nextStep, values }) => {
     size: "",
     quantity: 1,
   });
+  const [msgError, setmsgError] = useState("");
+  const [msgErroritem, setmsgErroritem] = useState("");
+  const [carga, setcarga] = useState(true);
 
   const Continue = (e) => {
-    values.items = items;
     e.preventDefault();
-    nextStep();
+    values.items = items;
+    if (values.items.length === 0) {
+      setmsgError("No hay ningun articulo cargado");
+    } else {
+      setmsgError("");
+      setmsgErroritem("");
+      nextStep();
+    }
   };
   const handleChangeItem = (e) => {
     setitem({
@@ -24,8 +33,18 @@ const PackageInfo = ({ nextStep, values }) => {
     });
   };
   const handleAdd = () => {
-    items.push(item);
-    setitem({ description: "", weight: 0, size: "", quantity: 1 });
+    if (
+      item.description === "" ||
+      item.weight === 0 ||
+      item.size === "" ||
+      item.quantity === 0
+    ) {
+      setmsgErroritem("Complete Todos los campos");
+    } else {
+      items.push(item);
+      setitem({ description: "", weight: 0, size: "", quantity: 1 });
+      setmsgErroritem("");
+    }
   };
   return (
     <>
@@ -40,6 +59,7 @@ const PackageInfo = ({ nextStep, values }) => {
               value={item.description}
               name="description"
               type="text"
+              maxLength={150}
               className={inputTxt.form__input}
               placeholder=" "
               style={{ color: "black", border: "1px solid black" }}
@@ -85,6 +105,7 @@ const PackageInfo = ({ nextStep, values }) => {
               value={item.size}
               name="size"
               type="text"
+              maxLength={100}
               className={inputTxt.form__input}
               placeholder=" "
               style={{ color: "black", border: "1px solid black" }}
@@ -99,6 +120,13 @@ const PackageInfo = ({ nextStep, values }) => {
             </button>
           </div>
         </div>
+        {msgErroritem && (
+          <div>
+            <span className="text-danger">
+              <b> {msgErroritem}</b>
+            </span>
+          </div>
+        )}
       </div>
       <hr />
 
@@ -124,7 +152,13 @@ const PackageInfo = ({ nextStep, values }) => {
                       <b>Peso: </b> {item.weight}
                     </div>
                     <div className="col-lg-2">
-                      <button className="btn btn-danger">
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {
+                          items.splice(index, 1);
+                          setcarga(!carga);
+                        }}
+                      >
                         <BsFillTrashFill />
                       </button>
                     </div>
@@ -139,6 +173,14 @@ const PackageInfo = ({ nextStep, values }) => {
           </div>
         )}
       </div>
+      <hr />
+      {msgError && (
+        <div>
+          <span className="text-danger">
+            <b> {msgError}</b>
+          </span>
+        </div>
+      )}
       <div className="mt-3">
         <button className={styles.btnDefault} onClick={Continue}>
           Siguiente

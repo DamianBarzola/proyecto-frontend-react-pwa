@@ -1,7 +1,20 @@
 .cardLanding{
-    text-align: center;
-  background-color: rgba(0, 0, 0, 0.952);
+    text-align: center;background-image:url(../images/ros4.png) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 70%;
+    box-sizing: border-box;
   padding: 10px;
+}
+.card404{
+  text-align: center;
+height: 50rem;
+padding: 10px;
+background-image:url(../images/ros4.png) ;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 100% 70%;
+box-sizing: border-box;
 }
 .form{
     border-radius: 7px;

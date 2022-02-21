@@ -10,6 +10,8 @@ export const authReducer = (state = {}, action) => {
       return {};
     case types.logMsg:
       return { ...state, msg: action.payload };
+    case types.logSuccess:
+      return { ...state, success: action.payload };
     default:
       return state;
   }

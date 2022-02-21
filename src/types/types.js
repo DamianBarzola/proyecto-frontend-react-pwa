@@ -3,6 +3,7 @@ export const types = {
   loginDriver: `[AuthDriver] login`,
   logout: `[Auth] logout`,
   logMsg: "[AuthMsg] error",
+  logSuccess: "[AuthSuccess] success",
 
   shipmentAdd: `[Shipment] add`,
   shipmentDelete: `[Shipment] delete`,
@@ -10,6 +11,5 @@ export const types = {
   shipmentModify: `[Shipment] modify`,
   shipmentClean: `[Shipment] clean`,
   offerRead: `[Offer] read`,
-
 };
 export const url = "http://localhost:3000";

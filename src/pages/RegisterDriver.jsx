@@ -12,6 +12,7 @@ const RegisterDriver = () => {
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
   const msg = useSelector((state) => state.auth.msg);
+  const success = useSelector((state) => state.auth.success);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -76,6 +77,12 @@ const RegisterDriver = () => {
     ) {
       if (!validateEmail(data.email)) {
         dispatch(errorMsg("Correo electrónico con formato incorrecto"));
+      } else if (data.phone.length < 10 || data.phone.length > 16) {
+        dispatch(
+          errorMsg("El número de teléfono debe tener entre 10 y 16 caracteres")
+        );
+      } else if (data.password.length < 5 || data.password.length > 20) {
+        dispatch(errorMsg("La contraseña debe tener entre 5 y 20 caracteres"));
       } else if (data.password !== data.password2) {
         dispatch(errorMsg("Las contraseñas no coinciden"));
       } else {
@@ -88,6 +95,7 @@ const RegisterDriver = () => {
 
   if (user) return <Navigate to="../home" />;
   if (driver) return <Navigate to="../homedriver" />;
+  if (success) return <Navigate to="../notification/driver" />;
   return (
     <div>
       <section className={styles.cardLanding}>

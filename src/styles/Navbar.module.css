@@ -56,7 +56,11 @@
     margin-top: 20px;
   }
 .linkDropMenu.active,
-.linkDropMenu:hover,
+.linkDropMenu:hover{
+
+  color:black;
+background-color: white;
+}
 .link.active,
 .link:hover{
   color: #111;

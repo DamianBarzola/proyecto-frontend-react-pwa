@@ -7,17 +7,23 @@ import styles from "../../styles/Home.module.css";
 import stylesRequest from "../../styles/Request.module.css";
 import { readShipment } from "../../actions/shipment";
 import { Link } from "react-router-dom";
+import { transformDateFormat } from "../../utils/validations";
 
 const MyShipmentsDriver = () => {
   document.title = "Fleteros - Mis viajes";
   const driver = useSelector((state) => state.auth.driver);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   const shipments = useSelector((state) => state.shipment.data);
   useEffect(() => {
     dispatch(readShipment());
   }, [dispatch]);
-  if (!driver) {
+
+  if (user) {
+    return <Navigate to="../home" />;
+  }
+  if (!user && !driver) {
     return <Navigate to="../login/driver" />;
   }
   return (
@@ -26,7 +32,7 @@ const MyShipmentsDriver = () => {
         <NavigationBarDriver />
         <div className="col-12">
           <div className={stylesRequest.cardForm}>
-            <h1>Solicitudes Disponibles</h1>
+            <h1>Mis Viajes</h1>
             <hr />
             <div className="row">
               <div className="col-12">
@@ -35,7 +41,7 @@ const MyShipmentsDriver = () => {
                     {shipments.map((element) => {
                       return (
                         <Link
-                          to={"/shipment/driver/" + element.id}
+                          to={"/myshipment/driver/" + element.id}
                           params={element.id}
                           style={{ textDecoration: "none" }}
                           key={element.id}
@@ -59,14 +65,7 @@ const MyShipmentsDriver = () => {
                               <div className="col-6 align-self-center ">
                                 <div>
                                   <b>Fecha:</b>{" "}
-                                  {/* {transformDateFormat(element.shipDate)} */}
-                                </div>
-                                <div>
-                                  <b>Items:</b>{" "}
-                                  {element.items && element.items.length}
-                                </div>
-                                <div>
-                                  {/* <b>Ofertas:</b> {element.offers} */}
+                                  {transformDateFormat(element.shipDate)}
                                 </div>
                               </div>
                             </div>

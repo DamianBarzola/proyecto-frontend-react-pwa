@@ -12,15 +12,12 @@ const Landing = () => {
     <div className={styles.background}>
       <section className={styles.sectionLanding}>
         <div className={styles.cardLanding}>
-          <p>Bienvenido</p>
+          <p>Bienvenido a FleteRos</p>
           <div className={styles.text}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-            necessitatibus quam quas, aut, exercitationem non doloribus quo
-            consequuntur, ea neque ipsam debitis adipisci assumenda atque sunt
-            impedit illum similique inventore. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Nemo quae necessitatibus voluptate
-            molestiae pariatur nulla officia impedit ipsam ab, quod et! Illum
-            sunt deserunt at rerum sapiente hic praesentium itaque.
+            Disfruta de los mejores servicios de transporte de bienes de la
+            ciudad de Rosario. En nuestra Web podras encontrar lo necesario para
+            poder realizar los viajes mas rapidos y seguros para tus articulos u
+            bienes.
           </div>
           <div>
             <Link to="/register" className={styles.btnBegin}>

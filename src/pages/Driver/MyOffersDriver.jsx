@@ -11,15 +11,19 @@ import { transformDateFormat } from "../../utils/validations";
 
 const MyOffersDriver = () => {
   document.title = "Fleteros - Mis Ofertas";
-  const navigate = useNavigate();
   const driver = useSelector((state) => state.auth.driver);
+  const user = useSelector((state) => state.auth.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(readOffer());
   }, [dispatch]);
   const offers = useSelector((state) => state.offer.data);
-  if (!driver) {
+  if (user) {
+    return <Navigate to="../home" />;
+  }
+  if (!user && !driver) {
     return <Navigate to="../login/driver" />;
   }
   return (

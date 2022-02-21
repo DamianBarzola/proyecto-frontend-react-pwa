@@ -3,6 +3,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { signOutDriver } from "../../actions/auth";
 import styles from "../../styles/Navbar.module.css";
 
@@ -51,39 +52,48 @@ const DriverMenu = () => {
         </li>
         <li className={styles.listOnlyMobile}>
           <Link
-            to="/"
+            to="/shipments/driver"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
-            Nueva Solicitud
+            Buscar Solicitudes
           </Link>
         </li>
         <li className={styles.listOnlyMobile}>
           <Link
-            to="/"
+            to="/offer/driver"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
-            Mis Solicitudes
+            Mis Ofertas
+          </Link>
+        </li>
+        <li className={styles.listOnlyMobile}>
+          <Link
+            to="/myshipments/driver"
+            className={isMobile ? styles.linkActive : styles.link}
+            onClick={() => setIsMobile(false)}
+          >
+            Viajes en curso
           </Link>
         </li>
         <li className={styles.list}>
-          <Link
-            to="/"
+          <HashLink
+            to="/#about-section"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
             Sobre Nosotros
-          </Link>
+          </HashLink>
         </li>
         <li className={styles.list}>
-          <Link
-            to="/"
+          <HashLink
+            to="/#contact-section"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
             Contacto
-          </Link>
+          </HashLink>
         </li>
 
         <li className={styles.list}>
@@ -99,18 +109,18 @@ const DriverMenu = () => {
               className={isMobile ? "" : styles.dropMenu}
               style={{ paddingLeft: 0 }}
             >
-              <Link
+              {/* <Link
                 to="/"
                 className={isMobile ? styles.linkActive : styles.linkDropMenu}
                 onClick={() => setIsMobile(false)}
               >
                 Ajustes
-              </Link>
+              </Link> */}
               <button
                 type="submit"
                 className={isMobile ? styles.linkActive : styles.linkDropMenu}
                 onClick={handleLogout}
-                style={{ backgroundColor: "transparent", border: "0" }}
+                style={{ border: "0", marginLeft: "4px" }}
               >
                 Cerrar Sesion
               </button>

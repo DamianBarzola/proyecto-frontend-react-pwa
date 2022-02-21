@@ -3,6 +3,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { signOut } from "../../actions/auth";
 import styles from "../../styles/Navbar.module.css";
 
@@ -51,7 +52,7 @@ const UserMenu = () => {
         </li>
         <li className={styles.listOnlyMobile}>
           <Link
-            to="/"
+            to="/newshipment"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
@@ -60,30 +61,39 @@ const UserMenu = () => {
         </li>
         <li className={styles.listOnlyMobile}>
           <Link
-            to="/"
+            to="/myshipments"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
             Mis Solicitudes
           </Link>
         </li>
-        <li className={styles.list}>
+        <li className={styles.listOnlyMobile}>
           <Link
-            to="/"
+            to="/inprogress"
+            className={isMobile ? styles.linkActive : styles.link}
+            onClick={() => setIsMobile(false)}
+          >
+            Solicitud en Curso
+          </Link>
+        </li>
+        <li className={styles.list}>
+          <HashLink
+            to="/#about-section"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
             Sobre Nosotros
-          </Link>
+          </HashLink>
         </li>
         <li className={styles.list}>
-          <Link
-            to="/"
+          <HashLink
+            to="/#contact-section"
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setIsMobile(false)}
           >
             Contacto
-          </Link>
+          </HashLink>
         </li>
 
         <li className={styles.list}>
@@ -99,17 +109,18 @@ const UserMenu = () => {
               className={isMobile ? "" : styles.dropMenu}
               style={{ paddingLeft: 0 }}
             >
-              <Link
+              {/* <Link
                 to="/"
                 className={isMobile ? styles.linkActive : styles.linkDropMenu}
                 onClick={() => setIsMobile(false)}
               >
                 Ajustes
-              </Link>
+              </Link> */}
               <button
                 type="submit"
                 className={isMobile ? styles.linkActive : styles.linkDropMenu}
                 onClick={handleLogout}
+                style={{ border: "0", marginLeft: "4px" }}
               >
                 Cerrar Sesion
               </button>

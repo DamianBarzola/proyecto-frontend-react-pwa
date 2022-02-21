@@ -6,7 +6,6 @@ import { MdLocalShipping } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa";
 import { FiPackage } from "react-icons/fi";
 
-
 const NavigationBarDriver = () => {
   return (
     <div className={styles.sidebar}>
@@ -55,7 +54,7 @@ const NavigationBarDriver = () => {
           >
             <div className="d-flex align-items-center">
               <FiPackage className={styles.icons} />
-              <span className={styles.linkName}>Mis Viajes</span>
+              <span className={styles.linkName}>Viajes en curso</span>
             </div>{" "}
           </Link>
         </li>

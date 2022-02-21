@@ -58,6 +58,7 @@ const LoginDriver = () => {
                 value={email}
                 name="email"
                 type="email"
+                maxLength={50}
                 className={inputTxt.form__input}
                 placeholder=" "
                 style={{ color: "black", border: "1px solid black" }}
@@ -75,6 +76,7 @@ const LoginDriver = () => {
                 value={password}
                 name="password"
                 type="password"
+                maxLength={50}
                 className={inputTxt.form__input}
                 placeholder=" "
                 style={{ color: "black", border: "1px solid black" }}

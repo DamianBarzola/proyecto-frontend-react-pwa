@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/Home.module.css";
-import inputTxt from "../../styles/Input.module.css";
-
-import stylesRequest from "../../styles/Request.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
 import { transformDateFormat } from "../../utils/validations";
-import { createOffer } from "../../actions/offer";
+import styles from "../../styles/Home.module.css";
+import stylesRequest from "../../styles/Request.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { readShipment } from "../../actions/shipment";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
-const ShipmentDriver = () => {
+const ViewMyShipmentDriver = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
@@ -18,7 +16,7 @@ const ShipmentDriver = () => {
 
   const navigate = useNavigate();
   const [shipment, setshipment] = useState({});
-  const [priceOffer, setpriceOffer] = useState(0);
+
   useEffect(() => {
     try {
       setshipment(
@@ -27,26 +25,16 @@ const ShipmentDriver = () => {
         })
       );
     } catch {
-      navigate("../shipments/driver");
+      navigate("../myshipments/driver");
     }
   }, []);
 
-  const { id, locationFrom, locationTo, shipDate, items, state } = shipment;
+  const { id, locationFrom, locationTo, shipDate, items, offers } = shipment;
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setpriceOffer(value);
-  };
-  const [msgErrorOffer, setMsgErrorOffer] = useState("");
-  const handleOffer = (e) => {
+  const handleAccept = (e) => {
     e.preventDefault();
-    if (priceOffer > 0) {
-      setMsgErrorOffer("");
-      dispatch(createOffer(priceOffer, id));
-    } else {
-      setMsgErrorOffer("Precio Invalido");
-    }
   };
+
   if (user) {
     return <Navigate to="../home" />;
   }
@@ -118,36 +106,33 @@ const ShipmentDriver = () => {
                 </div>
               </div>
             </div>
-            <hr />
             <div>
-              <h4>Mi Oferta</h4>
-              <div className="ps-3 pe-3">
-                <div className={inputTxt.form__div}>
-                  <input
-                    onChange={handleChange}
-                    value={priceOffer}
-                    name="priceOffer"
-                    type="number"
-                    className={inputTxt.form__input}
-                    placeholder=" "
-                    style={{ color: "black", border: "1px solid black" }}
-                  />
-                  <label
-                    className={inputTxt.form__label}
-                    style={{ color: "black" }}
-                  >
-                    Precio (en pesos argentinos)
-                  </label>
-                </div>
-              </div>
+              {offers &&
+                offers.map((elemento) => {
+                  return (
+                    elemento.confirmed === true && (
+                      <div className="p-3" key={elemento.id}>
+                        <div className={stylesRequest.cardItem2}>
+                          <h4>
+                            <b> Mi Oferta</b>
+                          </h4>
+
+                          <div className="row">
+                            <div className="col-lg-6">
+                              <b>Fecha de la Oferta: </b>
+                              {"11/11"}
+                            </div>
+                            <div className="col-lg-6">
+                              <b>Precio: $</b>
+                              {"500"}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  );
+                })}
             </div>
-            {msgErrorOffer && (
-              <div>
-                <span className="text-danger">
-                  <b>{msgErrorOffer}</b>{" "}
-                </span>
-              </div>
-            )}
             <hr />
             <button
               onClick={() => navigate(-1)}
@@ -155,8 +140,8 @@ const ShipmentDriver = () => {
             >
               Volver
             </button>
-            <button onClick={handleOffer} className={stylesRequest.btn}>
-              Realizar Oferta
+            <button onClick={handleAccept} className={stylesRequest.btn}>
+              Finalizar Solicitud
             </button>
           </div>
         </div>
@@ -165,4 +150,4 @@ const ShipmentDriver = () => {
   );
 };
 
-export default ShipmentDriver;
+export default ViewMyShipmentDriver;

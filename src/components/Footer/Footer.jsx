@@ -15,10 +15,8 @@ const Footer = () => {
             <div className={style.footerCol}>
               <h4 className={style.title}>Sobre Nosotros</h4>
               <p className={style.about}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Exercitationem, cumque recusandae. Consectetur quia aliquid
-                similique iure unde sint, dolores deleniti voluptas ad est
-                temporibus, reiciendis nobis animi atque ipsam nostrum!
+                Somos una Empresa StartUp que busca crear aplicaciones para
+                satisfacer las necesidades de nuestros clientes.
               </p>
             </div>
             <div className={style.footerCol + " ms-md-5"}>
@@ -26,22 +24,27 @@ const Footer = () => {
               <ul>
                 <li>
                   <Link className={style.link} to="/">
-                    Cosa
+                    Página Principal
                   </Link>
                 </li>
                 <li>
-                  <Link className={style.link} to="/">
-                    Cosa
+                  <Link className={style.link} to="/login">
+                    Soy Usuario
                   </Link>
                 </li>
                 <li>
-                  <Link className={style.link} to="/">
-                    Cosa
+                  <Link className={style.link} to="/login/driver">
+                    Soy Conductor
                   </Link>
                 </li>
                 <li>
-                  <Link className={style.link} to="/">
-                    Cosa
+                  <Link className={style.link} to="/register/user">
+                    Registro Usuario
+                  </Link>
+                </li>
+                <li>
+                  <Link className={style.link} to="/register/driver">
+                    Registro Conductor
                   </Link>
                 </li>
               </ul>

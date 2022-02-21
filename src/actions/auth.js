@@ -48,14 +48,14 @@ export const getUser = (token) => {
       });
   };
 };
-
 export const signUp = (data) => {
   return async (dispatch) => {
+    dispatch(logSuccess(false));
     await axios
       .post(url + "/user/signup", data)
       .then((res) => {
         // console.log(res);
-        alert("User Creado");
+        dispatch(logSuccess(true));
       })
       .catch(({ response }) => {
         if (response) {
@@ -135,6 +135,7 @@ export const signUpDriver = (data, license, greenCard) => {
   fdgreeCard.append("upload_preset", "pnva2kin");
 
   return async (dispatch) => {
+    dispatch(logSuccess(false));
     await axios
       .post("https://api.cloudinary.com/v1_1/da7kbso2t/image/upload", fdlicense)
       .then(async (res) => {
@@ -158,8 +159,7 @@ export const signUpDriver = (data, license, greenCard) => {
       axios
         .post(url + "/driver/signup", data)
         .then((res) => {
-          alert("Driver Creado");
-          // console.log(res);
+          dispatch(logSuccess(true));
         })
         .catch(({ response }) => {
           if (response) {
@@ -217,5 +217,10 @@ export const logout = () => {
 export const errorMsg = (msg) => {
   return (dispatch) => {
     dispatch({ type: types.logMsg, payload: msg });
+  };
+};
+export const logSuccess = (state) => {
+  return (dispatch) => {
+    dispatch({ type: types.logSuccess, payload: state });
   };
 };

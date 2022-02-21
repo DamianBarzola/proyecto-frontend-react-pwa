@@ -38,6 +38,7 @@ export const readShipment = () => {
       })
       .then(({ data }) => {
         dispatch(readShipments(data));
+        console.log(data);
       })
       .catch((response) => {});
   };
@@ -53,6 +54,24 @@ export const acceptOffer = (id) => {
       })
       .then(({ data }) => {
         alert("Oferta Aceptada");
+      })
+      .catch((response) => {});
+  };
+};
+
+export const finishShipment = (idShipment) => {
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  let data = {
+    shipmet: { payment: true },
+    id: idShipment,
+  };
+  return async (dispatch) => {
+    await axios
+      .post(url + "/shipment/update", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((data) => {
+        alert("Shipment Finalizado");
       })
       .catch((response) => {});
   };

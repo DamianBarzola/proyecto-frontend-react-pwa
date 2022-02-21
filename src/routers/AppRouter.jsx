@@ -21,8 +21,10 @@ import MyOffersDriver from "../pages/Driver/MyOffersDriver";
 import MyShipmentsDriver from "../pages/Driver/MyShipmentsDriver";
 import SearchShipments from "../pages/Driver/SearchShipments";
 
-import { readShipment } from "../actions/shipment";
 import ShipmentDriver from "../pages/Driver/ShipmentDriver";
+import ViewMyShipmentDriver from "../pages/Driver/ViewMyShipmentDriver";
+import Page404 from "../pages/Page404";
+import PageMsg from "../pages/PageMsg";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -55,6 +57,7 @@ const AppRouter = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/register/user" element={<RegisterUser />} />
           <Route exact path="/register/driver" element={<RegisterDriver />} />
+          <Route exact path="/notification/:type" element={<PageMsg />} />
           {/* User */}
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/newshipment" element={<NewShipment />} />
@@ -68,19 +71,25 @@ const AppRouter = () => {
           />
           {/* Driver */}
           <Route exact path="/home/driver" element={<HomeDriver />} />
-          <Route
-            exact
-            path="/myshipments/driver"
-            element={<MyShipmentsDriver />}
-          />
-          <Route exact path="/offer/driver" element={<MyOffersDriver />} />
           <Route exact path="/shipments/driver" element={<SearchShipments />} />
           <Route
             exact
             path="/shipment/driver/:idShipment"
             element={<ShipmentDriver />}
           />
-          {/* <Route exact path="/offer" element={<ViewOffer />} /> */}
+          <Route
+            exact
+            path="/myshipments/driver"
+            element={<MyShipmentsDriver />}
+          />
+          <Route exact path="/offer/driver" element={<MyOffersDriver />} />
+          <Route
+            exact
+            path="/myshipment/driver/:idShipment"
+            element={<ViewMyShipmentDriver />}
+          />
+          {/* 404 */}
+          <Route path="*" element={<Page404 />} />
         </Routes>
       </main>
       {/* <footer>

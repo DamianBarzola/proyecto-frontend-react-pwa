@@ -7,7 +7,11 @@ import styles from "../../styles/Home.module.css";
 const HomeDriver = () => {
   document.title = "Fleteros - Home";
   const driver = useSelector((state) => state.auth.driver);
-  if (!driver) {
+  const user = useSelector((state) => state.auth.user);
+  if (user) {
+    return <Navigate to="../home" />;
+  }
+  if (!user && !driver) {
     return <Navigate to="../login/driver" />;
   }
   return (

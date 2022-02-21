@@ -10,13 +10,17 @@ import ViewShipments from "../../components/SearchShipment/ViewShipments";
 const SearchShipments = () => {
   document.title = "Fleteros - Viajes Disponibles";
   const driver = useSelector((state) => state.auth.driver);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   const shipments = useSelector((state) => state.shipment.data);
   useEffect(() => {
     dispatch(readAvailableShipment());
   }, [dispatch]);
-  if (!driver) {
+  if (user) {
+    return <Navigate to="../home" />;
+  }
+  if (!user && !driver) {
     return <Navigate to="../login/driver" />;
   }
   return (

@@ -1,12 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { finishShipment } from "../../actions/shipment";
 import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
 
 const Request = ({ shipment }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id, locationFrom, locationTo, shipDate, items, offers, state } =
     shipment;
+  const handleFinish = (e) => {
+    e.preventDefault();
+    dispatch(finishShipment(id));
+  };
 
   return (
     <div className={styles.cardForm}>
@@ -137,7 +144,10 @@ const Request = ({ shipment }) => {
                       <div className="col-lg-6"></div>
                     </div>
                   </div>
-                  <button className={styles.btn}> Finalizar Solicitud</button>
+                  <button className={styles.btn} onClick={handleFinish}>
+                    {" "}
+                    Finalizar Viaje
+                  </button>
                 </div>
               )
             );

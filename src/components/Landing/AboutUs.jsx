@@ -93,13 +93,14 @@ const AboutUs = () => {
                   <b>Empresa</b>
                 </p>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos
-                  cumque vel quam eligendi maxime dolor placeat id iusto, autem
-                  assumenda deleniti nemo ullam ut ea corporis commodi corrupti
-                  a fugit! Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit. Molestiae hic quas soluta quidem eius assumenda, neque
-                  quos, dignissimos harum provident doloribus voluptatibus at
-                  maxime nesciunt, perspiciatis repellat iure? Aperiam, iste.
+                  Somos una empresa StartUp que tiene como objetivo desarrollar
+                  una aplicación que brinde a los usuarios la comodidad de
+                  solicitar el transporte para una carga, como puede ser un
+                  bien, mueble o mercadería de algún comercio, de manera
+                  instantánea o previamente programada. De acuerdo a lo
+                  planteado, nuestro objetivo será brindar un servicio de
+                  transportes efectivo y de calidad para satisfacer las
+                  necesidades de nuestros clientes.
                 </p>
               </div>
             </section>
@@ -113,13 +114,10 @@ const AboutUs = () => {
                   <b>Equipo</b>
                 </p>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos
-                  cumque vel quam eligendi maxime dolor placeat id iusto, autem
-                  assumenda deleniti nemo ullam ut ea corporis commodi corrupti
-                  a fugit! Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit. Molestiae hic quas soluta quidem eius assumenda, neque
-                  quos, dignissimos harum provident doloribus voluptatibus at
-                  maxime nesciunt, perspiciatis repellat iure? Aperiam, iste.
+                  Actualmente nuestro equipo de trabajo es pequeño con gente
+                  especializada en el area de creacion de software. Sin embargo,
+                  en un futuro tenemos planeados expandir nuestro equipo para
+                  así, poder mejorar nuestro servicio.
                 </p>
               </div>
             </section>
