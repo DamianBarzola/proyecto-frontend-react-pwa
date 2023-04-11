@@ -20,7 +20,7 @@ export const readAvailableShipment = () => {
   let token = JSON.parse(localStorage.getItem("jwt"));
   return async (dispatch) => {
     await axios
-      .get(url + "/shipment/getAvailableShipments", {
+      .get(url + "/shipment/available", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }) => {
@@ -34,7 +34,7 @@ export const readShipment = () => {
   let token = JSON.parse(localStorage.getItem("jwt"));
   return async (dispatch) => {
     await axios
-      .get(url + "/shipment/getMyShipments", {
+      .get(url + "/shipment/allActive", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }) => {
