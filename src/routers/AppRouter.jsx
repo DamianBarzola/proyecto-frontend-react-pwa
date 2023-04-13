@@ -66,6 +66,8 @@ const AppRouter = () => {
           <Route exact path="/myshipments" element={<MyShipments />} />
           <Route exact path="/shipment/:idShipment" element={<Shipment />} />
           <Route exact path="/inprogress" element={<ShipmentsInProgress />} />
+          <Route exact path="/finish" element={<ShipmentsInProgress />} />
+
           <Route
             exact
             path="/notification/user/:noti"

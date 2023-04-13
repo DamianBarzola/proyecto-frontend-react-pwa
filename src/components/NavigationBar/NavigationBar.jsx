@@ -5,6 +5,8 @@ import { AiFillHome } from "react-icons/ai";
 import { MdLocalShipping } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa";
 import { BsFillClockFill } from "react-icons/bs";
+import { BsFillFolderFill } from "react-icons/bs";
+
 
 const NavigationBar = () => {
   return (
@@ -14,7 +16,7 @@ const NavigationBar = () => {
           <Link
             to="/home"
             className={`${styles.link} ${styles.active}`}
-            style={{ paddingLeft: "30px" }}
+            style={{ paddingLeft: "15px" }}
           >
             <div className="d-flex align-items-center">
               <AiFillHome className={styles.icons} />
@@ -26,7 +28,7 @@ const NavigationBar = () => {
           <Link
             to="/newshipment"
             className={`${styles.link} ${styles.active}`}
-            style={{ paddingLeft: "30px" }}
+            style={{ paddingLeft: "15px" }}
           >
             <div className="d-flex align-items-center ">
               <MdLocalShipping className={styles.icons} />
@@ -38,11 +40,11 @@ const NavigationBar = () => {
           <Link
             to="/myshipments"
             className={`${styles.link} ${styles.active}`}
-            style={{ paddingLeft: "30px" }}
+            style={{ paddingLeft: "15px" }}
           >
             <div className="d-flex align-items-center">
               <FaClipboardList className={styles.icons} />
-              <span className={styles.linkName}>Mis Solicitudes</span>
+              <span className={styles.linkName}>Solicitudes Activas</span>
             </div>{" "}
           </Link>
         </li>
@@ -50,11 +52,23 @@ const NavigationBar = () => {
           <Link
             to="/inprogress"
             className={`${styles.link} ${styles.active}`}
-            style={{ paddingLeft: "30px" }}
+            style={{ paddingLeft: "15px" }}
           >
             <div className="d-flex align-items-center ">
               <BsFillClockFill className={styles.icons} />
-              <span className={styles.linkName}>Solicitud en curso</span>
+              <span className={styles.linkName}>Solicitudes en Curso</span>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/finish"
+            className={`${styles.link} ${styles.active}`}
+            style={{ paddingLeft: "15px" }}
+          >
+            <div className="d-flex align-items-center ">
+              <BsFillFolderFill className={styles.icons} />
+              <span className={styles.linkName}>Solicitudes Finalizadas</span>
             </div>
           </Link>
         </li>
