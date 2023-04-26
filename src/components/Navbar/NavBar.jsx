@@ -5,14 +5,16 @@ import styles from "../../styles/Navbar.module.css";
 import UserMenu from "./UserMenu";
 import PublicMenu from "./PublicMenu";
 import DriverMenu from "./DriverMenu";
+import logoWhite from '../../images/logoWhite.png'
 
 const NavBar = () => {
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
   return (
     <nav className={styles.nav}>
-      <Link to="/" className={styles.logo}>
-        <div>FleteRos</div>
+      <Link to="/" >
+        <img src={logoWhite} className={styles.logo} alt=""></img>
+        {/* <div>FleteRos</div> */}
       </Link>
       {user && <UserMenu />}
       {driver && <DriverMenu />}

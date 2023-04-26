@@ -1,3 +1,5 @@
+@import url("Variables.css");
+
 /* celeste #00ace6 rosa #e91e63 */
 .footer{
 	background-color: #1b1b1b;
@@ -33,7 +35,7 @@ ul{
 	position: absolute;
 	left:0;
 	bottom: -10px;
-	background-color: cyan;
+	background-color: var(--primary-color);
 	height: 2px;
 	box-sizing: border-box;
 	width: 50px;
@@ -55,7 +57,7 @@ li:not(:last-child){
 	transition: all 0.3s ease;
 }
 .link:hover{
-	color: cyan;
+	color: var(--primary-color);
 	padding-left: 8px;
 }
 .linkSocial{
@@ -73,7 +75,7 @@ li:not(:last-child){
 }
 .linkSocial:hover{
 	color: #24262b;
-	background-color: cyan;
+	background-color: var(--primary-color);
 }
 .textCopy{
 	width: 100%;
@@ -86,7 +88,7 @@ li:not(:last-child){
 /*responsive*/
 @media(max-width: 950px){
 	.title{
-		color: rgb(20, 167, 167);
+		color: var(--primary-color);
 		position: static;
 	}
 	.title::before{

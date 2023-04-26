@@ -36,7 +36,7 @@ const Offer = ({ offer }) => {
               {offer.driver.phone}
             </div>
             <h5 className="text-center mt-3">
-              <b>Deralles de la Oferta</b>
+              <b>Detalles de la Oferta</b>
             </h5>
             <div>
               <b>Fecha de la Oferta: </b>

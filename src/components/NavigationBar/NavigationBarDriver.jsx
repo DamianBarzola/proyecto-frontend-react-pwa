@@ -5,6 +5,7 @@ import { AiFillHome } from "react-icons/ai";
 import { MdLocalShipping } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa";
 import { FiPackage } from "react-icons/fi";
+import { BsFillFolderFill } from "react-icons/bs";
 
 const NavigationBarDriver = () => {
   return (
@@ -30,20 +31,8 @@ const NavigationBarDriver = () => {
           >
             <div className="d-flex align-items-center ">
               <MdLocalShipping className={styles.icons} />
-              <span className={styles.linkName}>Buscar Solicitudes</span>
+              <span className={styles.linkName}>Buscar Viajes</span>
             </div>
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/offer/driver"
-            className={`${styles.link} ${styles.active}`}
-            style={{ paddingLeft: "30px" }}
-          >
-            <div className="d-flex align-items-center">
-              <FaClipboardList className={styles.icons} />
-              <span className={styles.linkName}>Mis Ofertas</span>
-            </div>{" "}
           </Link>
         </li>
         <li>
@@ -57,6 +46,28 @@ const NavigationBarDriver = () => {
               <span className={styles.linkName}>Viajes en curso</span>
             </div>{" "}
           </Link>
+          <Link
+            to="/offer/driver"
+            className={`${styles.link} ${styles.active}`}
+            style={{ paddingLeft: "30px" }}
+          >
+            <div className="d-flex align-items-center">
+              <FaClipboardList className={styles.icons} />
+              <span className={styles.linkName}>Ofertas Enviadas</span>
+            </div>{" "}
+          </Link>
+          <Link
+            to="/offer/delivered/driver"
+            className={`${styles.link} ${styles.active}`}
+            style={{ paddingLeft: "30px" }}
+          >
+            <div className="d-flex align-items-center">
+              <BsFillFolderFill className={styles.icons} />
+              <span className={styles.linkName}>Viajes Realizados</span>
+            </div>{" "}
+          </Link>
+        </li>
+        <li>
         </li>
         <div className={styles.textCopy}>
           <p>Copyright &copy; 2022. Barzola - Etcheverry - Martin</p>

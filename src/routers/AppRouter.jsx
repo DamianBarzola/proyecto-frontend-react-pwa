@@ -17,7 +17,10 @@ import ViewOffer from "../pages/User/ViewOffer";
 import Shipment from "../pages/User/Shipment";
 import HomeDriver from "../pages/Driver/HomeDriver";
 import ShipmentsInProgress from "../pages/User/ShipmentsInProgress";
+import ShipmentsFinish from "../pages/User/ShipmentsFinish";
+
 import MyOffersDriver from "../pages/Driver/MyOffersDriver";
+import MyOffersDeliveredDriver from "../pages/Driver/MyOffersDeliveredDriver";
 import MyShipmentsDriver from "../pages/Driver/MyShipmentsDriver";
 import SearchShipments from "../pages/Driver/SearchShipments";
 
@@ -66,7 +69,7 @@ const AppRouter = () => {
           <Route exact path="/myshipments" element={<MyShipments />} />
           <Route exact path="/shipment/:idShipment" element={<Shipment />} />
           <Route exact path="/inprogress" element={<ShipmentsInProgress />} />
-          <Route exact path="/finish" element={<ShipmentsInProgress />} />
+          <Route exact path="/finish" element={<ShipmentsFinish />} />
 
           <Route
             exact
@@ -92,6 +95,8 @@ const AppRouter = () => {
             element={<MyShipmentsDriver />}
           />
           <Route exact path="/offer/driver" element={<MyOffersDriver />} />
+          <Route exact path="/offer/delivered/driver" element={<MyOffersDeliveredDriver />} />
+
           <Route
             exact
             path="/myshipment/driver/:idShipment"

@@ -5,9 +5,12 @@ import { Navigate, useNavigate } from "react-router-dom";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
 import styles from "../../styles/Home.module.css";
 import stylesOffer from "../../styles/Offer.module.css";
+import stylesRequest from "../../styles/Request.module.css";
+
 import { readOffer } from "../../actions/offer";
 import { Link } from "react-router-dom";
 import { transformDateFormat } from "../../utils/validations";
+import {BsArrowRight} from "react-icons/bs";
 
 const MyOffersDriver = () => {
   document.title = "Fleteros - Mis Ofertas";
@@ -45,30 +48,28 @@ const MyOffersDriver = () => {
                             className={stylesOffer.cardElement}
                             key={element.id}
                           >
-                            <div className="row">
+                            {/* <div className="row">
                               <div className="col-12">
                                 <h4 className="pt-2">
-                                  Oferta Nro: {element.id}
+                                  Oferta Nº: {element.id}
                                 </h4>
                                 <hr />
                               </div>
-                            </div>
+                            </div> */}
                             <div className="row p-2 text-start">
                               <h5>
                                 <b>
                                   {" "}
-                                  Solicitud de Transporte Nro:{" "}
+                                  Solicitud de Transporte Nº:{" "}
                                   {element.shipment.id}{" "}
                                 </b>
                               </h5>
                               <div className="col-6 ps-lg-5">
                                 <div className="mb-2">
-                                  <b> Origen:</b>{" "}
-                                  {element.shipment.locationFrom}
+                                  <b> {element.shipment.locationFrom}</b>{" "} <BsArrowRight className={stylesRequest.arrowIcon} />  <b> {element.shipment.locationTo}</b> 
+                                  
                                 </div>
-                                <div>
-                                  <b> Destino:</b> {element.shipment.locationTo}
-                                </div>
+            
                               </div>
                               <div className="col-6  ps-lg-5">
                                 <div className="mb-2">

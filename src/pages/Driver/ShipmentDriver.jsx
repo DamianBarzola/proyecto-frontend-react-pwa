@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import inputTxt from "../../styles/Input.module.css";
-
 import stylesRequest from "../../styles/Request.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
 import { transformDateFormat } from "../../utils/validations";
 import { createOffer } from "../../actions/offer";
+import {BsArrowRight} from "react-icons/bs";
 
 const ShipmentDriver = () => {
   const dispatch = useDispatch();
@@ -63,7 +63,7 @@ const ShipmentDriver = () => {
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <div className="col-12 ">
           <div className={stylesRequest.cardForm}>
-            <h1>Solicitud de Transporte Nro: {id}</h1>
+            <h1>Solicitud de Transporte Nº: {id}</h1>
             <hr />
             <div className="row m-1">
               <div className="col-lg-12 ">
@@ -72,16 +72,14 @@ const ShipmentDriver = () => {
                 </h4>
                 <div className="text-start ps-3">
                   <div>
+                    {" "}
+                    <b> {locationFrom}</b> <BsArrowRight className={stylesRequest.arrowIcon} />  <b> {locationTo}</b> 
+
+                  </div>
+                  <div>
                     <b> Fecha:</b> {shipDate && transformDateFormat(shipDate)}
                   </div>
-                  <div>
-                    {" "}
-                    <b> Origen:</b> {locationFrom}
-                  </div>
-                  <div>
-                    {" "}
-                    <b> Destino:</b> {locationTo}
-                  </div>
+        
                 </div>
               </div>
             </div>
@@ -105,7 +103,7 @@ const ShipmentDriver = () => {
                               {item.quantity}
                             </div>
                             <div className="col-lg-3">
-                              <b>Tamaño: </b> {item.size}
+                              <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
                             </div>
                             <div className="col-lg-3">
                               <b>Peso: </b> {item.weight} Kgs.

@@ -26,7 +26,7 @@ export const readOffer = () => {
   let token = JSON.parse(localStorage.getItem("jwt"));
   return async (dispatch) => {
     await axios
-      .get(url + "/offer/me", {
+      .get(url + "/driver/offers/sent", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }) => {

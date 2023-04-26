@@ -1,3 +1,4 @@
+@import url("Variables.css");
 
 *{
     margin: 0;
@@ -10,7 +11,7 @@
   display: flex;
   height: 80px;
   width: 100%;
-  background: #1b1b1b;
+  background: var(--primary-color);
   align-items: center;
   justify-content: space-between;
   padding: 0 40px 0 60px;
@@ -18,15 +19,22 @@
   z-index: 10;
 }
 .logo{
-    text-decoration: none;
+    /* text-decoration: none;
   color: #fff;
-  font-size: 35px;
-  font-weight: 600;
+  font-size: 35px; */
+  /* font-weight: 600; */
+  height: 80px;
 }
-.logo:hover{
+.userIcon{
+  font-size: 20px;
+  margin-right: 4px;
+  margin-top: -3px;
+
+}
+/* .logo:hover{
   
   color: #fff;
-}
+} */
 .ulist{
   display: flex;
   flex-wrap: wrap;
@@ -58,13 +66,11 @@
 .linkDropMenu.active,
 .linkDropMenu:hover{
 
-  color:black;
-background-color: white;
+  color:white;
 }
 .link.active,
 .link:hover{
-  color: #111;
-  background: #fff;
+  color: black;
 }
 .menubtn{
   display: none;
@@ -106,7 +112,7 @@ transition: all 0.3s ease;
 .btnLogin{
   display: inline-block;
   color: black;
-  background-color: rgb(0, 255, 255);
+  background-color: white;
     text-decoration: none;
     font-size: 17px;
     font-weight: 500;
@@ -117,8 +123,8 @@ transition: all 0.3s ease;
 }
 .btnLogin.active,
 .btnLogin:hover{
-  color: white;
-  background: rgb(3, 121, 121);
+  color: black;
+  /* background: black; */
 }
 .btnRegister{
     text-decoration: none;
@@ -130,12 +136,12 @@ transition: all 0.3s ease;
     border-radius: 5px;
     transition: all 0.3s ease;
     margin-top: 20px;
-    background: rgb(1, 80, 80);
+    background: black;
 }
 .btnRegister.active,
 .btnRegister:hover{
-  color: black;
-  background-color: rgb(101, 241, 241);
+  color: white;
+  /* background-color: white; */
 }
 
 @media (max-width:950px) {
@@ -205,12 +211,12 @@ transition: all 0.3s ease;
    .link.active,
   .link:hover{
     background: none;
-    color: cyan;
+    color: var(--primary-color);
   }
   .linkActive.active,
   .linkActive:hover{
     background: none;
-    color: cyan;
+    color: var(--primary-color);
   }
   .btn{
     color: #f2f2f2;

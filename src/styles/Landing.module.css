@@ -1,3 +1,5 @@
+@import url("Variables.css");
+
 .background{
   margin: 0;
   padding: 0
@@ -52,7 +54,7 @@
 .btnBegin.active,
 .btnBegin:hover{
   color: black;
-  background: rgb(95, 180, 180);
+  background: var(--primary-color);
 }
 
 .cardContact{
@@ -109,7 +111,7 @@
   padding: 10px ;
   transition: all 0.3s ease;        
   border-radius: 5px;
-  background: rgb(10, 126, 126);
+  background: var(--primary-color);
   color: white;
 }
 .tabsPanel {  

@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import styles from "../../styles/Home.module.css";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
-import ViewInProgress from "../../components/ShipInProgress/ViewInProgress";
+import ViewFinish from "../../components/ShipFinish/ViewFinish";
 import { useDispatch, useSelector } from "react-redux";
-import { readShipmentInProgress } from "../../actions/shipment";
+import { readShipmentFinish } from "../../actions/shipment";
 import { Navigate } from "react-router-dom";
 
-const ShipmentsInProgress = () => {
+const ShipmentsFinish = () => {
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
   const dispatch = useDispatch();
 
   const shipments = useSelector((state) => state.shipment.data);
   useEffect(() => {
-    dispatch(readShipmentInProgress());
+    dispatch(readShipmentFinish());
   }, [dispatch]);
 
   if (driver) {
@@ -27,11 +27,11 @@ const ShipmentsInProgress = () => {
       <NavigationBar />
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <div className="col-12 ">
-          <ViewInProgress shipments={shipments} />
+          <ViewFinish shipments={shipments} />
         </div>
       </div>
     </>
   );
 };
 
-export default ShipmentsInProgress;
+export default ShipmentsFinish;

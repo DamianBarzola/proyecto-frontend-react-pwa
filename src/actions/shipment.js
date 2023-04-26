@@ -34,7 +34,7 @@ export const readShipment = () => {
   let token = JSON.parse(localStorage.getItem("jwt"));
   return async (dispatch) => {
     await axios
-      .get(url + "/shipment/allActive", {
+      .get(url + "/user/shipments/waiting_offers", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }) => {
@@ -43,6 +43,66 @@ export const readShipment = () => {
       .catch((response) => {});
   };
 };
+
+export const readShipmentDriver = () => {
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  return async (dispatch) => {
+    await axios
+      .get(url + "/driver/offers/accepted", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        dispatch(readShipments(data));
+      })
+      .catch((response) => {});
+  };
+};
+
+export const readShipmentDeliveredDriver = () => {
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  return async (dispatch) => {
+    await axios
+      .get(url + "/driver/offers/delivered", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        dispatch(readShipments(data));
+      })
+      .catch((response) => {});
+  };
+};
+
+
+
+export const readShipmentInProgress = () => {
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  return async (dispatch) => {
+    await axios
+      .get(url + "/user/shipments/active", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        dispatch(readShipments(data));
+      })
+      .catch((response) => {});
+  };
+};
+
+export const readShipmentFinish = () => {
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  return async (dispatch) => {
+    await axios
+    // /shipment/ ALGO
+      .get(url + "/user/shipments/delivered", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        dispatch(readShipments(data));
+      })
+      .catch((response) => {});
+  };
+};
+
 
 export const acceptOffer = (id) => {
   let token = JSON.parse(localStorage.getItem("jwt"));
@@ -67,7 +127,7 @@ export const finishShipment = (idShipment) => {
   };
   return async (dispatch) => {
     await axios
-      .post(url + "/shipment/update", data, {
+      .put(url + "/shipment/receive", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((data) => {
@@ -76,6 +136,26 @@ export const finishShipment = (idShipment) => {
       .catch((response) => {});
   };
 };
+
+
+export const finishShipmentDriver = (idShipment) => {
+  let token = JSON.parse(localStorage.getItem("jwt"));
+  let data = {
+    shipmet: { payment: true },
+    id: idShipment,
+  };
+  return async (dispatch) => {
+    await axios
+      .put(url + "/shipment/deliver", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((data) => {
+        alert("Shipment Finalizado");
+      })
+      .catch((response) => {});
+  };
+};
+
 
 export const create = (data) => {
   return {

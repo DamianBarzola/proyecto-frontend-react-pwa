@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { signOutDriver } from "../../actions/auth";
 import styles from "../../styles/Navbar.module.css";
+import {FaUserCircle} from "react-icons/fa";
 
 const DriverMenu = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [dropMenuOpen, setDropMenuOpen] = useState(false);
+  const driver = useSelector((state) => state.auth.driver);
 
   const dispatch = useDispatch();
   //para que no se rompa cuando esta isMobile en true y el max de pixeles se mas de 960px
@@ -77,7 +79,7 @@ const DriverMenu = () => {
             Viajes en curso
           </Link>
         </li>
-        <li className={styles.list}>
+        {/* <li className={styles.list}>
           <HashLink
             to="/#about-section"
             className={isMobile ? styles.linkActive : styles.link}
@@ -94,14 +96,14 @@ const DriverMenu = () => {
           >
             Contacto
           </HashLink>
-        </li>
+        </li> */}
 
         <li className={styles.list}>
           <label
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setDropMenuOpen(!dropMenuOpen)}
           >
-            Perfil
+            <FaUserCircle className={styles.userIcon} />{driver.driver.name} {driver.driver.lastname}
             <BsChevronDown className={styles.arrow} />
           </label>
           {dropMenuOpen && (

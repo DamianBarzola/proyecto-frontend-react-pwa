@@ -7,8 +7,11 @@ const PackageInfo = ({ nextStep, values }) => {
   const { items } = values;
   const [item, setitem] = useState({
     description: "",
-    weight: 0,
-    size: "",
+    //     weight: 0,
+    weight: " ",
+    hegith: "",
+    width: "",
+    depth: "",
     quantity: 1,
   });
   const [msgError, setmsgError] = useState("");
@@ -36,13 +39,15 @@ const PackageInfo = ({ nextStep, values }) => {
     if (
       item.description === "" ||
       item.weight === 0 ||
-      item.size === "" ||
+      item.height === "" ||
+      item.width === "" ||
+      item.depth === "" ||
       item.quantity === 0
     ) {
       setmsgErroritem("Complete Todos los campos");
     } else {
       items.push(item);
-      setitem({ description: "", weight: 0, size: "", quantity: 1 });
+      setitem({ description: "", weight: 0, height: "", width: "", depth: "", quantity: 1 });
       setmsgErroritem("");
     }
   };
@@ -82,8 +87,6 @@ const PackageInfo = ({ nextStep, values }) => {
               Cantidad
             </label>
           </div>
-        </div>
-        <div className="col-lg-6">
           <div className={inputTxt.form__div}>
             <input
               onChange={handleChangeItem}
@@ -95,15 +98,16 @@ const PackageInfo = ({ nextStep, values }) => {
               style={{ color: "black", border: "1px solid black" }}
             />
             <label className={inputTxt.form__label} style={{ color: "black" }}>
-              Peso del Item (En Kgs)
+              Peso del Item (En Kg)
             </label>
           </div>
-
+        </div>
+        <div className="col-lg-6">
           <div className={inputTxt.form__div}>
             <input
               onChange={handleChangeItem}
               value={item.size}
-              name="size"
+              name="height"
               type="text"
               maxLength={100}
               className={inputTxt.form__input}
@@ -111,7 +115,37 @@ const PackageInfo = ({ nextStep, values }) => {
               style={{ color: "black", border: "1px solid black" }}
             />
             <label className={inputTxt.form__label} style={{ color: "black" }}>
-              Tamaño del Item
+              Alto del Item (En Cm)
+            </label>
+          </div>
+          <div className={inputTxt.form__div}>
+            <input
+              onChange={handleChangeItem}
+              value={item.size}
+              name="width"
+              type="text"
+              maxLength={100}
+              className={inputTxt.form__input}
+              placeholder=" "
+              style={{ color: "black", border: "1px solid black" }}
+            />
+            <label className={inputTxt.form__label} style={{ color: "black" }}>
+              Ancho del Item (En Cm)
+            </label>
+          </div>
+          <div className={inputTxt.form__div}>
+            <input
+              onChange={handleChangeItem}
+              value={item.size}
+              name="depth"
+              type="text"
+              maxLength={100}
+              className={inputTxt.form__input}
+              placeholder=" "
+              style={{ color: "black", border: "1px solid black" }}
+            />
+            <label className={inputTxt.form__label} style={{ color: "black" }}>
+              Profundidad del Item (En Cm)
             </label>
           </div>
           <div className="text-end">
@@ -146,7 +180,7 @@ const PackageInfo = ({ nextStep, values }) => {
                       {item.quantity}
                     </div>
                     <div className="col-lg-2">
-                      <b>Tamaño: </b> {item.size}
+                      <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
                     </div>
                     <div className="col-lg-2">
                       <b>Peso: </b> {item.weight}

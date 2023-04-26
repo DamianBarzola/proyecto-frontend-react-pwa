@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { finishShipment } from "../../actions/shipment";
 import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
+import {BsArrowRight} from "react-icons/bs";
 
 const Request = ({ shipment }) => {
   const dispatch = useDispatch();
@@ -17,8 +18,8 @@ const Request = ({ shipment }) => {
 
   return (
     <div className={styles.cardForm}>
-      <h1>Solicitud de Transporte Nro: {id}</h1>
-      <hr />
+      <h1>Solicitud de Transporte Nº: {id}</h1>
+      <hr className={styles.line} />
       <div className="row m-1">
         <div className="col-lg-12 ">
           <h4>
@@ -26,15 +27,11 @@ const Request = ({ shipment }) => {
           </h4>
           <div className="text-start ps-3">
             <div>
+              {" "}
+              <b> {locationFrom}</b>  <BsArrowRight className={styles.arrowIcon} />  <b> {locationTo}</b> 
+            </div>
+            <div>
               <b> Fecha:</b> {shipDate && transformDateFormat(shipDate)}
-            </div>
-            <div>
-              {" "}
-              <b> Origen:</b> {locationFrom}
-            </div>
-            <div>
-              {" "}
-              <b> Destino:</b> {locationTo}
             </div>
           </div>
         </div>
@@ -59,7 +56,7 @@ const Request = ({ shipment }) => {
                         {item.quantity}
                       </div>
                       <div className="col-lg-3">
-                        <b>Tamaño: </b> {item.size}
+                        <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
                       </div>
                       <div className="col-lg-3">
                         <b>Peso: </b> {item.weight} Kgs.
@@ -79,7 +76,7 @@ const Request = ({ shipment }) => {
       <hr />
       <h2>Ofertas</h2>
       <div>
-        {state === "Waiting Offers" ? (
+        {state === "WAITING_OFFERS" ? (
           offers ? (
             offers.map((elemento) => {
               return (
@@ -109,9 +106,11 @@ const Request = ({ shipment }) => {
         ) : (
           offers &&
           offers.map((elemento) => {
+            console.log(elemento)
+
             return (
-              elemento.confirmed === true && (
-                <div>
+              elemento.state === "CONFIRMED" && (
+                <div key={elemento.id}>
                   <div className={styles.offercard}>
                     <div className="row">
                       <div className="col-lg-6 ">
@@ -121,7 +120,7 @@ const Request = ({ shipment }) => {
 
                       <div className="col-lg-6">
                         <b>Fecha de la Oferta: </b>
-                        {"11/11"}
+                        {elemento.updatedDate && transformDateFormat(elemento.updatedDate)}
                       </div>
                     </div>
                     <div className="row">
@@ -132,7 +131,7 @@ const Request = ({ shipment }) => {
 
                       <div className="col-lg-6">
                         <b>Precio: $</b>
-                        {"500"}
+                        {elemento.price}
                       </div>
                     </div>
                     <div className="row">

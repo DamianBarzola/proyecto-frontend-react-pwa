@@ -4,7 +4,7 @@ import { transformDateFormat } from "../../utils/validations";
 import styles from "../../styles/Home.module.css";
 import stylesRequest from "../../styles/Request.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { readShipment } from "../../actions/shipment";
+import { finishShipmentDriver } from "../../actions/shipment";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 const ViewMyShipmentDriver = () => {
@@ -31,8 +31,9 @@ const ViewMyShipmentDriver = () => {
 
   const { id, locationFrom, locationTo, shipDate, items, offers } = shipment;
 
-  const handleAccept = (e) => {
+  const handleFinish = (e) => {
     e.preventDefault();
+    dispatch(finishShipmentDriver(shipment.shipment.id));
   };
 
   if (user) {
@@ -43,11 +44,12 @@ const ViewMyShipmentDriver = () => {
   }
   return (
     <>
+    {console.log(shipment)}
       <NavigationBarDriver />
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <div className="col-12 ">
           <div className={stylesRequest.cardForm}>
-            <h1>Solicitud de Transporte Nro: {id}</h1>
+            <h1>Solicitud de Transporte Nº: {id && id}</h1>
             <hr />
             <div className="row m-1">
               <div className="col-lg-12 ">
@@ -60,11 +62,11 @@ const ViewMyShipmentDriver = () => {
                   </div>
                   <div>
                     {" "}
-                    <b> Origen:</b> {locationFrom}
+                    <b> Origen:</b> {locationFrom && locationFrom}
                   </div>
                   <div>
                     {" "}
-                    <b> Destino:</b> {locationTo}
+                    <b> Destino:</b> {locationTo && locationTo}
                   </div>
                 </div>
               </div>
@@ -89,7 +91,7 @@ const ViewMyShipmentDriver = () => {
                               {item.quantity}
                             </div>
                             <div className="col-lg-3">
-                              <b>Tamaño: </b> {item.size}
+                              <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
                             </div>
                             <div className="col-lg-3">
                               <b>Peso: </b> {item.weight} Kgs.
@@ -120,11 +122,11 @@ const ViewMyShipmentDriver = () => {
                           <div className="row">
                             <div className="col-lg-6">
                               <b>Fecha de la Oferta: </b>
-                              {"11/11"}
+                              {elemento.updatedDate && transformDateFormat(elemento.updatedDate)}
                             </div>
                             <div className="col-lg-6">
                               <b>Precio: $</b>
-                              {"500"}
+                              {elemento.price}
                             </div>
                           </div>
                         </div>
@@ -140,7 +142,7 @@ const ViewMyShipmentDriver = () => {
             >
               Volver
             </button>
-            <button onClick={handleAccept} className={stylesRequest.btn}>
+            <button onClick={handleFinish} className={stylesRequest.btn}>
               Finalizar Solicitud
             </button>
           </div>

@@ -5,11 +5,11 @@ import { Navigate } from "react-router-dom";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
 import styles from "../../styles/Home.module.css";
 import stylesRequest from "../../styles/Request.module.css";
-import { readShipmentDriver } from "../../actions/shipment";
+import { readShipmentDeliveredDriver } from "../../actions/shipment";
 import { Link } from "react-router-dom";
 import { transformDateFormat } from "../../utils/validations";
 
-const MyShipmentsDriver = () => {
+const MyOffersDeliveredDriver = () => {
   document.title = "Fleteros - Mis viajes";
   const driver = useSelector((state) => state.auth.driver);
   const user = useSelector((state) => state.auth.user);
@@ -17,7 +17,7 @@ const MyShipmentsDriver = () => {
 
   const shipments = useSelector((state) => state.shipment.data);
   useEffect(() => {
-    dispatch(readShipmentDriver());
+    dispatch(readShipmentDeliveredDriver());
   }, [dispatch]);
 
   if (user) {
@@ -32,7 +32,7 @@ const MyShipmentsDriver = () => {
         <NavigationBarDriver />
         <div className="col-12">
           <div className={stylesRequest.cardForm}>
-            <h1>Mis Viajes</h1>
+            <h1>Mis Viajes Realizados</h1>
             <hr />
             <div className="row">
               <div className="col-12">
@@ -56,19 +56,16 @@ const MyShipmentsDriver = () => {
                             <div className="row p-2 ">
                               <div className="col-6 ">
                                 <div className="mb-2">
-                                  <b> Origen:</b> {element.shipment && element.shipment.locationFrom}
+                                  <b> Origen:</b> {element.locationFrom}
                                 </div>
                                 <div>
-                                  <b> Destino:</b> {element.shipment && element.shipment.locationTo}
+                                  <b> Destino:</b> {element.locationTo}
                                 </div>
                               </div>
                               <div className="col-6 align-self-center ">
                                 <div>
                                   <b>Fecha:</b>{" "}
-                                  {element.shipment && transformDateFormat(element.shipment.shipDate)}
-                                </div>
-                                <div>
-                                  <b>Precio:</b> ${element.price}
+                                  {transformDateFormat(element.shipDate)}
                                 </div>
                               </div>
                             </div>
@@ -79,7 +76,7 @@ const MyShipmentsDriver = () => {
                   </div>
                 ) : (
                   <div>
-                    <h5>Actualmente no tienes Solicitudes</h5>
+                    <h5>No tienes ningun viaje realiado.</h5>
                   </div>
                 )}
               </div>
@@ -91,4 +88,4 @@ const MyShipmentsDriver = () => {
   );
 };
 
-export default MyShipmentsDriver;
+export default MyOffersDeliveredDriver;

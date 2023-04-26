@@ -1,3 +1,5 @@
+@import url("Variables.css");
+
 .cardLanding{
     text-align: center;background-image:url(../images/ros4.png) ;
     background-repeat: no-repeat;
@@ -48,12 +50,12 @@ box-sizing: border-box;
     background: rgb(95, 180, 180);
   }
   .btnLink{
-      color: rgb(4, 155, 155);
+      color: var(--primary-color);
       transition: 0.3s ease all;
       text-decoration: none;
   }
   .btnLink:hover,.btnLink:active{
-    color: rgb(0, 82, 82);
+    color: var(--primary-color-hover);
 }
 
 

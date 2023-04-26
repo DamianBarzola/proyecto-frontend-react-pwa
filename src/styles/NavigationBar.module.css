@@ -1,3 +1,5 @@
+@import url("Variables.css");
+
 .sidebar{
     position: fixed;
     left: 0;
@@ -26,7 +28,7 @@
     position: absolute;
     width: 5px;
     height: 76px;
-    background-color: rgb(0, 179, 179);
+    background-color: var(--primary-color);
     left: 0px;
     transform: translate(0%,-20%);
 
@@ -49,7 +51,7 @@
   }
   .link:hover{
     background: #1f1f1f;
-    color: rgb(0, 179, 179);
+    color: var(--primary-color);
   }
   .linkName{
     font-size: 18px;

@@ -61,7 +61,7 @@ const Success = ({ prevStep, values }) => {
                         {item.quantity}
                       </div>
                       <div className="col-lg-3">
-                        <b>Tamaño: </b> {item.size}
+                        <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
                       </div>
                       <div className="col-lg-3">
                         <b>Peso: </b> {item.weight} Kgs.

@@ -13,7 +13,7 @@ const Landing = () => {
       <section className={styles.sectionLanding}>
         <div className={styles.cardLanding}>
           <p>Bienvenido a FleteRos</p>
-          <div className={styles.text}>
+          <div  className={styles.text}>
             Disfruta de los mejores servicios de transporte de bienes de la
             ciudad de Rosario. En nuestra Web podras encontrar lo necesario para
             poder realizar los viajes mas rapidos y seguros para tus articulos u

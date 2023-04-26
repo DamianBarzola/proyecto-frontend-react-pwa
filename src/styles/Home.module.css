@@ -1,9 +1,12 @@
+@import url("Variables.css");
+
 .backHome{
+  /* background-color: var(--light-grey); */
   background-image:url(../images/ros4.png) ;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100% 70%; 
-  height: 50rem;
+  height: 55rem;
   margin-left:260px ;
 }
 .card{

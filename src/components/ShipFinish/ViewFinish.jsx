@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ViewInProgress = ({ shipments }) => {
   return (
     <div className={styles.cardForm}>
-      <h1>Solicitudes En Curso</h1>
+      <h1>Solicitudes Finalizadas</h1>
       <hr />
       <div className="row">
         <div className="col-12">
@@ -23,12 +23,10 @@ const ViewInProgress = ({ shipments }) => {
                     >
                       <div className={styles.cardElement}>
                         <div className="row">
-                        <div className="col-3">
+                          <div className="col-3">
 
-                        </div>
-
-
-                          <div className="col-8">
+                          </div>
+                          <div className="col-9">
                             <h3>{"Solicitud Nro: " + element.id}</h3>
                             <hr className={styles.asd} />
                         <div className="row p-2 ">
