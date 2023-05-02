@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import styles from "../../styles/Transportation.module.css";
 import inputTxt from "../../styles/Input.module.css";
 import { FaRegDotCircle, FaMapMarkerAlt } from "react-icons/fa";
+import Maps from "../Maps/Map";
+
+
 
 const TravelInfo = ({ nextStep, prevStep, handleChange, values }) => {
+
   const { shipment } = values;
   const { shipDate, locationFrom, locationTo } = shipment;
   const [msgErrorTravel, setMsgErrorTravel] = useState("");
@@ -74,6 +78,9 @@ const TravelInfo = ({ nextStep, prevStep, handleChange, values }) => {
               Destino
             </label>
           </div>
+
+        <Maps/>
+
         </div>
         <div className="col-lg-8"></div>
       </div>
