@@ -143,10 +143,10 @@ const Request = ({ shipment }) => {
                       <div className="col-lg-6"></div>
                     </div>
                   </div>
-                  <button className={styles.btn} onClick={handleFinish}>
+                  {/* <button className={styles.btn} onClick={handleFinish}>
                     {" "}
                     Finalizar Viaje
-                  </button>
+                  </button> */}
                 </div>
               )
             );

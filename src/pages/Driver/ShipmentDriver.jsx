@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "../../styles/Home.module.css";
 import inputTxt from "../../styles/Input.module.css";
 import stylesRequest from "../../styles/Request.module.css";
@@ -8,8 +8,17 @@ import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDri
 import { transformDateFormat } from "../../utils/validations";
 import { createOffer } from "../../actions/offer";
 import {BsArrowRight} from "react-icons/bs";
+import {
+  useJsApiLoader,
+  GoogleMap,
+  Marker,
+  DirectionsRenderer,
+} from '@react-google-maps/api'
 
 const ShipmentDriver = () => {
+  const center = {lat:-32.9460738, lng: -60.6425259}
+  const [directionsResponse, setDirectionsResponse] = useState(null)
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const driver = useSelector((state) => state.auth.driver);
@@ -17,6 +26,34 @@ const ShipmentDriver = () => {
   const { idShipment } = useParams();
   const ArrayShipment = useSelector((state) => state.shipment.data);
 
+
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const originRef = useRef()
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const destinationRef = useRef()
+  async function calculateRoute() {
+    //desactivo eslint porque si esta definido
+    // eslint-disable-next-line no-undef
+    const directionsService = new google.maps.DirectionsService()
+    const results = await directionsService.route({
+      origin: locationFrom,
+      destination: locationTo,
+      // eslint-disable-next-line no-undef
+      travelMode: google.maps.TravelMode.DRIVING,
+    })
+    setDirectionsResponse(results)
+  }
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  })
+  useEffect(() => {
+    if (!isLoaded) {
+      console.log('aaaaa')
+    }else{
+      console.log('bbbb')
+    }
+    })
   const navigate = useNavigate();
   const [shipment, setshipment] = useState({});
   const [priceOffer, setpriceOffer] = useState(0);
@@ -26,7 +63,8 @@ const ShipmentDriver = () => {
         ArrayShipment.find((x) => {
           return x.id === parseInt(idShipment);
         })
-      );
+        );
+      calculateRoute()
     } catch {
       navigate("../shipments/driver");
     }
@@ -72,14 +110,29 @@ const ShipmentDriver = () => {
                 </h4>
                 <div className="text-start ps-3">
                   <div>
+                    <b> Fecha:</b> {shipDate && transformDateFormat(shipDate)}
+                  </div>
+                  <div>
                     {" "}
                     <b> {locationFrom}</b> <BsArrowRight className={stylesRequest.arrowIcon} />  <b> {locationTo}</b> 
 
                   </div>
-                  <div>
-                    <b> Fecha:</b> {shipDate && transformDateFormat(shipDate)}
-                  </div>
-        
+                  
+                  <GoogleMap
+                    apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+                    mapContainerStyle={{ width: 'auto', height: '350px' }}
+                    center={center}
+                    zoom={15}
+                    options={{
+                      streetViewControl: false,
+                      mapTypeControl: false,
+                      fullscreenControl: false
+                    }}
+                    >
+                    {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
+                </GoogleMap>
+
+                      
                 </div>
               </div>
             </div>

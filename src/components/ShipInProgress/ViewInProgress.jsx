@@ -60,8 +60,8 @@ const ViewInProgress = ({ shipments }) => {
             </div>
           ) : (
             <div>
-              <h5>Actualmente no tienes Solicitudes</h5>
-            </div>
+            <span>Actualmente no tienes Solicitudes en Curso.</span>
+          </div>
           )}
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
 import { Link } from "react-router-dom";
+import {FaTruck} from "react-icons/fa";
 
 const ViewInProgress = ({ shipments }) => {
   return (
@@ -23,7 +24,8 @@ const ViewInProgress = ({ shipments }) => {
                     >
                       <div className={styles.cardElement}>
                         <div className="row">
-                          <div className="col-3">
+                          <div className="col-2">
+                          <FaTruck className={styles.truckIcon} />
 
                           </div>
                           <div className="col-9">
@@ -44,7 +46,7 @@ const ViewInProgress = ({ shipments }) => {
                               {transformDateFormat(element.shipDate)}
                             </div>
                             <div>
-                              <b>Items:</b> {element.items.length}
+                              {/* <b>Items:</b> {element.items.length} */}
                             </div>
                           </div>
                         </div>
@@ -58,8 +60,8 @@ const ViewInProgress = ({ shipments }) => {
             </div>
           ) : (
             <div>
-              <h5>Actualmente no tienes Solicitudes</h5>
-            </div>
+            <span>Actualmente no tienes Solicitudes Finalizadas.</span>
+          </div>
           )}
         </div>
       </div>

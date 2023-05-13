@@ -49,7 +49,7 @@ const ViewMyShipmentDriver = () => {
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <div className="col-12 ">
           <div className={stylesRequest.cardForm}>
-            <h1>Solicitud de Transporte Nº: {id && id}</h1>
+            <h1>Viaje Nº: {id && id}</h1>
             <hr />
             <div className="row m-1">
               <div className="col-lg-12 ">
@@ -58,7 +58,7 @@ const ViewMyShipmentDriver = () => {
                 </h4>
                 <div className="text-start ps-3">
                   <div>
-                    <b> Fecha:</b> {shipDate && transformDateFormat(shipDate)}
+                    <b> Fecha:</b> {shipment.shipDate && transformDateFormat(shipDate)}
                   </div>
                   <div>
                     {" "}

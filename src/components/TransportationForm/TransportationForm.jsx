@@ -29,6 +29,12 @@ export class TransportationForm extends Component {
       shipment: { ...this.state.shipment, [input]: e.target.value },
     });
   };
+  handleChangeLocation = (from, to) => {
+    this.setState({
+      shipment: { ...this.state.shipment, "locationFrom": from, "locationTo": to },
+    });
+  };
+
 
   render() {
     const { step, shipment, items } = this.state;
@@ -55,6 +61,7 @@ export class TransportationForm extends Component {
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              handleChangeLocation={this.handleChangeLocation}
             />
           </div>
         );

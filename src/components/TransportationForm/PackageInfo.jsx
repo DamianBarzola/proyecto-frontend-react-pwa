@@ -64,6 +64,7 @@ const PackageInfo = ({ nextStep, values }) => {
               value={item.description}
               name="description"
               type="text"
+              autocomplete="off"
               maxLength={150}
               className={inputTxt.form__input}
               placeholder=" "
@@ -79,6 +80,7 @@ const PackageInfo = ({ nextStep, values }) => {
               value={item.quantity}
               name="quantity"
               type="number"
+              autocomplete="off"
               className={inputTxt.form__input}
               placeholder=" "
               style={{ color: "black", border: "1px solid black" }}
@@ -93,6 +95,7 @@ const PackageInfo = ({ nextStep, values }) => {
               value={item.weight}
               name="weight"
               type="number"
+              autocomplete="off"
               className={inputTxt.form__input}
               placeholder=" "
               style={{ color: "black", border: "1px solid black" }}
@@ -108,7 +111,8 @@ const PackageInfo = ({ nextStep, values }) => {
               onChange={handleChangeItem}
               value={item.size}
               name="height"
-              type="text"
+              type="number"
+              autocomplete="off"
               maxLength={100}
               className={inputTxt.form__input}
               placeholder=" "
@@ -123,7 +127,8 @@ const PackageInfo = ({ nextStep, values }) => {
               onChange={handleChangeItem}
               value={item.size}
               name="width"
-              type="text"
+              type="number"
+              autocomplete="off"
               maxLength={100}
               className={inputTxt.form__input}
               placeholder=" "
@@ -138,7 +143,8 @@ const PackageInfo = ({ nextStep, values }) => {
               onChange={handleChangeItem}
               value={item.size}
               name="depth"
-              type="text"
+              type="number"
+              autocomplete="off"
               maxLength={100}
               className={inputTxt.form__input}
               placeholder=" "

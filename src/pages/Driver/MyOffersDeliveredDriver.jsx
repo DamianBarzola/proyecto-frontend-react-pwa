@@ -8,6 +8,7 @@ import stylesRequest from "../../styles/Request.module.css";
 import { readShipmentDeliveredDriver } from "../../actions/shipment";
 import { Link } from "react-router-dom";
 import { transformDateFormat } from "../../utils/validations";
+import {BsArrowRight} from "react-icons/bs";
 
 const MyOffersDeliveredDriver = () => {
   document.title = "Fleteros - Mis viajes";
@@ -41,31 +42,34 @@ const MyOffersDeliveredDriver = () => {
                     {shipments.map((element) => {
                       return (
                         <Link
-                          to={"/myshipment/driver/" + element.id}
-                          params={element.id}
-                          style={{ textDecoration: "none" }}
-                          key={element.id}
+                        to={"/myshipment/driver/" + element.id}
+                        params={element.id}
+                        style={{ textDecoration: "none" }}
+                        key={element.id}
                         >
                           <div className={stylesRequest.cardElement}>
                             <div className="row">
                               <div className="col-12">
-                                <h3>{"Solicitud Nro: " + element.id}</h3>
+                                <h3>{"Viaje Nº: " + element.shipment.id}</h3>
                                 <hr />
                               </div>
                             </div>
                             <div className="row p-2 ">
-                              <div className="col-6 ">
+                              <div className="col-12 ">
                                 <div className="mb-2">
-                                  <b> Origen:</b> {element.locationFrom}
+                                <b> {element.shipment.locationFrom}</b>  <BsArrowRight className={stylesRequest.arrowIcon} />  <b> {element.shipment.locationTo}</b> 
+{/* 
+                                  <b> Origen:</b> {element.shipment.locationFrom}
                                 </div>
                                 <div>
-                                  <b> Destino:</b> {element.locationTo}
+                                  <b> Destino:</b> {element.shipment.locationTo}
                                 </div>
                               </div>
-                              <div className="col-6 align-self-center ">
+                              <div className="col-6 align-self-center "> */}
                                 <div>
                                   <b>Fecha:</b>{" "}
-                                  {transformDateFormat(element.shipDate)}
+                                  {transformDateFormat(element.shipment.shipDate)}
+                                </div>
                                 </div>
                               </div>
                             </div>

@@ -59,7 +59,7 @@ const ViewMyRequests = ({ shipments }) => {
             </div>
           ) : (
             <div>
-              <span>Actualmente no tienes Solicitudes</span>
+              <span>Actualmente no tienes Solicitudes Activas.</span>
             </div>
           )}
         </div>
