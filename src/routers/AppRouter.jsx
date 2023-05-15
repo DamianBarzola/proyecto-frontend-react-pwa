@@ -30,91 +30,125 @@ import Page404 from "../pages/Page404";
 import PageMsg from "../pages/PageMsg";
 import PageMsgUser from "../pages/User/PageMsgUser";
 import PageMsgDriver from "../pages/Driver/PageMsgDriver";
+import LoadingGlobal from "../components/LoadingGlobal";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
-    let token = JSON.parse(localStorage.getItem("jwt"));
+    const fetchData = async () => {
+      setloading(true);
+      let token = localStorage.getItem("jwt");
 
-    if (token !== null) {
-      // try {
-      dispatch(getUser(token));
+      if (token !== null) {
+        // try {
+        dispatch(getUser(token));
 
-      // } catch (error) {
-      //   console.log("pasaron cosas");
-      // }
-    } else {
-      dispatch(logout());
-    }
+        // } catch (error) {
+        //   console.log("pasaron cosas");
+        // }
+        setloading(false);
+      } else {
+        dispatch(logout());
+        setloading(false);
+      }
+    };
+    fetchData();
   }, [dispatch]);
 
   return (
-    <div>
-      <header>
-        <NavBar />
-      </header>
-      <main style={{ paddingTop: "80px" }}>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route exact path="/login" element={<LoginUser />} />
-          <Route exact path="/login/driver" element={<LoginDriver />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/register/user" element={<RegisterUser />} />
-          <Route exact path="/register/driver" element={<RegisterDriver />} />
-          <Route exact path="/notification/:type" element={<PageMsg />} />
-          {/* User */}
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/newshipment" element={<NewShipment />} />
-          <Route exact path="/myshipments" element={<MyShipments />} />
-          <Route exact path="/shipment/:idShipment" element={<Shipment />} />
-          <Route exact path="/inprogress" element={<ShipmentsInProgress />} />
-          <Route exact path="/finish" element={<ShipmentsFinish />} />
+    <>
+      {loading ? (
+        <LoadingGlobal />
+      ) : (
+        <div>
+          <header>
+            <NavBar />
+          </header>
+          <main style={{ paddingTop: "80px" }}>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route exact path="/login" element={<LoginUser />} />
+              <Route exact path="/login/driver" element={<LoginDriver />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route exact path="/register/user" element={<RegisterUser />} />
+              <Route
+                exact
+                path="/register/driver"
+                element={<RegisterDriver />}
+              />
+              <Route exact path="/notification/:type" element={<PageMsg />} />
+              {/* User */}
+              <Route exact path="/home" element={<Home />} />
+              <Route exact path="/newshipment" element={<NewShipment />} />
+              <Route exact path="/myshipments" element={<MyShipments />} />
+              <Route
+                exact
+                path="/shipment/:idShipment"
+                element={<Shipment />}
+              />
+              <Route
+                exact
+                path="/inprogress"
+                element={<ShipmentsInProgress />}
+              />
+              <Route exact path="/finish" element={<ShipmentsFinish />} />
 
-          <Route
-            exact
-            path="/notification/user/:noti"
-            element={<PageMsgUser />}
-          />
-          <Route
-            exact
-            path="/offer/:idShipment/:idOffer"
-            element={<ViewOffer />}
-          />
-          {/* Driver */}
-          <Route exact path="/home/driver" element={<HomeDriver />} />
-          <Route exact path="/shipments/driver" element={<SearchShipments />} />
-          <Route
-            exact
-            path="/shipment/driver/:idShipment"
-            element={<ShipmentDriver />}
-          />
-          <Route
-            exact
-            path="/myshipments/driver"
-            element={<MyShipmentsDriver />}
-          />
-          <Route exact path="/offer/driver" element={<MyOffersDriver />} />
-          <Route exact path="/offer/delivered/driver" element={<MyOffersDeliveredDriver />} />
+              <Route
+                exact
+                path="/notification/user/:noti"
+                element={<PageMsgUser />}
+              />
+              <Route
+                exact
+                path="/offer/:idShipment/:idOffer"
+                element={<ViewOffer />}
+              />
+              {/* Driver */}
+              <Route exact path="/home/driver" element={<HomeDriver />} />
+              <Route
+                exact
+                path="/shipments/driver"
+                element={<SearchShipments />}
+              />
+              <Route
+                exact
+                path="/shipment/driver/:idShipment"
+                element={<ShipmentDriver />}
+              />
+              <Route
+                exact
+                path="/myshipments/driver"
+                element={<MyShipmentsDriver />}
+              />
+              <Route exact path="/offer/driver" element={<MyOffersDriver />} />
+              <Route
+                exact
+                path="/offer/delivered/driver"
+                element={<MyOffersDeliveredDriver />}
+              />
 
-          <Route
-            exact
-            path="/myshipment/driver/:idShipment"
-            element={<ViewMyShipmentDriver />}
-          />
-          <Route
-            exact
-            path="/notification/driver/:noti"
-            element={<PageMsgDriver />}
-          />
-          {/* 404 */}
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-      </main>
-      {/* <footer>
+              <Route
+                exact
+                path="/myshipment/driver/:idShipment"
+                element={<ViewMyShipmentDriver />}
+              />
+              <Route
+                exact
+                path="/notification/driver/:noti"
+                element={<PageMsgDriver />}
+              />
+              {/* 404 */}
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+          </main>
+          {/* <footer>
         <Fotter />
       </footer> */}
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 
