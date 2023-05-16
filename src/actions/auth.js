@@ -9,7 +9,8 @@ export const userlogin = (email, password) => {
     await axios
       .post(url + "/user/signin", datos)
       .then(({ data }) => {
-        localStorage.setItem("jwt", JSON.stringify(data.token));
+        console.log(data.token)
+        localStorage.setItem("jwt", data.token);
         dispatch(login(data.user));
       })
       .catch(({ response }) => {

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { signOut } from "../../actions/auth";
 import styles from "../../styles/Navbar.module.css";
-import {FaUserCircle} from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 
 const UserMenu = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -22,7 +22,7 @@ const UserMenu = () => {
     });
   }, []);
   const handleLogout = (e) => {
-    let token = JSON.parse(localStorage.getItem("jwt"));
+    let token = localStorage.getItem("jwt");
     dispatch(signOut(token));
     setIsMobile(false);
   };
@@ -103,7 +103,8 @@ const UserMenu = () => {
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setDropMenuOpen(!dropMenuOpen)}
           >
-            <FaUserCircle className={styles.userIcon} />{user.user.name} {user.user.lastname}
+            <FaUserCircle className={styles.userIcon} />
+            {user.user.name} {user.user.lastname}
             <BsChevronDown className={styles.arrow} />
           </label>
           {dropMenuOpen && (

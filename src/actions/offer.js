@@ -2,7 +2,7 @@ import axios from "axios";
 import { types, url } from "../types/types";
 
 export const createOffer = (priceOffer, idShipment) => {
-  let token = JSON.parse(localStorage.getItem("jwt"));
+  let token = localStorage.getItem("jwt");
   let data = {
     offer: {
       price: parseInt(priceOffer),
@@ -23,7 +23,7 @@ export const createOffer = (priceOffer, idShipment) => {
 };
 
 export const readOffer = () => {
-  let token = JSON.parse(localStorage.getItem("jwt"));
+  let token = localStorage.getItem("jwt");
   return async (dispatch) => {
     await axios
       .get(url + "/driver/offers/sent", {

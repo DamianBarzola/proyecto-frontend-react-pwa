@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { signOutDriver } from "../../actions/auth";
 import styles from "../../styles/Navbar.module.css";
-import {FaUserCircle} from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 
 const DriverMenu = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -22,7 +22,7 @@ const DriverMenu = () => {
     });
   }, []);
   const handleLogout = (e) => {
-    let token = JSON.parse(localStorage.getItem("jwt"));
+    let token = localStorage.getItem("jwt");
     dispatch(signOutDriver(token));
     setIsMobile(false);
   };
@@ -103,7 +103,8 @@ const DriverMenu = () => {
             className={isMobile ? styles.linkActive : styles.link}
             onClick={() => setDropMenuOpen(!dropMenuOpen)}
           >
-            <FaUserCircle className={styles.userIcon} />{driver.driver.name} {driver.driver.lastname}
+            <FaUserCircle className={styles.userIcon} />
+            {driver.driver.name} {driver.driver.lastname}
             <BsChevronDown className={styles.arrow} />
           </label>
           {dropMenuOpen && (

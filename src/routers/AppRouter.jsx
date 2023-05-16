@@ -39,18 +39,19 @@ const AppRouter = () => {
   useEffect(() => {
     const fetchData = async () => {
       setloading(true);
-      let token = localStorage.getItem("jwt");
 
-      if (token !== null) {
+      if (localStorage.getItem("jwt")) {
         // try {
-        dispatch(getUser(token));
-
+        dispatch(getUser(localStorage.getItem("jwt")));
+        console.log("getuser");
+        console.log(localStorage.getItem("jwt"));
         // } catch (error) {
         //   console.log("pasaron cosas");
         // }
         setloading(false);
       } else {
         dispatch(logout());
+        console.log("borralo");
         setloading(false);
       }
     };
