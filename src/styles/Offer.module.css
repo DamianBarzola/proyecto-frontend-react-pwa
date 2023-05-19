@@ -3,10 +3,12 @@
 .cardForm{
     text-align: center;
     background-color:rgb(255, 255, 255) ;
-    margin: 50px 20%;
     padding: 20px;
     border-radius: 7px;
     text-decoration: none;
+    width: 60%;
+    height: fit-content;
+    margin-top: 50px;
 }
 .cardElement{
     color: black;

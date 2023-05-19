@@ -3,10 +3,12 @@
 .cardForm{
     /* text-align: center; */
     background-color:rgb(255, 255, 255) ;
-    margin: 50px 20%;
     padding: 20px;
     border-radius: 7px;
     text-decoration: none;
+    width: 60%;
+    height: fit-content;
+    margin-top: 50px;
   }
   
   .cardElement{
@@ -31,6 +33,7 @@
   border-radius: 5px;
   background-color: rgba(144, 144, 144, 0.89);
   transition: all ease 0.3s;
+  
 
 }
 .center{
@@ -120,6 +123,11 @@
     }
     .offercard{
       margin: 4px 0px;
+  }
+  .cardForm{
+    width: 98%;
+    height: fit-content;
+    margin-top: 20px;
   }
   }
 

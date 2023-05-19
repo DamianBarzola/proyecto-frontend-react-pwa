@@ -19,7 +19,7 @@ const NavigationBarDriver = () => {
           >
             <div className="d-flex align-items-center">
               <AiFillHome className={styles.icons} />
-              <span className={styles.linkName}>Home</span>
+              <span className={styles.linkName}>Inicio</span>
             </div>
           </Link>
         </li>
@@ -67,8 +67,7 @@ const NavigationBarDriver = () => {
             </div>{" "}
           </Link>
         </li>
-        <li>
-        </li>
+        <li></li>
         <div className={styles.textCopy}>
           <p>Copyright &copy; 2022. Barzola - Etcheverry - Martin</p>
         </div>

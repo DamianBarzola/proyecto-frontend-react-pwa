@@ -10,7 +10,8 @@ import stylesRequest from "../../styles/Request.module.css";
 import { readOffer } from "../../actions/offer";
 import { Link } from "react-router-dom";
 import { transformDateFormat } from "../../utils/validations";
-import {BsArrowRight} from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
+import { FaClipboardList } from "react-icons/fa";
 
 const MyOffersDriver = () => {
   document.title = "Fleteros - Mis Ofertas";
@@ -33,9 +34,12 @@ const MyOffersDriver = () => {
     <>
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <NavigationBarDriver />
-        <div className="col-12 ">
+        <div className="col-12 d-flex justify-content-center ps-0">
           <div className={stylesOffer.cardForm}>
-            <h1>Ofertas Realizadas</h1>
+            <div className="d-flex align-items-center ms-1">
+              <FaClipboardList size="2rem" />
+              <h1 className="m-0 ms-2">Ofertas Realizadas</h1>
+            </div>
             <hr />
             <div className="row">
               <div className="col-12">
@@ -66,10 +70,12 @@ const MyOffersDriver = () => {
                               </h5>
                               <div className="col-6 ps-lg-5">
                                 <div className="mb-2">
-                                  <b> {element.shipment.locationFrom}</b>{" "} <BsArrowRight className={stylesRequest.arrowIcon} />  <b> {element.shipment.locationTo}</b> 
-                                  
+                                  <b> {element.shipment.locationFrom}</b>{" "}
+                                  <BsArrowRight
+                                    className={stylesRequest.arrowIcon}
+                                  />{" "}
+                                  <b> {element.shipment.locationTo}</b>
                                 </div>
-            
                               </div>
                               <div className="col-6  ps-lg-5">
                                 <div className="mb-2">
@@ -108,8 +114,8 @@ const MyOffersDriver = () => {
                     })}
                   </div>
                 ) : (
-                  <div>
-                    <h5>Actualmente no tienes ofertas realizadas</h5>
+                  <div className="my-4 d-flex justify-content-center">
+                    <h4>Actualmente no tienes ofertas realizadas.</h4>
                   </div>
                 )}
               </div>

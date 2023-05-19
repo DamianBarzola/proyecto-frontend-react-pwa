@@ -19,14 +19,21 @@
 }
 
 .cardHome{
-  background-color: white;
-  margin-top: 40px ;
+  background-color:rgb(255, 255, 255) ;
+  width: 60%;
+  height: fit-content;
+  margin-top: 50px;
+  padding: 20px;
   border-radius: 7px;
-  margin-top: 20%;
-  padding:50px 50px ;
+  text-decoration: none;
 }
 @media (max-width: 950px) {
   .backHome{    
     margin-left:0px ;
+  }
+  .cardHome{
+    width: 98%;
+    height: fit-content;
+    margin-top: 20px;
   }
 }

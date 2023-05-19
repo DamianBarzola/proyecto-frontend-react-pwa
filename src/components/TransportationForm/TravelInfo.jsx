@@ -45,8 +45,9 @@ const TravelInfo = ({
       travelMode: google.maps.TravelMode.DRIVING,
     });
     setDirectionsResponse(results);
-    setDistance(results.routes[0].legs[0].distance.text);
-    setDuration(results.routes[0].legs[0].duration.text);
+    setDistance(results.routes[0].legs[0].distance.value);
+    setDuration(results.routes[0].legs[0].duration.value);
+    console.log(results.routes[0].legs[0]);
   };
 
   const clearRoute = () => {

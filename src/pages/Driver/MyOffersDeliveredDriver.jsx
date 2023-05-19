@@ -8,7 +8,7 @@ import stylesRequest from "../../styles/Request.module.css";
 import { readShipmentDeliveredDriver } from "../../actions/shipment";
 import { Link } from "react-router-dom";
 import { transformDateFormat } from "../../utils/validations";
-import {BsArrowRight} from "react-icons/bs";
+import { BsArrowRight, BsFillFolderFill } from "react-icons/bs";
 
 const MyOffersDeliveredDriver = () => {
   document.title = "Fleteros - Mis viajes";
@@ -31,9 +31,12 @@ const MyOffersDeliveredDriver = () => {
     <>
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <NavigationBarDriver />
-        <div className="col-12">
+        <div className="col-12 d-flex justify-content-center ps-0">
           <div className={stylesRequest.cardForm}>
-            <h1>Mis Viajes Realizados</h1>
+            <div className="d-flex align-items-center ms-1">
+              <BsFillFolderFill size="2rem" />
+              <h1 className="m-0 ms-2">Mis Viajes Realizados</h1>
+            </div>
             <hr />
             <div className="row">
               <div className="col-12">
@@ -42,10 +45,10 @@ const MyOffersDeliveredDriver = () => {
                     {shipments.map((element) => {
                       return (
                         <Link
-                        to={"/myshipment/driver/" + element.id}
-                        params={element.id}
-                        style={{ textDecoration: "none" }}
-                        key={element.id}
+                          to={"/myshipment/driver/" + element.id}
+                          params={element.id}
+                          style={{ textDecoration: "none" }}
+                          key={element.id}
                         >
                           <div className={stylesRequest.cardElement}>
                             <div className="row">
@@ -57,8 +60,12 @@ const MyOffersDeliveredDriver = () => {
                             <div className="row p-2 ">
                               <div className="col-12 ">
                                 <div className="mb-2">
-                                <b> {element.shipment.locationFrom}</b>  <BsArrowRight className={stylesRequest.arrowIcon} />  <b> {element.shipment.locationTo}</b> 
-{/* 
+                                  <b> {element.shipment.locationFrom}</b>{" "}
+                                  <BsArrowRight
+                                    className={stylesRequest.arrowIcon}
+                                  />{" "}
+                                  <b> {element.shipment.locationTo}</b>
+                                  {/* 
                                   <b> Origen:</b> {element.shipment.locationFrom}
                                 </div>
                                 <div>
@@ -66,10 +73,12 @@ const MyOffersDeliveredDriver = () => {
                                 </div>
                               </div>
                               <div className="col-6 align-self-center "> */}
-                                <div>
-                                  <b>Fecha:</b>{" "}
-                                  {transformDateFormat(element.shipment.shipDate)}
-                                </div>
+                                  <div>
+                                    <b>Fecha:</b>{" "}
+                                    {transformDateFormat(
+                                      element.shipment.shipDate
+                                    )}
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -79,8 +88,8 @@ const MyOffersDeliveredDriver = () => {
                     })}
                   </div>
                 ) : (
-                  <div>
-                    <h5>No tienes ningun viaje realiado.</h5>
+                  <div className="my-4 d-flex justify-content-center">
+                    <h4>No tienes ningun viaje realizado.</h4>
                   </div>
                 )}
               </div>

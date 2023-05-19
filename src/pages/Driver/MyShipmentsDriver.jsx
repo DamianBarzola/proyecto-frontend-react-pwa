@@ -8,6 +8,7 @@ import stylesRequest from "../../styles/Request.module.css";
 import { readShipmentDriver } from "../../actions/shipment";
 import { Link } from "react-router-dom";
 import { transformDateFormat } from "../../utils/validations";
+import { FiPackage } from "react-icons/fi";
 
 const MyShipmentsDriver = () => {
   document.title = "Fleteros - Mis viajes";
@@ -30,9 +31,12 @@ const MyShipmentsDriver = () => {
     <>
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <NavigationBarDriver />
-        <div className="col-12">
+        <div className="col-12 d-flex justify-content-center ps-0">
           <div className={stylesRequest.cardForm}>
-            <h1>Mis Viajes</h1>
+            <div className="d-flex align-items-center ms-1">
+              <FiPackage size="2rem" />
+              <h1 className="m-0 ms-2">Mis Viajes</h1>
+            </div>
             <hr />
             <div className="row">
               <div className="col-12">
@@ -56,16 +60,23 @@ const MyShipmentsDriver = () => {
                             <div className="row p-2 ">
                               <div className="col-6 ">
                                 <div className="mb-2">
-                                  <b> Origen:</b> {element.shipment && element.shipment.locationFrom}
+                                  <b> Origen:</b>{" "}
+                                  {element.shipment &&
+                                    element.shipment.locationFrom}
                                 </div>
                                 <div>
-                                  <b> Destino:</b> {element.shipment && element.shipment.locationTo}
+                                  <b> Destino:</b>{" "}
+                                  {element.shipment &&
+                                    element.shipment.locationTo}
                                 </div>
                               </div>
                               <div className="col-6 align-self-center ">
                                 <div>
                                   <b>Fecha:</b>{" "}
-                                  {element.shipment && transformDateFormat(element.shipment.shipDate)}
+                                  {element.shipment &&
+                                    transformDateFormat(
+                                      element.shipment.shipDate
+                                    )}
                                 </div>
                                 <div>
                                   <b>Precio:</b> ${element.price}
@@ -78,8 +89,8 @@ const MyShipmentsDriver = () => {
                     })}
                   </div>
                 ) : (
-                  <div>
-                    <h5>Actualmente no tienes Solicitudes</h5>
+                  <div className="my-4 d-flex justify-content-center">
+                    <h4>Actualmente no tienes Solicitudes.</h4>
                   </div>
                 )}
               </div>

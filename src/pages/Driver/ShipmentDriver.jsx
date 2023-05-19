@@ -7,17 +7,17 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
 import { transformDateFormat } from "../../utils/validations";
 import { createOffer } from "../../actions/offer";
-import {BsArrowRight} from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
 import {
   useJsApiLoader,
   GoogleMap,
   Marker,
   DirectionsRenderer,
-} from '@react-google-maps/api'
+} from "@react-google-maps/api";
 
 const ShipmentDriver = () => {
-  const center = {lat:-32.9460738, lng: -60.6425259}
-  const [directionsResponse, setDirectionsResponse] = useState(null)
+  const center = { lat: -32.9460738, lng: -60.6425259 };
+  const [directionsResponse, setDirectionsResponse] = useState(null);
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
@@ -26,34 +26,33 @@ const ShipmentDriver = () => {
   const { idShipment } = useParams();
   const ArrayShipment = useSelector((state) => state.shipment.data);
 
-
-    /** @type React.MutableRefObject<HTMLInputElement> */
-    const originRef = useRef()
-    /** @type React.MutableRefObject<HTMLInputElement> */
-    const destinationRef = useRef()
+  /** @type React.MutableRefObject<HTMLInputElement> */
+  const originRef = useRef();
+  /** @type React.MutableRefObject<HTMLInputElement> */
+  const destinationRef = useRef();
   async function calculateRoute() {
     //desactivo eslint porque si esta definido
     // eslint-disable-next-line no-undef
-    const directionsService = new google.maps.DirectionsService()
+    const directionsService = new google.maps.DirectionsService();
     const results = await directionsService.route({
       origin: locationFrom,
       destination: locationTo,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
-    })
-    setDirectionsResponse(results)
+    });
+    setDirectionsResponse(results);
   }
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-  })
+  });
   useEffect(() => {
     if (!isLoaded) {
-      console.log('aaaaa')
-    }else{
-      console.log('bbbb')
+      console.log("aaaaa");
+    } else {
+      console.log("bbbb");
     }
-    })
+  });
   const navigate = useNavigate();
   const [shipment, setshipment] = useState({});
   const [priceOffer, setpriceOffer] = useState(0);
@@ -63,8 +62,8 @@ const ShipmentDriver = () => {
         ArrayShipment.find((x) => {
           return x.id === parseInt(idShipment);
         })
-        );
-      calculateRoute()
+      );
+      calculateRoute();
     } catch {
       navigate("../shipments/driver");
     }
@@ -99,7 +98,7 @@ const ShipmentDriver = () => {
     <>
       <NavigationBarDriver />
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
-        <div className="col-12 ">
+        <div className="col-12 d-flex justify-content-center ps-0">
           <div className={stylesRequest.cardForm}>
             <h1>Solicitud de Transporte Nº: {id}</h1>
             <hr />
@@ -114,25 +113,26 @@ const ShipmentDriver = () => {
                   </div>
                   <div>
                     {" "}
-                    <b> {locationFrom}</b> <BsArrowRight className={stylesRequest.arrowIcon} />  <b> {locationTo}</b> 
-
+                    <b> {locationFrom}</b>{" "}
+                    <BsArrowRight className={stylesRequest.arrowIcon} />{" "}
+                    <b> {locationTo}</b>
                   </div>
-                  
+
                   <GoogleMap
                     apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-                    mapContainerStyle={{ width: 'auto', height: '350px' }}
+                    mapContainerStyle={{ width: "auto", height: "350px" }}
                     center={center}
                     zoom={15}
                     options={{
                       streetViewControl: false,
                       mapTypeControl: false,
-                      fullscreenControl: false
+                      fullscreenControl: false,
                     }}
-                    >
-                    {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
-                </GoogleMap>
-
-                      
+                  >
+                    {directionsResponse && (
+                      <DirectionsRenderer directions={directionsResponse} />
+                    )}
+                  </GoogleMap>
                 </div>
               </div>
             </div>
@@ -156,7 +156,8 @@ const ShipmentDriver = () => {
                               {item.quantity}
                             </div>
                             <div className="col-lg-3">
-                              <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
+                              <b>Tamaño: </b> {item.height}x{item.width}x
+                              {item.depth} cm
                             </div>
                             <div className="col-lg-3">
                               <b>Peso: </b> {item.weight} Kgs.

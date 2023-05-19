@@ -49,7 +49,7 @@ const DriverMenu = () => {
             onClick={() => setIsMobile(false)}
             className={isMobile ? styles.linkActive : styles.link}
           >
-            Home
+            Inicio
           </Link>
         </li>
         <li className={styles.listOnlyMobile}>

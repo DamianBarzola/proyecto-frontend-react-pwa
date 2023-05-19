@@ -7,7 +7,6 @@ import { FaClipboardList } from "react-icons/fa";
 import { BsFillClockFill } from "react-icons/bs";
 import { BsFillFolderFill } from "react-icons/bs";
 
-
 const NavigationBar = () => {
   return (
     <div className={styles.sidebar}>
@@ -20,7 +19,7 @@ const NavigationBar = () => {
           >
             <div className="d-flex align-items-center">
               <AiFillHome className={styles.icons} />
-              <span className={styles.linkName}>Home</span>
+              <span className={styles.linkName}>Inicio</span>
             </div>
           </Link>
         </li>

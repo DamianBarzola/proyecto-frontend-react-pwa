@@ -44,10 +44,10 @@ const ViewMyShipmentDriver = () => {
   }
   return (
     <>
-    {console.log(shipment)}
+      {console.log(shipment)}
       <NavigationBarDriver />
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
-        <div className="col-12 ">
+        <div className="col-12 d-flex justify-content-center ps-0">
           <div className={stylesRequest.cardForm}>
             <h1>Viaje Nº: {id && id}</h1>
             <hr />
@@ -58,7 +58,8 @@ const ViewMyShipmentDriver = () => {
                 </h4>
                 <div className="text-start ps-3">
                   <div>
-                    <b> Fecha:</b> {shipment.shipDate && transformDateFormat(shipDate)}
+                    <b> Fecha:</b>{" "}
+                    {shipment.shipDate && transformDateFormat(shipDate)}
                   </div>
                   <div>
                     {" "}
@@ -91,7 +92,8 @@ const ViewMyShipmentDriver = () => {
                               {item.quantity}
                             </div>
                             <div className="col-lg-3">
-                              <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
+                              <b>Tamaño: </b> {item.height}x{item.width}x
+                              {item.depth} cm
                             </div>
                             <div className="col-lg-3">
                               <b>Peso: </b> {item.weight} Kgs.
@@ -122,7 +124,8 @@ const ViewMyShipmentDriver = () => {
                           <div className="row">
                             <div className="col-lg-6">
                               <b>Fecha de la Oferta: </b>
-                              {elemento.updatedDate && transformDateFormat(elemento.updatedDate)}
+                              {elemento.updatedDate &&
+                                transformDateFormat(elemento.updatedDate)}
                             </div>
                             <div className="col-lg-6">
                               <b>Precio: $</b>

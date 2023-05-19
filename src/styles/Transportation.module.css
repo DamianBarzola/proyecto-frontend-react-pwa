@@ -2,10 +2,12 @@
 
 .cardForm{
     text-align: center;
-    background-color:var(--light-grey) ;
-    margin: 50px 15%;
+    background-color:white ;
     padding: 20px;
     border-radius: 5px;
+    width: 60%;
+    height: fit-content;
+    margin-top: 50px;
 }
 .btnDefault{
   margin: 0px 10px;

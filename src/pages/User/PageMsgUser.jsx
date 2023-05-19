@@ -20,7 +20,7 @@ const PageMsgUser = () => {
         <div
           className={styles.backHome + " row d-flex justify-content-evenly "}
         >
-          <div className="col-12 ">
+          <div className="col-12 d-flex justify-content-center ps-0">
             <div>
               <section
                 className={styles.card404}
