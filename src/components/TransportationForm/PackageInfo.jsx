@@ -201,20 +201,33 @@ const PackageInfo = ({ nextStep, values }) => {
               return (
                 <div className={styles.cardItem} key={index}>
                   <div className="row d-flex justify-content-between align-items-center">
-                    <div className="col-lg-2 ">
-                      <b>Item:</b> {item.description}
+                    <div className="col-lg-2 col-12">
+                      <div>
+                        <b>Item:</b>
+                      </div>
+                      <div>{item.description}</div>
                     </div>
-                    <div className="col-lg-2">
-                      <b>Cantidad: </b>
-                      {item.quantity}
+                    <div className="col-lg-2 col-4">
+                      <div>
+                        <b>Cantidad: </b>
+                      </div>
+                      <div>{item.quantity}</div>
                     </div>
-                    <div className="col-lg-2">
-                      <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
+                    <div className="col-lg-3 col-4">
+                      <div>
+                        <b>Tamaño: </b>
+                      </div>
+                      <div>
+                        {item.height}x{item.width}x{item.depth} cm
+                      </div>
                     </div>
-                    <div className="col-lg-2">
-                      <b>Peso: </b> {item.weight}
+                    <div className="col-lg-1 col-4">
+                      <div>
+                        <b>Peso: </b>
+                      </div>
+                      <div>{item.weight}</div>
                     </div>
-                    <div className="col-lg-2">
+                    <div className="col-lg-2 col-12">
                       <button
                         className="btn btn-danger"
                         onClick={() => {

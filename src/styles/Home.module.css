@@ -1,7 +1,7 @@
 @import url("Variables.css");
 
 .backHome{
-  /* background-color: var(--light-grey); */
+  /*     background-color: white; */
   background-image:url(../images/ros4.png) ;
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,5 +35,6 @@
     width: 98%;
     height: fit-content;
     margin-top: 20px;
+    
   }
 }

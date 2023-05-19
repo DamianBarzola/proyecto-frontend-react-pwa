@@ -33,7 +33,7 @@ export const userlogin = (email, password) => {
 export const getUser = (token) => {
   return async (dispatch) => {
     await axios
-      .get(url + "/getMe", {
+      .get(url + "/me", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(async ({ data }) => {

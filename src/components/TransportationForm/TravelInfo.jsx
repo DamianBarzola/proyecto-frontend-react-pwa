@@ -26,36 +26,35 @@ const TravelInfo = ({
   const { shipment } = values;
   const { shipDate, hour, locationFrom, locationTo } = shipment;
 
-  /** @type React.MutableRefObject<HTMLInputElement> */
-  const originRef = useRef();
-  /** @type React.MutableRefObject<HTMLInputElement> */
-  const destinationRef = useRef();
+  const [origen, setOrigen] = useState("");
+  const [destination, setDestination] = useState("");
 
-  const calculateRoute = async () => {
-    if (originRef.current.value === "" || destinationRef.current.value === "") {
+  const calculateRoute = async (originRef, destinationRef) => {
+    if (originRef === "" || destinationRef === "") {
       return;
     }
     //desactivo eslint porque si esta definido
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
     const results = await directionsService.route({
-      origin: originRef.current.value,
-      destination: destinationRef.current.value,
+      origin: originRef,
+      destination: destinationRef,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
     });
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.value);
     setDuration(results.routes[0].legs[0].duration.value);
-    console.log(results.routes[0].legs[0]);
+    setOrigen(results.routes[0].legs[0].start_address);
+    setDestination(results.routes[0].legs[0].end_address);
   };
 
   const clearRoute = () => {
     setDirectionsResponse(null);
     setDistance("");
     setDuration("");
-    originRef.current.value = "";
-    destinationRef.current.value = "";
+    setOrigen("");
+    setDestination("");
   };
 
   const [msgErrorTravel, setMsgErrorTravel] = useState("");
@@ -64,26 +63,24 @@ const TravelInfo = ({
     prevStep();
   };
   const Continue = (e) => {
-    if (
-      shipDate === "" ||
-      hour === "" ||
-      originRef.current.value === "" ||
-      destinationRef.current.value === ""
-    ) {
+    if (shipDate === "" || hour === "" || origen === "" || destination === "") {
       setMsgErrorTravel("Complete todos los campos");
     } else {
-      handleChangeLocation(
-        originRef.current.value,
-        destinationRef.current.value,
-        duration,
-        distance,
-        hour
-      );
+      handleChangeLocation(origen, destination, duration, distance, hour);
       e.preventDefault();
       setMsgErrorTravel("");
       nextStep();
     }
   };
+
+  useEffect(() => {
+    const a = async () => {
+      if (locationFrom != "" && locationTo != "") {
+        await calculateRoute(locationFrom, locationTo);
+      }
+    };
+    a();
+  }, [shipment]);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -99,7 +96,6 @@ const TravelInfo = ({
           <div className="col-lg-6">
             <div className="text-start">
               <label className={inputTxt.dateLabel}>Fecha del Viaje</label>
-
               <input
                 onChange={handleChange("shipDate")}
                 value={shipDate}
@@ -134,7 +130,10 @@ const TravelInfo = ({
                     className={inputTxt.form__location_input}
                     placeholder=" Origen"
                     style={{ color: "black", border: "1px solid black" }}
-                    ref={originRef}
+                    value={origen}
+                    onChange={(e) => {
+                      setOrigen(e.target.value);
+                    }}
                   />
                 </Autocomplete>
               )}
@@ -149,7 +148,11 @@ const TravelInfo = ({
                     className={inputTxt.form__location_input}
                     placeholder="Destino"
                     style={{ color: "black", border: "1px solid black" }}
-                    ref={destinationRef}
+                    // ref={destinationRef}
+                    value={destination}
+                    onChange={(e) => {
+                      setDestination(e.target.value);
+                    }}
                   />
                 </Autocomplete>
               )}
@@ -162,7 +165,7 @@ const TravelInfo = ({
                   <button
                     className={inputTxt.iconButton}
                     type="submit"
-                    onClick={calculateRoute}
+                    onClick={() => calculateRoute(origen, destination)}
                   >
                     <MdLocationOn size="20px" />
                     Elegir

@@ -15,7 +15,7 @@
     margin: 10px 0px;
     padding: 10px;
     border-radius:2px;
-    background-color: var(--light-grey);
+    background-color: white;
     transition: all ease 0.3s;
     box-shadow: 0 2px 6px rgb(95 108 114 / 35%), 0 0 6px rgb(95 108 114 / 5%);}
 /* .cardElement:hover{
@@ -29,6 +29,9 @@
     .cardForm{
       margin: 10px;
       padding: 10px 4px 0px 4px;
+      width: 98%;
+      height: fit-content;
+      margin-top: 20px;
     }
     .cardElement{
         margin: 4px 0px;

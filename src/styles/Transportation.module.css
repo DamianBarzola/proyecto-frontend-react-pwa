@@ -153,3 +153,16 @@
     padding: 10px;
     font-size: 16px;
   }
+
+  @media (max-width:950px) {
+    .cardForm{
+      margin: 10px;
+      padding: 10px 10px 0px 10px;
+    }
+
+  .cardForm{
+    width: 98%;
+    height: fit-content;
+    margin-top: 20px;
+  }
+  }
