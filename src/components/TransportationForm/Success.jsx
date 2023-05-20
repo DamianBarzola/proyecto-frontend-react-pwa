@@ -3,11 +3,17 @@ import styles from "../../styles/Transportation.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createShipment } from "../../actions/shipment";
-import { formatDate } from "../../utils/utils";
+import {
+  formatDate,
+  formatDateSeconds,
+  formatDistance,
+} from "../../utils/utils";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { BiCurrentLocation } from "react-icons/bi";
 import { GrLocationPin } from "react-icons/gr";
 import { BiDetail } from "react-icons/bi";
+import { RiPinDistanceLine } from "react-icons/ri";
+import { CgSandClock } from "react-icons/cg";
 
 const Success = ({ prevStep, values }) => {
   const dispatch = useDispatch();
@@ -55,6 +61,17 @@ const Success = ({ prevStep, values }) => {
               <div className="col-12">
                 <GrLocationPin size={"20px"} />
                 <b> Destino:</b> {values.shipment.locationTo}
+              </div>
+            </div>
+            <div className="row my-3 d-flex">
+              <div className="col-6">
+                <RiPinDistanceLine size={"20px"} />
+                <b> Distancia:</b> {formatDistance(values.shipment.distance)}
+              </div>
+              <div className="col-6">
+                <CgSandClock size={"20px"} />
+                <b> Duracion Aprox.:</b>{" "}
+                {formatDateSeconds(values.shipment.duration)}
               </div>
             </div>
           </div>

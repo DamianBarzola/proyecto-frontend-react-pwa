@@ -10,6 +10,9 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from "@react-google-maps/api";
+import { formatDateSeconds, formatDistance } from "../../utils/utils";
+import { RiPinDistanceLine } from "react-icons/ri";
+import { CgSandClock } from "react-icons/cg";
 const libraries = ["places"];
 
 const TravelInfo = ({
@@ -47,6 +50,7 @@ const TravelInfo = ({
     setDuration(results.routes[0].legs[0].duration.value);
     setOrigen(results.routes[0].legs[0].start_address);
     setDestination(results.routes[0].legs[0].end_address);
+    console.log(results.routes[0].legs[0].distance.text);
   };
 
   const clearRoute = () => {
@@ -189,10 +193,12 @@ const TravelInfo = ({
         </div>
         <div className="row mb-4">
           <div className="col-5">
-            <b>Distancia: </b> {distance}
+            <RiPinDistanceLine size={"20px"} /> <b>Distancia: </b>{" "}
+            {formatDistance(distance)}
           </div>
           <div className="col-5">
-            <b>Duración Aproximada: </b> {duration}
+            <CgSandClock size={"20px"} /> <b>Duración Aproximada: </b>{" "}
+            {formatDateSeconds(duration)}
           </div>
         </div>
         <div className="row ">
