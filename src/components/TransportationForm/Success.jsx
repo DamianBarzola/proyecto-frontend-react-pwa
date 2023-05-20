@@ -3,6 +3,11 @@ import styles from "../../styles/Transportation.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createShipment } from "../../actions/shipment";
+import { formatDate } from "../../utils/utils";
+import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
+import { BiCurrentLocation } from "react-icons/bi";
+import { GrLocationPin } from "react-icons/gr";
+import { BiDetail } from "react-icons/bi";
 
 const Success = ({ prevStep, values }) => {
   const dispatch = useDispatch();
@@ -19,52 +24,83 @@ const Success = ({ prevStep, values }) => {
 
   return (
     <div>
-      <h1>Finalizar Solicitud de Transporte</h1>
+      <h1>Solicitud de Transporte</h1>
       <hr />
       <div className={styles.card}>
-        <h3 className="pt-3 ">Solicitud de Transporte</h3>
-        <hr className="m-2" />
         <div className="row pb-3 text-start" style={{ fontSize: "17px" }}>
-          <div className="col-lg-10 ps-5 ">
-            <h5 className="ps-5">
-              <b> Detalles del Viaje</b>
+          <div className="col-lg-12 ps-5 ">
+            <h5 className="ps-3 mt-3">
+              <BiDetail size={"20px"} />{" "}
+              <b>
+                <i> Detalles del Viaje</i>
+              </b>
             </h5>
-            <div>
-              <b> Fecha:</b> {values.shipment.shipDate}
+            <div className="row my-3 d-flex">
+              <div className="col-6">
+                <AiOutlineCalendar size={"20px"} />
+                <b> Fecha:</b> {formatDate(values.shipment.shipDate)}
+              </div>
+              <div className="col-6">
+                <AiOutlineClockCircle size={"20px"} />
+                <b> Horario Aprox.:</b> {values.shipment.hour}
+              </div>
             </div>
-            <div>
-              {" "}
-              <b> Origen:</b> {values.shipment.locationFrom}
+            <div className="row my-3">
+              <div className="col-12">
+                <BiCurrentLocation size={"20px"} />
+                <b> Origen:</b> {values.shipment.locationFrom}
+              </div>
             </div>
-            <div>
-              {" "}
-              <b> Destino:</b> {values.shipment.locationTo}
+            <div className="row mt-3">
+              <div className="col-12">
+                <GrLocationPin size={"20px"} />
+                <b> Destino:</b> {values.shipment.locationTo}
+              </div>
             </div>
           </div>
         </div>
+        {/* <div>
+          <hr className="mx-3 m-0" />
+        </div> */}
         <div className="row text-start pb-3 p-2">
           <div className="col-lg-12 ">
             <h5 className="ps-5">
-              <b> Detalles de la Carga</b>
+              <BiDetail size={"20px"} />
+              <b>
+                <i>Detalles de la Carga</i>
+              </b>
             </h5>
 
-            <div>
+            <div className="px-4">
               {values.items.map((item, index) => {
                 return (
                   <div className={styles.cardItem2} key={index}>
                     <div className="row d-flex justify-content-between align-items-center">
-                      <div className="col-lg-3 ">
-                        <b>Item:</b> {item.description}
+                      <div className="col-lg-3 col-12">
+                        <div>
+                          <b>Item</b>
+                        </div>
+                        <div>{item.description}</div>
                       </div>
-                      <div className="col-lg-3">
-                        <b>Cantidad: </b>
-                        {item.quantity}
+                      <div className="col-lg-3 col-4">
+                        <div>
+                          <b>Cantidad </b>
+                        </div>
+                        <div>{item.quantity}</div>
                       </div>
-                      <div className="col-lg-3">
-                        <b>Tamaño: </b> {item.height}x{item.width}x{item.depth} cm
+                      <div className="col-lg-3 col-4">
+                        <div>
+                          <b>Tamaño </b>
+                        </div>
+                        <div>
+                          {item.height}x{item.width}x{item.depth} cm
+                        </div>
                       </div>
-                      <div className="col-lg-3">
-                        <b>Peso: </b> {item.weight} Kgs.
+                      <div className="col-lg-3 col-4">
+                        <div>
+                          <b>Peso </b>
+                        </div>
+                        <div>{item.weight}</div>
                       </div>
                     </div>
                   </div>

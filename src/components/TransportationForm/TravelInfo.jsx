@@ -108,7 +108,7 @@ const TravelInfo = ({
           </div>
           <div className="col-lg-6">
             <div className="text-start">
-              <label className={inputTxt.dateLabel}>Horario</label>
+              <label className={inputTxt.dateLabel}>Horario Aproximado</label>
               <input
                 onChange={handleChange("hour")}
                 value={hour}

@@ -203,19 +203,19 @@ const PackageInfo = ({ nextStep, values }) => {
                   <div className="row d-flex justify-content-between align-items-center">
                     <div className="col-lg-2 col-12">
                       <div>
-                        <b>Item:</b>
+                        <b>Item</b>
                       </div>
                       <div>{item.description}</div>
                     </div>
                     <div className="col-lg-2 col-4">
                       <div>
-                        <b>Cantidad: </b>
+                        <b>Cantidad </b>
                       </div>
                       <div>{item.quantity}</div>
                     </div>
                     <div className="col-lg-3 col-4">
                       <div>
-                        <b>Tamaño: </b>
+                        <b>Tamaño </b>
                       </div>
                       <div>
                         {item.height}x{item.width}x{item.depth} cm
@@ -223,7 +223,7 @@ const PackageInfo = ({ nextStep, values }) => {
                     </div>
                     <div className="col-lg-1 col-4">
                       <div>
-                        <b>Peso: </b>
+                        <b>Peso </b>
                       </div>
                       <div>{item.weight}</div>
                     </div>
