@@ -48,7 +48,8 @@ const Success = ({ prevStep, values }) => {
               </div>
               <div className="col-6">
                 <AiOutlineClockCircle size={"20px"} />
-                <b> Horario Aprox.:</b> {values.shipment.hour}
+                <b> Horario:</b>{" "}
+                {values.shipment.delivery_shift == "M" ? "Mañana" : "Tarde"}
               </div>
             </div>
             <div className="row my-3">

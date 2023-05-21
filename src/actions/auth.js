@@ -109,7 +109,7 @@ export const driverlogin = (email, password) => {
     await axios
       .post(url + "/driver/signin", datos)
       .then(({ data }) => {
-        localStorage.setItem("jwt", JSON.stringify(data.token));
+        localStorage.setItem("jwt", data.token);
         dispatch(loginDriver(data.driver));
       })
       .catch(({ response }) => {

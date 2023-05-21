@@ -23,28 +23,28 @@ const Offer = ({ offer }) => {
             <h5 className="text-center">
               <b>Datos del Conductor</b>
             </h5>
-            <div>
+            <div className="my-2">
               <b>Nombre: </b>
               {offer.driver.name + " " + offer.driver.lastname}
             </div>
-            <div>
+            <div className="my-2">
               <b>Correo Electrónico: </b>
               {offer.driver.email}
             </div>
-            <div>
+            <div className="my-2">
               <b>Telefono: </b>
               {offer.driver.phone}
             </div>
             <h5 className="text-center mt-3">
               <b>Detalles de la Oferta</b>
             </h5>
-            <div>
+            <div className="my-2">
+              <b>Precio calculado por el envio: </b>$ {offer && offer.price}
+            </div>
+            <div className="my-2">
               <b>Fecha de la Oferta: </b>
               {offer.registrationDate &&
                 transformDateFormat(offer.registrationDate)}
-            </div>
-            <div>
-              <b>Precio calculado por el envio: </b>$ {offer && offer.price}
             </div>
           </div>
         )}

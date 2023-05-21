@@ -4,6 +4,10 @@ import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
 import { FaClipboardList, FaTruck } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
+import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
+import { BiBox, BiCurrentLocation } from "react-icons/bi";
+import { MdOutlineLocalOffer } from "react-icons/md";
+import { GrLocationPin } from "react-icons/gr";
 
 const ViewMyRequests = ({ shipments }) => {
   return (
@@ -12,7 +16,7 @@ const ViewMyRequests = ({ shipments }) => {
         <FaClipboardList size="2rem" />
         <h1 className="m-0 ms-2">Mis Solicitudes</h1>
       </div>
-      <hr />
+      <hr className="my-1" />
       <div className="row">
         <div className="col-12">
           {Object.keys(shipments).length !== 0 ? (
@@ -28,38 +32,52 @@ const ViewMyRequests = ({ shipments }) => {
                   >
                     <div className={styles.cardElement}>
                       <div className="row">
-                        <div className="col-2 ">
+                        <div className="col-2 d-flex justify-content-center align-items-center">
                           <FaTruck className={styles.truckIcon} />
                         </div>
-                        <div className="col-9">
+                        <div className="col-10">
                           <h5>
                             <b>{"Solicitud Nº " + element.id}</b>
                           </h5>
                           <hr className={styles.line} />
-                          <div className="row p-2 ">
+                          <div className="row p-2 mt-1">
                             <div className="col-12 align-self-center">
                               <div>
+                                <BiCurrentLocation size={"18px"} />{" "}
                                 <b>{element.locationFrom}</b>
                                 <BsArrowRight
                                   className={styles.arrowIcon}
                                 />{" "}
+                                <GrLocationPin size={"18px"} />{" "}
                                 <b>{element.locationTo}</b>
                               </div>
-                              <div>
-                                <b>Fecha:</b>{" "}
-                                {transformDateFormat(element.shipDate)}
+                              <div className="row my-1">
+                                <div className="col-7">
+                                  <AiOutlineCalendar size={"18px"} />{" "}
+                                  <b>Fecha:</b>{" "}
+                                  {transformDateFormat(element.shipDate)}
+                                </div>
+                                <div className="col-5">
+                                  <AiOutlineClockCircle size={"18px"} />{" "}
+                                  <b>Horario:</b>{" "}
+                                  {element.delivery_shift == "M"
+                                    ? "Mañana"
+                                    : "Tarde"}
+                                </div>
                               </div>
-                              <div>
-                                <b> Items: </b>
+                              <div className="my-1">
+                                <BiBox size={"18px"} /> <b> Items: </b>
                                 {element.items.map(
                                   (elemento) =>
                                     elemento.quantity +
-                                    " " +
+                                    " x " +
                                     elemento.description
                                 )}
                               </div>
-                              <div>
-                                <b>Ofertas:</b> {element.offers.length}
+                              <div className="mt-1">
+                                <MdOutlineLocalOffer size={"18px"} />{" "}
+                                <b>Ofertas:</b>{" "}
+                                {element.offers && element.offers.length}
                               </div>
                             </div>
                           </div>

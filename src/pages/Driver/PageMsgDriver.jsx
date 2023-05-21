@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { offerCreated } from "../../actions/offer";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
-import styles from "../../styles/Login.module.css";
-
+import styles from "../../styles/Home.module.css";
 const PageMsgDriver = () => {
   const { noti } = useParams();
   const dispatch = useDispatch();
@@ -15,26 +14,25 @@ const PageMsgDriver = () => {
   if (noti === "offerCreated") {
     return (
       <>
-        <NavigationBarDriver />
         <div
           className={styles.backHome + " row d-flex justify-content-evenly "}
         >
-          <div className="col-12 d-flex justify-content-center ps-0">
-            <div>
-              <section
-                className={styles.card404}
-                style={{ marginLeft: "200px" }}
-              >
-                <div className={styles.form}>
+          <NavigationBarDriver />
+          <div className="col-lg-12 d-flex justify-content-center ps-0">
+            <div className={styles.cardHome}>
+              <div className="my-2">
+                <div className="d-flex justify-content-center align-items-center">
                   <h1>Notificación</h1>
-                  <span>Oferta creada con exito.</span>
-                  <div className="mt-4">
-                    <Link to="/home/driver" className={styles.btnLink}>
-                      Volver
-                    </Link>
-                  </div>
                 </div>
-              </section>
+                <div className="d-flex justify-content-center align-items-center">
+                  <span>Oferta creada con exito.</span>
+                </div>
+                <div className="mt-4 d-flex justify-content-center align-items-center">
+                  <Link to="/home/driver" className={styles.btnLink}>
+                    Volver
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

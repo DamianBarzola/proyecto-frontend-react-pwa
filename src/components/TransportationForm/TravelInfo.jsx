@@ -27,7 +27,7 @@ const TravelInfo = ({
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
   const { shipment } = values;
-  const { shipDate, hour, locationFrom, locationTo } = shipment;
+  const { shipDate, delivery_shift, locationFrom, locationTo } = shipment;
 
   const [origen, setOrigen] = useState("");
   const [destination, setDestination] = useState("");
@@ -50,7 +50,6 @@ const TravelInfo = ({
     setDuration(results.routes[0].legs[0].duration.value);
     setOrigen(results.routes[0].legs[0].start_address);
     setDestination(results.routes[0].legs[0].end_address);
-    console.log(results.routes[0].legs[0].distance.text);
   };
 
   const clearRoute = () => {
@@ -67,10 +66,21 @@ const TravelInfo = ({
     prevStep();
   };
   const Continue = (e) => {
-    if (shipDate === "" || hour === "" || origen === "" || destination === "") {
+    if (
+      shipDate === "" ||
+      delivery_shift === "" ||
+      origen === "" ||
+      destination === ""
+    ) {
       setMsgErrorTravel("Complete todos los campos");
     } else {
-      handleChangeLocation(origen, destination, duration, distance, hour);
+      handleChangeLocation(
+        origen,
+        destination,
+        duration,
+        distance,
+        delivery_shift
+      );
       e.preventDefault();
       setMsgErrorTravel("");
       nextStep();
@@ -113,14 +123,15 @@ const TravelInfo = ({
           <div className="col-lg-6">
             <div className="text-start">
               <label className={inputTxt.dateLabel}>Horario Aproximado</label>
-              <input
-                onChange={handleChange("hour")}
-                value={hour}
-                name="hour"
-                type="time"
-                className={inputTxt.dateInput}
-                min={new Date(Date.now()).toISOString().split("T")[0]}
-              />
+              <select
+                onChange={handleChange("delivery_shift")}
+                value={delivery_shift}
+                name="delivery_shift"
+                className={inputTxt.dropDown}
+              >
+                <option value="M">Mañana</option>
+                <option value="A">Tarde</option>
+              </select>
             </div>
           </div>
         </div>

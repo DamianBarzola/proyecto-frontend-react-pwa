@@ -14,7 +14,7 @@ export class TransportationForm extends Component {
       locationTo: "",
       distance: "",
       duration: "",
-      hour: "",
+      delivery_shift: "M",
     },
     items: [],
   };
@@ -32,7 +32,7 @@ export class TransportationForm extends Component {
       shipment: { ...this.state.shipment, [input]: e.target.value },
     });
   };
-  handleChangeLocation = (from, to, duration, distance, hour) => {
+  handleChangeLocation = (from, to, duration, distance, delivery_shift) => {
     this.setState({
       shipment: {
         ...this.state.shipment,
@@ -40,7 +40,7 @@ export class TransportationForm extends Component {
         locationTo: to,
         duration: duration,
         distance: distance,
-        hour: hour,
+        delivery_shift: delivery_shift,
       },
     });
   };
