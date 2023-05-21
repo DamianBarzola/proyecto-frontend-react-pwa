@@ -5,12 +5,14 @@ import { finishShipment } from "../../actions/shipment";
 import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
 import {BsArrowRight} from "react-icons/bs";
+import RateDriver from "../rateDriver";
 
 const Request = ({ shipment }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id, locationFrom, locationTo, shipDate, items, offers, state } =
     shipment;
+  // const confirmedOffer = shipment.offers && shipment.offers.find((offer) => offer.state === 'CONFIRMED');
   const handleFinish = (e) => {
     e.preventDefault();
     dispatch(finishShipment(id));
@@ -106,10 +108,10 @@ const Request = ({ shipment }) => {
         ) : (
           offers &&
           offers.map((elemento) => {
-            console.log(elemento)
 
             return (
               elemento.state === "CONFIRMED" && (
+              <div> 
                 <div key={elemento.id}>
                   <div className={styles.offercard}>
                     <div className="row">
@@ -148,6 +150,10 @@ const Request = ({ shipment }) => {
                     Finalizar Viaje
                   </button> */}
                 </div>
+                <div>
+                    <RateDriver shipment={shipment} confirmedOffer={elemento}/>
+                </div>
+              </div>
               )
             );
           })

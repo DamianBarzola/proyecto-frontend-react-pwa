@@ -4,6 +4,7 @@ import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import Request from "../../components/TranportationRequest/Request";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import RateDriver from "../../components/rateDriver";
 
 const Shipment = () => {
   const { idShipment } = useParams();
