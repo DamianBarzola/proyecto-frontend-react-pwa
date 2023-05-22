@@ -16,6 +16,7 @@ import {
   GoogleMap,
   useJsApiLoader,
 } from "@react-google-maps/api";
+import RateDriver from "../rateDriver";
 const libraries = ["places"];
 
 const Request = ({ shipment }) => {
@@ -216,6 +217,7 @@ const Request = ({ shipment }) => {
           offers.map((elemento) => {
             return (
               elemento.state === "CONFIRMED" && (
+              <div> 
                 <div key={elemento.id}>
                   <div className={styles.offercard}>
                     <div className="row">
@@ -255,6 +257,10 @@ const Request = ({ shipment }) => {
                     Finalizar Viaje
                   </button> */}
                 </div>
+                <div>
+                    <RateDriver shipment={shipment} confirmedOffer={elemento}/>
+                </div>
+              </div>
               )
             );
           })

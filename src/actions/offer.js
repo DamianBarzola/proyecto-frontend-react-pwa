@@ -21,6 +21,28 @@ export const createOffer = (priceOffer, idShipment) => {
   };
 };
 
+export const rateOffer = (rateOffer, idOffer) => {
+  let token = localStorage.getItem("jwt");
+  let data = {
+    rate: parseInt(rateOffer),
+    id: idOffer,
+  };
+  return async (dispatch) => {
+    await axios
+      .put(url + "/offer/rate", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((data) => {
+        alert("Agregaste una valoracion al transportista");
+        window.location.reload();
+      })
+      .catch((response) => {
+        alert("Ha ocurrido un error");
+        console.log(response)
+      });
+  };
+};
+
 export const readOffer = () => {
   let token = localStorage.getItem("jwt");
   return async (dispatch) => {
