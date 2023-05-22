@@ -9,7 +9,6 @@ export const userlogin = (email, password) => {
     await axios
       .post(url + "/user/signin", datos)
       .then(({ data }) => {
-        console.log(data.token)
         localStorage.setItem("jwt", data.token);
         dispatch(login(data.user));
       })
@@ -77,7 +76,7 @@ export const signUp = (data) => {
 export const signOut = (token) => {
   return async (dispatch) => {
     await axios
-      .get(url + "/user/signout", {
+      .post(url + "/user/signout", {}, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -139,26 +138,28 @@ export const signUpDriver = (data, license, greenCard) => {
 
   return async (dispatch) => {
     dispatch(logSuccess(false));
-    await axios
-      .post("https://api.cloudinary.com/v1_1/da7kbso2t/image/upload", fdlicense)
-      .then(async (res) => {
-        data.license = res.data.url;
-        await axios
-          .post(
-            "https://api.cloudinary.com/v1_1/da7kbso2t/image/upload",
-            fdgreeCard
-          )
-          .then((res) => {
-            data.greenCard = res.data.url;
-          })
-          .catch((e) => {
-            dispatch(errorMsg("Error de Carga"));
-          });
-      })
-      .catch((e) => {
-        dispatch(errorMsg("Error de Carga"));
-      });
-    if (data.greenCard !== "" && data.license !== "") {
+    // await axios
+    //   .post("https://api.cloudinary.com/v1_1/da7kbso2t/image/upload", fdlicense)
+    //   .then(async (res) => {
+    //     data.license = res.data.url;
+    //     await axios
+    //       .post(
+    //         "https://api.cloudinary.com/v1_1/da7kbso2t/image/upload",
+    //         fdgreeCard
+    //       )
+    //       .then((res) => {
+    //         data.greenCard = res.data.url;
+    //       })
+    //       .catch((e) => {
+    //         dispatch(errorMsg("Error de Carga"));
+    //       });
+    //   })
+    //   .catch((e) => {
+    //     dispatch(errorMsg("Error de Carga"));
+    //   });
+    // if (data.greenCard !== "" && data.license !== "") {
+      data.greenCard = 'aaaa';
+      data.license='aaaa';
       axios
         .post(url + "/driver/signup", data)
         .then((res) => {
@@ -177,19 +178,19 @@ export const signUpDriver = (data, license, greenCard) => {
             );
           }
         });
-    } else {
-      dispatch(
-        errorMsg(
-          "Problema al cargar los archivos. Vuelva a intentarlo en unos minutos"
-        )
-      );
-    }
+    // } else {
+    //   dispatch(
+    //     errorMsg(
+    //       "Problema al cargar los archivos. Vuelva a intentarlo en unos minutos"
+    //     )
+    //   );
+    // }
   };
 };
 export const signOutDriver = (token) => {
   return async (dispatch) => {
     await axios
-      .get(url + "/driver/signout", {
+      .post(url + "/driver/signout", {}, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

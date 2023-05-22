@@ -15,7 +15,6 @@ export const createOffer = (priceOffer, idShipment) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((data) => {
-        alert("Offer Creada");
         dispatch(offerCreated(true));
       })
       .catch((response) => {});
