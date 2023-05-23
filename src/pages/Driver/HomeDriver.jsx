@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { readDriverData} from "../../actions/auth";
+import { readDriverData, resendEmailDriver, errorMsg} from "../../actions/auth";
 import { Navigate } from "react-router-dom";
 import NavigationBarDriver from "../../components/NavigationBar/NavigationBarDriver";
 import styles from "../../styles/Home.module.css";
@@ -12,6 +12,14 @@ const HomeDriver = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(errorMsg(""))
+    dispatch(resendEmailDriver(driver.driver.email));
+  };
+  const msg = useSelector((state) => state.auth.msg);
+
   const driverAnalytics = useSelector((state) => state.auth.driverAnalytics);
 
   useEffect(() => {
@@ -44,6 +52,35 @@ const HomeDriver = () => {
                 en el menu.
               </span>
             </div>
+
+            {!driver.driver.isVerified && (
+            <div className="m-2">
+              <h3>Driver requiere verifiacion de correo</h3>
+                <p >Revisa tu correo electronico para poder confirmar tu Email. </p>
+                <p> En caso de que el link no funcione haz click en el boton</p>
+                <button className="btn btn-primary " onClick={handleSubmit}>
+                  Reenviar Email
+                </button>
+                <div className="my-3">
+                {msg && (
+                    <span
+                      style={{
+                        color: "red",
+                        letterSpacing: "1px",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {msg}
+                    </span>
+                  )}
+                  {!msg && (
+                    <span>Email reenviado correctamente.</span>
+                  )}
+                </div>
+
+            </div>
+            )}
+
           </div>
           </div>
           <div className="row">

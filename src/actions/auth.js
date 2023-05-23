@@ -246,6 +246,32 @@ export const confirmEmailUser = (token) => {
   };
 };
 
+export const resendEmailDriver = (email) => {
+  return async (dispatch) => {
+    await axios
+      .put(url + `/driver/resend_token/${email}`, {})
+      .then((res) => {
+        // dispatch(errorMsg("Email Driver confirmado correctamente"));
+      })
+      .catch((error) => {
+        dispatch(errorMsg("Token enviado valido. Pruebe con el mail ya recibido."));
+      });
+  };
+};
+
+export const resendEmailUser = (email) => {
+  return async (dispatch) => {
+    await axios
+      .put(url + `/user/resend_token/${email}`, {})
+      .then((res) => {
+        // dispatch(errorMsg("Email User confirmado correctamente"));
+      })
+      .catch((error) => {
+        dispatch(errorMsg("Token enviado valido. Pruebe con el mail ya recibido"));
+      });
+  };
+};
+
 
 
 export const loginDriver = (driver) => {
