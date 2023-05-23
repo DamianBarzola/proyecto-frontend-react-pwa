@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import styles from "../styles/Login.module.css";
-import { confirmEmailUser } from "../actions/auth";
+import { confirmEmailUser, errorMsg } from "../actions/auth";
 
 const PageMsg = () => {
   const { token } = useParams();
@@ -10,17 +10,35 @@ const PageMsg = () => {
 
 
   useEffect(() => {
+    dispatch(errorMsg(""))
     dispatch(confirmEmailUser(token));
   }, [dispatch, token]);
 
+  const msg = useSelector((state) => state.auth.msg);
 
     return (
       <div>
         <section className={styles.card404}>
           <div className={styles.form}>
             <h1>Notificación</h1>
-            <span>Usuario confirmado correctamente.</span>
-            <div className="mt-4">
+            {msg && (
+              <div className="mb-3">
+                <span
+                  style={{
+                    color: "red",
+                    letterSpacing: "1px",
+                    fontSize: "16px",
+                  }}
+                >
+                  {msg}
+                </span>
+              </div>
+            )}
+            {!msg && (
+              <div className="mb-3">
+                  <span>Usuario confirmado correctamente.</span>
+              </div>
+            )}            <div className="mt-4">
               <Link to="/login" className={styles.btnLink}>
                 Iniciar Sesión
               </Link>

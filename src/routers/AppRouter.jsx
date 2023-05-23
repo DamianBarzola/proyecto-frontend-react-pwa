@@ -20,6 +20,7 @@ import ShipmentsInProgress from "../pages/User/ShipmentsInProgress";
 import ShipmentsFinish from "../pages/User/ShipmentsFinish";
 
 import ConfirmEmailDriver from "../pages/ConfirmEmailDriver";
+import ConfirmEmailUser from "../pages/ConfirmEmailUser"
 import MyOffersDriver from "../pages/Driver/MyOffersDriver";
 import MyOffersDeliveredDriver from "../pages/Driver/MyOffersDeliveredDriver";
 import MyShipmentsDriver from "../pages/Driver/MyShipmentsDriver";
@@ -82,6 +83,7 @@ const AppRouter = () => {
               />
               <Route exact path="/notification/:type" element={<PageMsg />} />
               {/* User */}
+              <Route exact path="/user/confirm/:token" element={<ConfirmEmailUser />} />
               <Route exact path="/home" element={<Home />} />
               <Route exact path="/newshipment" element={<NewShipment />} />
               <Route exact path="/myshipments" element={<MyShipments />} />

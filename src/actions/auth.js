@@ -220,20 +220,15 @@ export const readDriverData = () => {
   };
 };
 
-
 export const confirmEmailDriver = (token) => {
   return async (dispatch) => {
     await axios
       .put(url + `/driver/confirm_email/${token}`, {})
       .then((res) => {
-        console.log(res)
-        console.log('bb')
-        dispatch(errorMsg("Problema de Conexion"));
+        // dispatch(errorMsg("Email Driver confirmado correctamente"));
       })
       .catch((error) => {
-        console.log('aaa')
-        console.log(error)
-        dispatch(errorMsg("Problema de Conexion"));
+        dispatch(errorMsg("Problema confirmando el mail. Por favor entre a su cuenta. "));
       });
   };
 };
@@ -243,12 +238,10 @@ export const confirmEmailUser = (token) => {
     await axios
       .put(url + `/user/confirm_email/${token}`, {})
       .then((res) => {
-        console.log(res)
+        // dispatch(errorMsg("Email User confirmado correctamente"));
       })
       .catch((error) => {
-        console.log('aaa')
-        console.log(error)
-        dispatch(errorMsg("Problema de Conexion"));
+        dispatch(errorMsg("Problema confirmando el mail. Por favor entre a su cuenta. "));
       });
   };
 };
