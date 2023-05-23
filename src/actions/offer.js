@@ -76,6 +76,17 @@ export const readOffer = () => {
   };
 };
 
+export const readRate = async (driverId) => {
+  let token = localStorage.getItem("jwt");
+  let data = {
+    id: driverId
+  };
+  const response = await axios.post(url + "/driver/rate", data, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  return response
+};
+
 export const offerAccepted = (data) => {
   return {
     type: types.offerAccepted,
