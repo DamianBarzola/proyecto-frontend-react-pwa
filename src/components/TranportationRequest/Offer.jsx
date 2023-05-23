@@ -4,15 +4,35 @@ import { useNavigate } from "react-router-dom";
 import { acceptOffer } from "../../actions/shipment";
 import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
+import { readRate } from "../../actions/offer";
 
 const Offer = ({ offer }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [rate, setRate] = useState(null);
+
+  useEffect(() => {
+    const fetchRate = async () => {
+      try {
+        const response = await readRate(offer.driver.id);
+        setRate(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    if (offer?.driver?.id !== null) {
+      fetchRate();
+    }
+  }, [offer?.driver?.id]);
+
+
 
   const handleAcept = (e) => {
     e.preventDefault();
     dispatch(acceptOffer(offer.id));
   };
+
   return (
     <div className={styles.cardForm}>
       <h2>Detalles de la Oferta</h2>
@@ -46,6 +66,11 @@ const Offer = ({ offer }) => {
               {offer.registrationDate &&
                 transformDateFormat(offer.registrationDate)}
             </div>
+            {rate !== null && (
+            <div className="my-2">
+              <b>Valoracion promedio: </b> {rate.toFixed(2)} / 5
+            </div>
+            )}
           </div>
         )}
       </div>
