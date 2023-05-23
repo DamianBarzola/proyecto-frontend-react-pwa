@@ -12,6 +12,8 @@ export const authReducer = (state = {}, action) => {
       return { ...state, msg: action.payload };
     case types.logSuccess:
       return { ...state, success: action.payload };
+    case types.analyticsDriver:
+        return { ...state, driverAnalytics: action.payload };
     default:
       return state;
   }

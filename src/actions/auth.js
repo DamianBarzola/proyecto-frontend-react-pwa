@@ -205,6 +205,39 @@ export const signOutDriver = (token) => {
   };
 };
 
+export const readDriverData = () => {
+  let token = localStorage.getItem("jwt");
+  return async (dispatch) => {
+    await axios
+      .get(url + "/driver/data", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        // console.log(data)
+        dispatch(readDriver(data));
+      })
+      .catch((response) => {});
+  };
+};
+
+
+export const confirmEmailDriver = (token) => {
+  return async (dispatch) => {
+    await axios
+      .put(url + `/driver/confirm_email/${token}`, {})
+      .then((res) => {
+        console.log(res)
+        console.log('bb')
+        dispatch(errorMsg("Problema de Conexion"));
+      })
+      .catch((error) => {
+        console.log('aaa')
+        console.log(error)
+        dispatch(errorMsg("Problema de Conexion"));
+      });
+  };
+};
+
 export const loginDriver = (driver) => {
   return {
     type: types.loginDriver,
@@ -228,5 +261,12 @@ export const errorMsg = (msg) => {
 export const logSuccess = (state) => {
   return (dispatch) => {
     dispatch({ type: types.logSuccess, payload: state });
+  };
+};
+
+export const readDriver = (data) => {
+  return {
+    type: types.analyticsDriver,
+    payload: data,
   };
 };

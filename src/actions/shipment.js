@@ -170,6 +170,7 @@ export const readShipments = (data) => {
     payload: data,
   };
 };
+
 export const deleteShipment = (id) => {
   return {
     type: types.deleteShipment,

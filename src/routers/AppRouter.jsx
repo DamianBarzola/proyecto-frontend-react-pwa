@@ -19,6 +19,7 @@ import HomeDriver from "../pages/Driver/HomeDriver";
 import ShipmentsInProgress from "../pages/User/ShipmentsInProgress";
 import ShipmentsFinish from "../pages/User/ShipmentsFinish";
 
+import ConfirmEmailDriver from "../pages/ConfirmEmailDriver";
 import MyOffersDriver from "../pages/Driver/MyOffersDriver";
 import MyOffersDeliveredDriver from "../pages/Driver/MyOffersDeliveredDriver";
 import MyShipmentsDriver from "../pages/Driver/MyShipmentsDriver";
@@ -107,6 +108,7 @@ const AppRouter = () => {
                 element={<ViewOffer />}
               />
               {/* Driver */}
+              <Route exact path="/driver/confirm/:token" element={<ConfirmEmailDriver />} />
               <Route exact path="/home/driver" element={<HomeDriver />} />
               <Route
                 exact

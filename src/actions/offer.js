@@ -21,6 +21,25 @@ export const createOffer = (priceOffer, idShipment) => {
   };
 };
 
+export const getRateDriver = (idDriver) => {
+  let token = localStorage.getItem("jwt");
+  let data = {
+    id: idDriver,
+  };
+  return async (dispatch) => {
+    await axios
+      .post(url + "/driver/rate", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        console.log(data)
+        // dispatch(readOffers(data));
+      })
+      .catch((response) => {});
+  };
+};
+
+
 export const rateOffer = (rateOffer, idOffer) => {
   let token = localStorage.getItem("jwt");
   let data = {

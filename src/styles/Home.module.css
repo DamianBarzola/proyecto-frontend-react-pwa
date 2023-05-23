@@ -27,6 +27,16 @@
   border-radius: 7px;
   text-decoration: none;
 }
+.cardHomeDriver{
+  background-color:rgb(255, 255, 255) ;
+  width: 60%;
+  height: fit-content;
+  margin-top: 30px;
+  padding: 10px;
+  border-radius: 7px;
+  text-decoration: none;
+}
+
 @media (max-width: 950px) {
   .backHome{    
     margin-left:0px ;
@@ -36,5 +46,10 @@
     height: fit-content;
     margin-top: 20px;
     
+  }
+  .cardHomeDriver{
+    width: 98%;
+    height: fit-content;
+    margin-top: 20px;
   }
 }

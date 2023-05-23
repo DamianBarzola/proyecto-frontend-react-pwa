@@ -4,6 +4,8 @@ export const types = {
   logout: `[Auth] logout`,
   logMsg: "[AuthMsg] error",
   logSuccess: "[AuthSuccess] success",
+  analyticsDriver: "[AuthDriver] analytics",
+
 
   shipmentAdd: `[Shipment] add`,
   shipmentDelete: `[Shipment] delete`,
@@ -11,6 +13,7 @@ export const types = {
   shipmentModify: `[Shipment] modify`,
   shipmentClean: `[Shipment] clean`,
   newshipmentSuccess: `[Shipment] newshipmentSuccess`,
+  shipmentAnalytics: `[Shipment] analytics`,
 
   offerRead: `[Offer] read`,
   offerAccepted: `[Offer] accepted`,
