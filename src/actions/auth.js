@@ -238,6 +238,23 @@ export const confirmEmailDriver = (token) => {
   };
 };
 
+export const confirmEmailUser = (token) => {
+  return async (dispatch) => {
+    await axios
+      .put(url + `/user/confirm_email/${token}`, {})
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((error) => {
+        console.log('aaa')
+        console.log(error)
+        dispatch(errorMsg("Problema de Conexion"));
+      });
+  };
+};
+
+
+
 export const loginDriver = (driver) => {
   return {
     type: types.loginDriver,
