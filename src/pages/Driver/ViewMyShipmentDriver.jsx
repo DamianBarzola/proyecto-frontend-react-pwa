@@ -6,6 +6,11 @@ import stylesRequest from "../../styles/Request.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { finishShipmentDriver } from "../../actions/shipment";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { BiCurrentLocation } from "react-icons/bi";
+import { GrLocationPin } from "react-icons/gr";
+import { BsArrowRight } from "react-icons/bs";
+import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
+import { MdOutlineLocalOffer } from "react-icons/md";
 
 const ViewMyShipmentDriver = () => {
   const dispatch = useDispatch();
@@ -49,70 +54,44 @@ const ViewMyShipmentDriver = () => {
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <div className="col-12 d-flex justify-content-center ps-0">
           <div className={stylesRequest.cardForm}>
-            <h1>Viaje Nº: {id && id}</h1>
+            <h5>
+              <b> Viaje Nº: {shipment.shipment && shipment.shipment.id}</b>
+            </h5>
             <hr />
             <div className="row m-1">
               <div className="col-lg-12 ">
                 <h4>
                   <b> Detalles del Viaje</b>
                 </h4>
-                <div className="text-start ps-3">
-                  <div>
-                    <b> Fecha:</b>{" "}
-                    {shipment.shipDate && transformDateFormat(shipDate)}
-                  </div>
-                  <div>
-                    {" "}
-                    <b> Origen:</b> {locationFrom && locationFrom}
-                  </div>
-                  <div>
-                    {" "}
-                    <b> Destino:</b> {locationTo && locationTo}
-                  </div>
-                </div>
+                <div className=" my-2">
+                <BiCurrentLocation size={"18px"} />{" "}
+                <b> {shipment.shipment && shipment.shipment.locationFrom}</b>{" "}
+                <BsArrowRight className={stylesRequest.arrowIcon} />{" "}
+                <GrLocationPin size={"18px"} />{" "}
+                <b> {shipment.shipment && shipment.shipment.locationTo}</b>
               </div>
-            </div>
-            <div className="row m-1">
-              <div className="col-lg-12  ">
-                <h4>
-                  <b> Detalles de la Carga</b>
-                </h4>
-
-                <div>
-                  {items ? (
-                    items.map((item, index) => {
-                      return (
-                        <div className={stylesRequest.cardItem2} key={index}>
-                          <div className="row d-flex justify-content-between align-items-center">
-                            <div className="col-lg-3 ">
-                              <b>Item:</b> {item.description}
-                            </div>
-                            <div className="col-lg-3">
-                              <b>Cantidad: </b>
-                              {item.quantity}
-                            </div>
-                            <div className="col-lg-3">
-                              <b>Tamaño: </b> {item.height}x{item.width}x
-                              {item.depth} cm
-                            </div>
-                            <div className="col-lg-3">
-                              <b>Peso: </b> {item.weight} Kgs.
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <div>
-                      <h5>No hay items.</h5>
-                    </div>
+              <div className="row my-2">
+                <div className="col-6">
+                  <AiOutlineCalendar size={"18px"} />{" "}
+                  <b>Fecha:</b>{" "}
+                  {shipment.shipment && transformDateFormat(
+                    shipment.shipment.shipDate
                   )}
                 </div>
+                <div className="col-6">
+                  <AiOutlineClockCircle size={"18px"} />{" "}
+                  <b>Horario:</b>{" "}
+                  {shipment.shipment && shipment.shipment.delivery_shift == "M"
+                    ? "Mañana"
+                    : "Tarde"}
+                </div>
+              </div>
               </div>
             </div>
+      
             <div>
-              {offers &&
-                offers.map((elemento) => {
+              {shipment.offers &&
+                shipment.offers.map((elemento) => {
                   return (
                     elemento.confirmed === true && (
                       <div className="p-3" key={elemento.id}>
@@ -139,6 +118,31 @@ const ViewMyShipmentDriver = () => {
                 })}
             </div>
             <hr />
+            <div className="row p-2 text-start  ">
+              {" "}
+              <h5 className="text-start">
+                <b>Mi Oferta:</b>{" "}
+              </h5>
+              <div className="row">
+                <div className="col-6 ">
+                  <div className="mb-2">
+                    <MdOutlineLocalOffer size={"18px"} />{" "}
+                    <b> Precio:</b> {shipment.price}
+                  </div>
+                </div>
+                <div className="col-6   ">
+                  <div>
+                    <b>Realizada el :</b>{" "}
+                    {shipment.registrationDate &&
+                      transformDateFormat(
+                        shipment.registrationDate
+                      )}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+
             <button
               onClick={() => navigate(-1)}
               className={stylesRequest.btnback}
@@ -148,6 +152,7 @@ const ViewMyShipmentDriver = () => {
             <button onClick={handleFinish} className={stylesRequest.btn}>
               Finalizar Solicitud
             </button>
+              </div>
           </div>
         </div>
       </div>

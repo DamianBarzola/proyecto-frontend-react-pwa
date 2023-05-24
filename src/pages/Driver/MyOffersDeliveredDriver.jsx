@@ -9,6 +9,13 @@ import { readShipmentDeliveredDriver } from "../../actions/shipment";
 import { Link } from "react-router-dom";
 import { transformDateFormat } from "../../utils/validations";
 import { BsArrowRight, BsFillFolderFill } from "react-icons/bs";
+import { FaTruck } from "react-icons/fa";
+import { BiBox, BiCurrentLocation } from "react-icons/bi";
+import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
+import { GrLocationPin } from "react-icons/gr";
+import { RiPinDistanceLine } from "react-icons/ri";
+import { CgSandClock } from "react-icons/cg";
+import { formatDateSeconds, formatDistance } from "../../utils/utils";
 
 const MyOffersDeliveredDriver = () => {
   document.title = "Fleteros - Mis viajes";
@@ -29,6 +36,7 @@ const MyOffersDeliveredDriver = () => {
   }
   return (
     <>
+    {console.log(shipments)}
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <NavigationBarDriver />
         <div className="col-12 d-flex justify-content-center ps-0">
@@ -52,35 +60,53 @@ const MyOffersDeliveredDriver = () => {
                         >
                           <div className={stylesRequest.cardElement}>
                             <div className="row">
-                              <div className="col-12">
-                                <h3>{"Viaje Nº: " + element.shipment.id}</h3>
-                                <hr />
+                              <div className="col-2 d-flex justify-content-center align-items-center">
+                                <FaTruck className={stylesRequest.truckIcon} />
+                              </div>
+                                <div className="col-10">
+                                  <h5>
+                                    <b>{"Viaje Nº: " + element.shipment?.id }</b>
+                                  </h5>
+                                  <hr className={stylesRequest.line} />
+                                <div className="row p-2 mt-1">
+                                  <div className="col-12 align-self-center">
+                                    <div >
+                                      <BiCurrentLocation size={"18px"} />{" "}
+                                      <b> {element.shipment?.locationFrom}</b>{" "}
+                                      <BsArrowRight
+                                        className={stylesRequest.arrowIcon}
+                                      />{" "}
+                                      <GrLocationPin size={"18px"} />{" "}
+                                      <b> {element.shipment?.locationTo}</b>
+                                      </div>
+
+                                      <div className="row my-1">
+                                      <div className="col-6">
+                                      <AiOutlineCalendar size={"18px"} />{" "}
+                                        <b>Fecha:</b>{" "}
+                                        {transformDateFormat(element.shipment?.shipDate)}
+                                        </div>
+                                        <div className="col-6">
+                                          <AiOutlineClockCircle size={"18px"} />{" "}
+                                          <b>Horario:</b>{" "}
+                                          {element.shipment?.delivery_shift == "M"
+                                            ? "Mañana"
+                                            : "Tarde"}
+                                        </div>
+                                        <div className="row my-1">
+                              <div className="col-6">
+                                <RiPinDistanceLine size={"20px"} />
+                                <b> Distancia:</b> {formatDistance(element.shipment?.distance)}
+                              </div>
+                              <div className="col-6">
+                                <CgSandClock size={"20px"} />
+                                <b> Duracion Aprox.:</b> {formatDateSeconds(element.shipment?.duration)}
                               </div>
                             </div>
-                            <div className="row p-2 ">
-                              <div className="col-12 ">
-                                <div className="mb-2">
-                                  <b> {element.shipment.locationFrom}</b>{" "}
-                                  <BsArrowRight
-                                    className={stylesRequest.arrowIcon}
-                                  />{" "}
-                                  <b> {element.shipment.locationTo}</b>
-                                  {/* 
-                                  <b> Origen:</b> {element.shipment.locationFrom}
-                                </div>
-                                <div>
-                                  <b> Destino:</b> {element.shipment.locationTo}
-                                </div>
-                              </div>
-                              <div className="col-6 align-self-center "> */}
-                                  <div>
-                                    <b>Fecha:</b>{" "}
-                                    {transformDateFormat(
-                                      element.shipment.shipDate
-                                    )}
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
+                                </div>
                             </div>
                           </div>
                         </Link>

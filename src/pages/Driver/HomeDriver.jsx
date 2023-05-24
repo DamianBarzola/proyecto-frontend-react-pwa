@@ -35,7 +35,6 @@ const HomeDriver = () => {
   }
   return (
     <>
-    {console.log(driverAnalytics)}
       <div className={styles.backHome + " row d-flex justify-content-evenly "}>
         <NavigationBarDriver />
         <div className="row">
@@ -83,17 +82,17 @@ const HomeDriver = () => {
 
           </div>
           </div>
-          <div className="row">
-          <div className="col-lg-12 d-flex justify-content-center ps-0">
-          <div className="col-lg-1 d-flex justify-content-center ps-0">
+          <div className="row" >
+          <div className="col-lg-12 d-flex justify-content-center ps-0" style={{"color": "white"}}>
 
             Viajes
-            </div>
+          </div>
+          <div className="col-lg-12 d-flex justify-content-center ps-0" style={{"height": "100px", "marginTop": "-60px"}}>
             <div className="col-lg-3 d-flex justify-content-center ps-0">
               <div className={styles.cardHomeDriver}>
                 <div className="m-1">
                   Ultima semana<br></br>
-                  {driverAnalytics.shipments_last_week}
+                  {driverAnalytics ? (driverAnalytics.shipments_last_week) : ( 0 )}
                 </div>
               </div>
             </div>
@@ -101,7 +100,7 @@ const HomeDriver = () => {
             <div className={styles.cardHomeDriver}>
                 <div className="m-1">
                 Ultimo mes<br></br>
-              {driverAnalytics.shipments_last_month}
+              {driverAnalytics ? (driverAnalytics.shipments_last_month) : ( 0 )}
             </div>
           </div>
             </div>
@@ -109,7 +108,7 @@ const HomeDriver = () => {
               <div className={styles.cardHomeDriver}>
                 <div className="m-1">
                   Ultimos 3 meses<br></br>
-                  {driverAnalytics.shipments_last_3_months}
+                  {driverAnalytics ? (driverAnalytics.shipments_last_3_months) : ( 0 )}
                 </div>
               </div>
             </div>
@@ -117,16 +116,16 @@ const HomeDriver = () => {
             
           </div>
           <div className="row">
-          <div className="col-lg-12 d-flex justify-content-center ps-0" style={{"height": "30px"}}>
-          <div className="col-lg-1 d-flex justify-content-center ps-0">
-
+          <div className="col-lg-12 d-flex justify-content-center ps-0" style={{"color": "white"}}>
             Ganancias
-</div>
+
+            </div>
+          <div className="col-lg-12 d-flex justify-content-center ps-0" style={{"height": "100px", "marginTop": "-60px"}}>
             <div className="col-lg-3 d-flex justify-content-center ps-0">
               <div className={styles.cardHomeDriver}>
                 <div className="m-1">
                   Ultima semana<br></br>
-                  {driverAnalytics.profit_last_week}
+                  {driverAnalytics ? (driverAnalytics.profit_last_week) : ( 0 )}
                 </div>
               </div>
             </div>
@@ -134,30 +133,30 @@ const HomeDriver = () => {
             <div className={styles.cardHomeDriver}>
                 <div className="m-1">
                 Ultimo mes<br></br>
-              {driverAnalytics.profit_last_month}
+              {driverAnalytics ? (driverAnalytics.profit_last_month) : ( 0 )}
             </div>
           </div>
             </div>
             <div className="col-lg-3 d-flex justify-content-center ps-0">
               <div className={styles.cardHomeDriver}>
-                <div className="m-1">
+                <div className="m-1 text-center">
                   Ultimos 3 meses<br></br>
-                  {driverAnalytics.profit_last_3_months}
+                  {driverAnalytics ? (driverAnalytics.profit_last_3_months) : ( 0 )}
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-lg-12 d-flex justify-content-center ps-0">
-          <div className="col-lg-1 d-flex justify-content-center ps-0">
+          
+          <div className="row">
+          <div className="col-lg-12 d-flex justify-content-center ps-0" style={{"color": "white"}}>
            Estadisticas
-
           </div>
-
+          <div className="col-lg-12 d-flex justify-content-center ps-0" style={{"height": "100px"}}>
         <div className="col-lg-3 d-flex justify-content-center ps-0">
           <div className={styles.cardHomeDriver}>
             <div className="m-1">
               Puntaje<br></br>
-              {driverAnalytics.average_rate}
+              {driverAnalytics ? (driverAnalytics.average_rate) : ( 0 )}
             </div>
           </div>
         </div>
@@ -165,7 +164,7 @@ const HomeDriver = () => {
         <div className={styles.cardHomeDriver}>
             <div className="m-1">
             Distancia<br></br>
-          {driverAnalytics.total_distance}
+          {driverAnalytics ? ( driverAnalytics.total_distance) : ( 0 )}
         </div>
       </div>
         </div>
@@ -173,11 +172,12 @@ const HomeDriver = () => {
           <div className={styles.cardHomeDriver}>
             <div className="m-1">
               Duracion<br></br>
-              {driverAnalytics.total_duration}
+              {driverAnalytics ? (driverAnalytics.total_duration) : ( 0 )}
             </div>
           </div>
         </div>
-      </div>
+          </div>
+          </div>
           </div>
         </div>
       </div>

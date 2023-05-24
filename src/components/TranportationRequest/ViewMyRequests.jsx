@@ -8,6 +8,9 @@ import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { BiBox, BiCurrentLocation } from "react-icons/bi";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { GrLocationPin } from "react-icons/gr";
+import { RiPinDistanceLine } from "react-icons/ri";
+import { CgSandClock } from "react-icons/cg";
+import { formatDateSeconds, formatDistance } from "../../utils/utils";
 
 const ViewMyRequests = ({ shipments }) => {
   return (
@@ -23,7 +26,6 @@ const ViewMyRequests = ({ shipments }) => {
             <div>
               {shipments.map((element) => {
                 return (
-                  // element.state === "Waiting Offers" && (
                   <Link
                     to={"/shipment/" + element.id}
                     params={element.id}
@@ -52,12 +54,12 @@ const ViewMyRequests = ({ shipments }) => {
                                 <b>{element.locationTo}</b>
                               </div>
                               <div className="row my-1">
-                                <div className="col-7">
+                                <div className="col-6">
                                   <AiOutlineCalendar size={"18px"} />{" "}
                                   <b>Fecha:</b>{" "}
                                   {transformDateFormat(element.shipDate)}
                                 </div>
-                                <div className="col-5">
+                                <div className="col-6">
                                   <AiOutlineClockCircle size={"18px"} />{" "}
                                   <b>Horario:</b>{" "}
                                   {element.delivery_shift == "M"
@@ -74,6 +76,16 @@ const ViewMyRequests = ({ shipments }) => {
                                     elemento.description
                                 )}
                               </div>
+                              <div className="row my-1">
+                              <div className="col-6">
+                                <RiPinDistanceLine size={"20px"} />
+                                <b> Distancia:</b> {formatDistance(element.distance)}
+                              </div>
+                              <div className="col-6">
+                                <CgSandClock size={"20px"} />
+                                <b> Duracion Aprox.:</b> {formatDateSeconds(element.duration)}
+                              </div>
+                            </div>
                               <div className="mt-1">
                                 <MdOutlineLocalOffer size={"18px"} />{" "}
                                 <b>Ofertas:</b>{" "}

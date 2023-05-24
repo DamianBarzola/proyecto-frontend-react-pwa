@@ -59,14 +59,7 @@ const MyOffersDriver = () => {
                             className={stylesOffer.cardElement}
                             key={element.id}
                           >
-                            {/* <div className="row">
-                              <div className="col-12">
-                                <h4 className="pt-2">
-                                  Oferta Nº: {element.id}
-                                </h4>
-                                <hr />
-                              </div>
-                            </div> */}
+
                             <div className="row p-2 text-start">
                               <h5>
                                 <b>
@@ -75,10 +68,11 @@ const MyOffersDriver = () => {
                                   {element.shipment.id}{" "}
                                 </b>
                               </h5>
+                              
                               <div className=" my-2">
                                 <BiCurrentLocation size={"18px"} />{" "}
                                 <b> {element.shipment.locationFrom}</b>{" "}
-                                <BsArrowRight className={styles.arrowIcon} />{" "}
+                                <BsArrowRight className={stylesRequest.arrowIcon} />{" "}
                                 <GrLocationPin size={"18px"} />{" "}
                                 <b> {element.shipment.locationTo}</b>
                               </div>
@@ -98,18 +92,6 @@ const MyOffersDriver = () => {
                                     : "Tarde"}
                                 </div>
                               </div>
-                              {/* <div className="row my-2 d-flex">
-                                <div className="col-6">
-                                  <RiPinDistanceLine size={"20px"} />
-                                  <b> Distancia:</b>{" "}
-                                  {formatDistance(element.shipment.distance)}
-                                </div>
-                                <div className="col-6">
-                                  <CgSandClock size={"20px"} />
-                                  <b> Duracion Aprox.:</b>{" "}
-                                  {formatDateSeconds(element.shipment.duration)}
-                                </div>
-                              </div> */}
                             </div>
                             <hr />
                             <div className="row p-2 text-start  ">

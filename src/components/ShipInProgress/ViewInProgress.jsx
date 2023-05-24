@@ -3,6 +3,17 @@ import styles from "../../styles/Request.module.css";
 import { transformDateFormat } from "../../utils/validations";
 import { Link } from "react-router-dom";
 import { BsFillClockFill } from "react-icons/bs";
+import { BsFillFolderFill } from "react-icons/bs";
+import {  FaTruck } from "react-icons/fa";
+import { BsArrowRight } from "react-icons/bs";
+import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
+import { BiBox, BiCurrentLocation } from "react-icons/bi";
+import { MdOutlineLocalOffer } from "react-icons/md";
+import { GrLocationPin } from "react-icons/gr";
+import { RiPinDistanceLine } from "react-icons/ri";
+import { CgSandClock } from "react-icons/cg";
+import { formatDateSeconds, formatDistance } from "../../utils/utils";
+
 
 const ViewInProgress = ({ shipments }) => {
   return (
@@ -18,7 +29,6 @@ const ViewInProgress = ({ shipments }) => {
             <div>
               {shipments.map((element) => {
                 return (
-                  // element.state === "Offer Accepted" && (
                   <Link
                     to={"/shipment/" + element.id}
                     params={element.id}
@@ -27,27 +37,63 @@ const ViewInProgress = ({ shipments }) => {
                   >
                     <div className={styles.cardElement}>
                       <div className="row">
-                        <div className="col-3"></div>
+                        <div className="col-2 d-flex justify-content-center align-items-center">
+                          <FaTruck className={styles.truckIcon} />
+                        </div>
 
-                        <div className="col-8">
-                          <h3>{"Solicitud Nro: " + element.id}</h3>
-                          <hr className={styles.asd} />
-                          <div className="row p-2 ">
-                            <div className="col-6 ">
-                              <div className="mb-2">
-                                <b> Origen:</b> {element.locationFrom}
-                              </div>
+                        <div className="col-10">
+                          <h5>
+                            <b>{"Solicitud Nº: " + element.id}</b>
+                          </h5>
+                          <hr className={styles.line} />
+                          <div className="row p-2 mt-1">
+                           <div className="col-12 align-self-center">
                               <div>
-                                <b> Destino:</b> {element.locationTo}
+                                <BiCurrentLocation size={"18px"} />{" "}
+                                <b>{element.locationFrom}</b>
+                                <BsArrowRight
+                                  className={styles.arrowIcon}
+                                />{" "}
+                                <GrLocationPin size={"18px"} />{" "}
+                                <b>{element.locationTo}</b>
+                              </div>
+                              <div className="row my-1">
+                                <div className="col-6">
+                                  <AiOutlineCalendar size={"18px"} />{" "}
+                                  <b>Fecha:</b>{" "}
+                                  {transformDateFormat(element.shipDate)}
+                                </div>
+                                <div className="col-6">
+                                  <AiOutlineClockCircle size={"18px"} />{" "}
+                                  <b>Horario:</b>{" "}
+                                  {element.delivery_shift == "M"
+                                    ? "Mañana"
+                                    : "Tarde"}
+                                </div>
+                              </div>
+                              <div className="my-1">
+                                <BiBox size={"18px"} /> <b> Items: </b>
+                                {element.items.map(
+                                  (elemento) =>
+                                    elemento.quantity +
+                                    " x " +
+                                    elemento.description
+                                )}
+                              </div>
+                              <div className="row my-1">
+                              <div className="col-6">
+                                <RiPinDistanceLine size={"20px"} />
+                                <b> Distancia:</b> {formatDistance(element.distance)}
+                              </div>
+                              <div className="col-6">
+                                <CgSandClock size={"20px"} />
+                                <b> Duracion Aprox.:</b> {formatDateSeconds(element.duration)}
                               </div>
                             </div>
-                            <div className="col-6 align-self-center ">
-                              <div>
-                                <b>Fecha:</b>{" "}
-                                {transformDateFormat(element.shipDate)}
-                              </div>
-                              <div>
-                                <b>Items:</b> {element.items.length}
+                              <div className="mt-1">
+                                <MdOutlineLocalOffer size={"18px"} />{" "}
+                                <b>Ofertas:</b>{" "}
+                                {element.offers && element.offers.length}
                               </div>
                             </div>
                           </div>
