@@ -7,7 +7,7 @@
   background-size: cover;
   background-position: 100% 70%; 
   height: 55rem;
-  margin-left:260px ;
+  margin-left:280px ;
 }
 .card{
   background-color: white;
@@ -27,6 +27,16 @@
   border-radius: 7px;
   text-decoration: none;
 }
+.normalCard{
+  background-color:rgb(255, 255, 255) ;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 7px;
+  text-decoration: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 .cardHomeDriver{
   background-color:rgb(255, 255, 255) ;
   width: 60%;

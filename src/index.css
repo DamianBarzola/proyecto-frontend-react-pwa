@@ -47,3 +47,8 @@ code {
     monospace;
     
 }
+
+.list-group-item.list-group-item-secondary{
+  background: #316bff;
+  color: white;
+}
